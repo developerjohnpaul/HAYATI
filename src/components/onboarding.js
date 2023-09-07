@@ -68,8 +68,8 @@ const Onboarding = () => {
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="shortOnboadingText">
-                  Empowering
-                  <span style={{ color: "#00E1FF" }}>Hope</span> , One Step at a
+                  Empowering{" "}
+                  <span style={{ color: "#00E1FF" }}>Hope</span> , {" "} One Step at a
                   Time
                 </h1>
               )}
@@ -93,8 +93,8 @@ const Onboarding = () => {
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="fadingShortOnboadingText">
-                  Empowering
-                  <span style={{ color: "#00E1FF" }}>Hope</span> , One Step at a
+                  Empowering {" "}
+                  <span style={{ color: "#00E1FF" }}> Hope</span> ,{" "} One Step at a
                   Time
                 </h1>
               )}
