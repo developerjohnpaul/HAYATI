@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { app } from "../App";
 
 const LoginPage = () => {
+  const scrollToTop = () => {
+    document.documentElement.scrollTop = 0;
+  };
   const App = useContext(app);
   const [TouchIdModalStatus, setTouchIdModalStatus] = useState("hidden");
   return (

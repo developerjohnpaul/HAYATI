@@ -85,7 +85,7 @@
 /**************** onboarding ****************/
 
 #onboarding {
-  background-color: black;
+  background-color: #00A3B7;
   background-size: cover;
   min-height: 100vh;
   width: 100vw;
@@ -159,13 +159,15 @@
 /********************** login page  *******************/
 
 
-#LoginNavBG {
+#LoginNavBG,
+#CreatAccountNavBg {
   height: 60px;
   width: 100vw;
   background-color: #047E8E;
 }
 
-#MainLoginNav {
+#MainLoginNav,
+#MainCreateAccountNav {
   height: 60px;
   width: 100vw;
   background-color: #00A3B7;
@@ -174,7 +176,8 @@
   top: 40px;
 }
 
-#LoginNavPrevBtn {
+#LoginNavPrevBtn,
+#CreateAccountNavPrevBtn {
   background-color: transparent;
   border: 0px;
   color: white;
@@ -183,7 +186,8 @@
   margin-right: 5px;
 }
 
-#loginNavLogo {
+#loginNavLogo,
+#createAccountNavLogo {
   max-height: 100%;
 }
 
@@ -249,17 +253,56 @@
   height: 280px;
   width: 85vw;
   box-shadow: 0px 0px 20px rgb(125, 125, 125);
-padding: 15px;
+  padding: 15px;
 }
 
-#touchIdFingerPrintIcon{
+#touchIdFingerPrintIcon {
   max-height: 50px;
   margin-right: 15px;
 }
 
-#TouchIdModalCancelBtn{
+#TouchIdModalCancelBtn {
   background-color: transparent;
   border: 0px;
   font-size: 12px;
   opacity: .8;
+}
+
+
+
+/************ create account page **********/
+
+#createAccountPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+#signupInput {
+  width: 80vw;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #6F6F6F;
+  margin-bottom: 30px;
+  outline-color: #00A3B7;
+}
+
+#signupInput::placeholder {
+  color: black;
+  opacity: .7;
+  font-size: 12px;
+
+}
+
+#signUpButton{
+  background-color: #0390A3;
+    width: 80vw;
+    padding: 7px;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }

@@ -45,7 +45,6 @@ const Onboarding = () => {
         style={{
           backgroundImage: `url("${onboardingDetails[onboardingBgNumber].bgUrl}")`,
         }}
-        
       >
         <img src={require("../images/LOGO.png")} id="onboardingLogo" />
         <div
@@ -136,7 +135,14 @@ const Onboarding = () => {
             className="flexCenter"
             style={{ width: "90vw", fontSize: "14px" }}
           >
-            <button type="button" className="onboardingLinks">
+            <button
+              type="button"
+              className="onboardingLinks"
+              onClick={() => {
+                Navigate(`/SignUp`);
+                scrollToTop();
+              }}
+            >
               Create account
             </button>
             <button type="button" className="onboardingLinks">
