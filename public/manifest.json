@@ -1,0 +1,29 @@
+{
+  "short_name": "HAYATI",
+  "name": "HAYATI",
+  "icons": [
+    {
+      "src": "maskedLogo192.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "maskedLogo224.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "maskedLogo224.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#0390A3",
+  "prefer_related_applications": "true"
+}
