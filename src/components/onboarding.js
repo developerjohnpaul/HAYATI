@@ -45,6 +45,7 @@ const Onboarding = () => {
         style={{
           backgroundImage: `url("${onboardingDetails[onboardingBgNumber].bgUrl}")`,
         }}
+        
       >
         <img src={require("../images/LOGO.png")} id="onboardingLogo" />
         <div
