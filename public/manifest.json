@@ -23,7 +23,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#F5F6EB",
+  "theme_color": "#047E8E",
   "background_color": "#F5F6EB",
   "prefer_related_applications": "true"
 }
