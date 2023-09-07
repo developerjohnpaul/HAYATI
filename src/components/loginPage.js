@@ -37,7 +37,7 @@ const LoginPage = () => {
             App.setBlurredBackgroundOverlayStatus("visible");
           }}
         >
-          Log in with Touch Id
+          Log in with Touch ID
         </button>
         <button type="button" id="loginButton">
           Log In
@@ -62,7 +62,7 @@ const LoginPage = () => {
       </div>
       {TouchIdModalStatus == "visible" && (
         <div id="touchIdModal" className="flexColumnCenter">
-          <h4>Touch Id</h4>
+          <h4>Touch ID</h4>
           <div className="flexCenter" style={{ width: "80%", height: "75%" }}>
             <img
               src={require("../images/fingerPrintIcon.png")}
