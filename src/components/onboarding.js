@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { BsBellFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 
 const Onboarding = () => {
+  const scrollToTop = () => {
+    document.documentElement.scrollTop = 0;
+  };
+  const Navigate = useNavigate();
   const [shortOnboadingTextStatus, setShortOnboadingTextStatus] =
     useState("live");
   const [onboardingBgNumber, setOnboardingBgNumber] = useState(0);
@@ -68,9 +73,8 @@ const Onboarding = () => {
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="shortOnboadingText">
-                  Empowering{" "}
-                  <span style={{ color: "#00E1FF" }}>Hope</span> , {" "} One Step at a
-                  Time
+                  Empowering <span style={{ color: "#00E1FF" }}>Hope</span> ,{" "}
+                  One Step at a Time
                 </h1>
               )}
             </>
@@ -93,9 +97,8 @@ const Onboarding = () => {
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="fadingShortOnboadingText">
-                  Empowering {" "}
-                  <span style={{ color: "#00E1FF" }}> Hope</span> ,{" "} One Step at a
-                  Time
+                  Empowering <span style={{ color: "#00E1FF" }}> Hope</span> ,{" "}
+                  One Step at a Time
                 </h1>
               )}
             </>
@@ -118,9 +121,18 @@ const Onboarding = () => {
           className="flexColumnCenter"
           style={{ position: "absolute", bottom: "0px", padding: "15px" }}
         >
-          <button id="OnboardingLoginBtn">Log In</button>
+          <button
+            id="OnboardingLoginBtn"
+            onClick={() => {
+              Navigate(`/Login`);
+              scrollToTop();
+            }}
+          >
+            Log In
+          </button>
+
           <div
-            className="flexStart"
+            className="flexCenter"
             style={{ width: "90vw", fontSize: "14px" }}
           >
             <button type="button" className="onboardingLinks">
