@@ -32,10 +32,10 @@ const Onboarding = () => {
 
   const [onboardingDetails, setOnboardingDetails] = useState([
     {
-      bgUrl: require("../images/onboarding1.png"),
+      bgUrl: require("./images/onboarding1.png"),
     },
-    { bgUrl: require("../images/onboarding2.png") },
-    { bgUrl: require("../images/onboarding3.png") },
+    { bgUrl: require("./images/onboarding2.png") },
+    { bgUrl: require("./images/onboarding3.png") },
   ]);
 
   return (
@@ -46,7 +46,7 @@ const Onboarding = () => {
           backgroundImage: `url("${onboardingDetails[onboardingBgNumber].bgUrl}")`,
         }}
       >
-        <img src={require("../images/LOGO.png")} id="onboardingLogo" />
+        <img src={require("./images/LOGO.png")} id="onboardingLogo" />
         <div
           className="flexSpaceBetween"
           style={{

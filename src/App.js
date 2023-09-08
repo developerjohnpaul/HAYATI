@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Onboarding from "./components/onboarding";
-import LoginNav from "./components/LoginNav";
-import LoginPage from "./components/loginPage";
-import SignUpNav from "./components/signUpNav";
-import SignUpPage from "./components/signUpPage";
-import MainNav from "./components/mainNav";
-import Home from "./components/home";
+import Onboarding from "./onboarding";
+import LoginNav from "./LoginNav";
+import LoginPage from "./loginPage";
+import SignUpNav from "./signUpNav";
+import SignUpPage from "./signUpPage";
+import MainNav from "./mainNav";
+import Home from "./home";
 import { createContext, useEffect, useState } from "react";
 
 export const app = createContext();

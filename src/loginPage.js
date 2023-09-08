@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { app } from "../App";
+import { app } from "./App";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -41,12 +41,12 @@ const LoginPage = () => {
         setLoginStatusModal("loggingIn");
         App.setBlurredBackgroundOverlayStatus("visible");
         setValidPassword(true);
-          setTimeout(() => {
-            scrollToTop();
-            Navigate(`/Home`);
-            setLoginStatusModal("hidden");
-            App.setBlurredBackgroundOverlayStatus("hidden");
-          }, 2000);
+        setTimeout(() => {
+          scrollToTop();
+          Navigate(`/Home`);
+          setLoginStatusModal("hidden");
+          App.setBlurredBackgroundOverlayStatus("hidden");
+        }, 2000);
       }
     }
   };
@@ -212,7 +212,7 @@ const LoginPage = () => {
           <h4>Touch ID</h4>
           <div className="flexCenter" style={{ width: "80%", height: "75%" }}>
             <img
-              src={require("../images/fingerPrintIcon.png")}
+              src={require("./images/fingerPrintIcon.png")}
               id="touchIdFingerPrintIcon"
             />
             <span style={{ fontSize: "14px" }}>
@@ -238,7 +238,7 @@ const LoginPage = () => {
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
             <img
-              src={require("../images/maskedLogo192.png")}
+              src={require("./images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}
             <p className="flexCenter" id="statusFloatingText">

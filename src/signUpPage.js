@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { app } from "../App";
+import { app } from "./App";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
@@ -254,7 +254,7 @@ const SignUpPage = () => {
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
-            src={require("../images/maskedLogo192.png")}
+            src={require("./images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
           <p className="flexCenter" id="statusFloatingText">
@@ -266,7 +266,7 @@ const SignUpPage = () => {
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
-            src={require("../images/maskedLogo192.png")}
+            src={require("./images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
           <p className="flexCenter" id="statusFloatingText">

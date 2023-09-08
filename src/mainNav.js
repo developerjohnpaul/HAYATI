@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { PiHouseFill, PiHouseBold, PiUsersThreeBold } from "react-icons/pi";
 import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
-import { app } from "../App";
+import { app } from "./App";
 import { useContext } from "react";
 
 const MainNav = () => {
