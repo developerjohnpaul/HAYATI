@@ -1,3 +1,7 @@
+#App {
+  font-style: 'SF Pro Display';
+}
+
 /******** special calls ******/
 
 .perfectCentering {
@@ -82,10 +86,20 @@
   }
 }
 
-
-#App{
-  font-style:'SF Pro Display';
+#statusFloatingModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 280px;
+  width: 80vw;
+  max-width: 320px;
+  box-shadow: 0px 0px 20px rgb(125, 125, 125);
+  padding: 15px;
+  border-radius: 10px;
 }
+
 
 
 /**************** onboarding ****************/
@@ -206,8 +220,9 @@
 }
 
 #loginInput {
-  width: 80vw;
-  padding: 7px;
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #6F6F6F;
   margin-bottom: 30px;
@@ -220,6 +235,35 @@
   font-size: 12px;
 
 }
+
+#invalidLoginInput {
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #EC0303;
+  outline-color: #EC0303;
+}
+
+#invalidLoginInput::placeholder {
+  color: black;
+  opacity: .7;
+  font-size: 12px;
+
+}
+
+#invalidInputTextWarning {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 85vw;
+  color: #EC0303;
+  font-size: 12px;
+}
+
+
 
 #LoginForgotPasswordBtn {
   background-color: transparent;
@@ -246,6 +290,7 @@
   border-radius: 5px;
   margin-top: 50px;
   margin-bottom: 30px;
+  max-width: 360px;
 }
 
 /********* touch id Modal ************/
@@ -257,7 +302,8 @@
   transform: translate(-50%, -50%);
   background-color: white;
   height: 280px;
-  width: 85vw;
+  width: 80vw;
+    max-width: 320px;
   box-shadow: 0px 0px 20px rgb(125, 125, 125);
   padding: 15px;
 }
@@ -276,7 +322,7 @@
 
 
 
-/************ create account page **********/
+/************ sig up page **********/
 
 #createAccountPage {
   display: flex;
@@ -287,8 +333,9 @@
 }
 
 #signupInput {
-  width: 80vw;
-  padding: 7px;
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #6F6F6F;
   margin-bottom: 30px;
@@ -301,14 +348,35 @@
   font-size: 12px;
 
 }
-
-#signUpButton{
-  background-color: #0390A3;
-    width: 80vw;
-    padding: 7px;
-    color: white;
-    border: 0px;
-    border-radius: 5px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+#invalidSignupInput {
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #EC0303;
+  outline-color: #EC0303;
 }
+#invalidSignupInput::placeholder {
+  color: black;
+  opacity: .7;
+  font-size: 12px;
+
+}
+#invalidSignupInputAndWarningText{
+  margin-bottom: 30px;
+}
+#signUpButton {
+  background-color: #0390A3;
+  width: 80vw;
+  padding: 7px;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+
+
+
+

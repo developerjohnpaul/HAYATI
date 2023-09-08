@@ -119,7 +119,7 @@ const Onboarding = () => {
         </div>
         <div
           className="flexColumnCenter"
-          style={{ position: "absolute", bottom: "0px", padding: "15px" }}
+          style={{ position: "absolute", bottom: "4px", padding: "15px" }}
         >
           <button
             id="OnboardingLoginBtn"
