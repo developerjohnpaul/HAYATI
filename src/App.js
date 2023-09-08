@@ -52,13 +52,13 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Onboarding />} />
-            <Route path="/Login" element={<LoginNav />}>
+            <Route path="Login" element={<LoginNav />}>
               <Route index element={<LoginPage />} />
             </Route>
-            <Route path="/SignUp" element={<SignUpNav />}>
+            <Route path="SignUp" element={<SignUpNav />}>
               <Route index element={<SignUpPage />} />
             </Route>
-            <Route path="/Home" element={<MainNav />}>
+            <Route path="Home" element={<MainNav />}>
               <Route index element={<Home />} />
             </Route>
           </Routes>
