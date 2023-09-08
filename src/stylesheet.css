@@ -67,7 +67,7 @@
   width: 100vw;
   position: fixed;
   top: 1;
-  opacity: .8;
+  opacity: .9;
   background-color: black;
   animation-name: BluredBackgroundOverlay;
   animation-duration: .4s;
@@ -91,13 +91,57 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   height: 280px;
   width: 80vw;
   max-width: 320px;
-  box-shadow: 0px 0px 20px rgb(125, 125, 125);
   padding: 15px;
   border-radius: 10px;
+}
+
+
+
+/************** test *************/
+
+
+#statusFloatingText {
+  color: white;
+  margin-top: 200px;
+  padding: 2px 30px 5px 30px;
+  border-radius: 20px;
+
+}
+
+
+
+
+#statusFloatingLogo {
+  max-height: 80px;
+  max-width: 80px;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: statusFloatingLogo;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes statusFloatingLogo {
+  from {
+    box-shadow: 10px -10px 5px #00A3B7;
+    max-height: 50px;
+    max-width: 50px;
+  }
+
+  to {
+    box-shadow: -10px 10px 5px #00A3B7;
+    max-height: 80px;
+    max-width: 80px;
+
+  }
+
 }
 
 
@@ -109,7 +153,7 @@
   background-size: cover;
   min-height: 100vh;
   width: 100vw;
-  background-image:url("../src/images/onboarding1.png");
+  background-image: url("../src/images/onboarding1.png");
 }
 
 #onboardingLogo {
@@ -304,7 +348,7 @@
   background-color: white;
   height: 280px;
   width: 80vw;
-    max-width: 320px;
+  max-width: 320px;
   box-shadow: 0px 0px 20px rgb(125, 125, 125);
   padding: 15px;
 }
@@ -349,6 +393,7 @@
   font-size: 12px;
 
 }
+
 #invalidSignupInput {
   width: 85vw;
   max-width: 360px;
@@ -357,15 +402,18 @@
   border: 1px solid #EC0303;
   outline-color: #EC0303;
 }
+
 #invalidSignupInput::placeholder {
   color: black;
   opacity: .7;
   font-size: 12px;
 
 }
-#invalidSignupInputAndWarningText{
+
+#invalidSignupInputAndWarningText {
   margin-bottom: 30px;
 }
+
 #signUpButton {
   background-color: #0390A3;
   width: 80vw;
@@ -380,4 +428,43 @@
 
 
 
+/************** main nav ************/
 
+#mainNav {
+  background-color: #FFFFFF;
+  height: 47px;
+}
+
+#activeMainNavBtn {
+  width: 25%;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #00A3B7;
+  border: 0px;
+  background-color: transparent;
+}
+
+#inActiveMainNavBtn {
+  width: 25%;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  opacity: .4;
+  border: 0px;
+  background-color: transparent;
+}
+
+#mainNavBtnIcon {
+  font-size: 18px;
+}
+
+#mainNavBtnText {
+  font-size: 14px;
+  font-weight: 600;
+}

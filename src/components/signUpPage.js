@@ -55,7 +55,7 @@ const SignUpPage = () => {
           Navigate(`/Home`);
           setSignUpStatusModalModal("hidden");
           App.setBlurredBackgroundOverlayStatus("hidden");
-        }, 3000);
+        }, 4000);
       }
     }
   };
@@ -252,28 +252,26 @@ const SignUpPage = () => {
       </div>
       {signUpStatusModal == "creatingAccount" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
-          <h2>Creating account...</h2>
-          <div id="justifyCenter">
-            {" "}
-            <p
-              className="spinner-border "
-              style={{ color: "#00A3B7" }}
-              role="status"
-            ></p>
-          </div>
+          {" "}
+          <img
+            src={require("../images/maskedLogo192.png")}
+            id="statusFloatingLogo"
+          />{" "}
+          <p className="flexCenter" id="statusFloatingText">
+            Creating account...
+          </p>
         </div>
       )}
       {signUpStatusModal == "loggingIn" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
-          <h2>Logging in...</h2>
-          <div id="justifyCenter">
-            {" "}
-            <p
-              className="spinner-border "
-              style={{ color: "#00A3B7" }}
-              role="status"
-            ></p>
-          </div>
+          {" "}
+          <img
+            src={require("../images/maskedLogo192.png")}
+            id="statusFloatingLogo"
+          />{" "}
+          <p className="flexCenter" id="statusFloatingText">
+            Logging In...
+          </p>
         </div>
       )}
     </>

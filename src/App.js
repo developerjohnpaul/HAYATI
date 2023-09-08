@@ -6,14 +6,21 @@ import SignUpNav from "./components/signUpNav";
 import SignUpPage from "./components/signUpPage";
 import MainNav from "./components/mainNav";
 import Home from "./components/home";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const app = createContext();
 
-function App() {
+const App = () => {
   const [blurredBackgroundOverlayStatus, setBlurredBackgroundOverlayStatus] =
     useState("hidden");
-
+  const [currentPage, setCurrentPage] = useState("Home");
+  useEffect(() => {
+    if (localStorage.getItem("CUP") == undefined) {
+      setCurrentPage("Home");
+    } else {
+      setCurrentPage(localStorage.getItem("CUP"));
+    }
+  });
   const [logInDetails, setlogInDetails] = useState([
     {
       Email: "",
@@ -37,6 +44,8 @@ function App() {
         setlogInDetails: setlogInDetails,
         setSignUpDetails: setSignUpDetails,
         signUpDetails: signUpDetails,
+        setCurrentPage: setCurrentPage,
+        currentPage: currentPage,
       }}
     >
       <div id="App">
@@ -57,6 +66,6 @@ function App() {
       </div>
     </app.Provider>
   );
-}
+};
 
 export default App;

@@ -9,10 +9,8 @@ const LoginPage = () => {
     useState("valid");
   const [validPassword, setValidPassword] = useState(true);
   const [validEmailAddress, setValidEmailAddress] = useState(true);
-
   const Navigate = useNavigate();
   const App = useContext(app);
-
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
@@ -43,12 +41,12 @@ const LoginPage = () => {
         setLoginStatusModal("loggingIn");
         App.setBlurredBackgroundOverlayStatus("visible");
         setValidPassword(true);
-        setTimeout(() => {
-          scrollToTop();
-          Navigate(`/Home`);
-          setLoginStatusModal("hidden");
-          App.setBlurredBackgroundOverlayStatus("hidden");
-        }, 2000);
+          setTimeout(() => {
+            scrollToTop();
+            Navigate(`/Home`);
+            setLoginStatusModal("hidden");
+            App.setBlurredBackgroundOverlayStatus("hidden");
+          }, 2000);
       }
     }
   };
@@ -236,17 +234,18 @@ const LoginPage = () => {
         </div>
       )}
       {loginInStatusModal == "loggingIn" && (
-        <div id="statusFloatingModal" className="flexColumnCenter">
-          <h2>Logging in...</h2>
-          <div id="justifyCenter">
+        <>
+          <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-            <p
-              className="spinner-border "
-              style={{ color: "#00A3B7" }}
-              role="status"
-            ></p>
+            <img
+              src={require("../images/maskedLogo192.png")}
+              id="statusFloatingLogo"
+            />{" "}
+            <p className="flexCenter" id="statusFloatingText">
+              Logging In...
+            </p>
           </div>
-        </div>
+        </>
       )}
     </>
   );
