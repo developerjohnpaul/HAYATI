@@ -433,10 +433,12 @@
 #mainNav {
   background-color: #FFFFFF;
   height: 47px;
+  margin-bottom: 15px;
 }
 
 #activeMainNavBtn {
   width: 25%;
+  max-width: 150px;
   height: 45px;
   display: flex;
   flex-direction: column;
