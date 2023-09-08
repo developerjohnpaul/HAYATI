@@ -40,12 +40,18 @@ const Onboarding = () => {
 
   return (
     <>
-      <div
-        id="onboarding"
-        style={{
-          backgroundImage: `url("${onboardingDetails[onboardingBgNumber].bgUrl}")`,
-        }}
-      >
+      <div id="onboarding">
+        <div >
+          {onboardingBgNumber == 0 && (
+            <img src={require("./images/onboarding1.png")} id="onboardingBg" />
+          )}
+          {onboardingBgNumber == 1 && (
+            <img src={require("./images/onboarding2.png")} id="onboardingBg" />
+          )}{" "}
+          {onboardingBgNumber == 2 && (
+            <img src={require("./images/onboarding3.png")} id="onboardingBg" />
+          )}
+        </div>
         <img src={require("./images/LOGO.png")} id="onboardingLogo" />
         <div
           className="flexSpaceBetween"
@@ -117,6 +123,7 @@ const Onboarding = () => {
             <BsBellFill />
           </button>
         </div>
+
         <div
           className="flexColumnCenter"
           style={{ position: "absolute", bottom: "4px", padding: "15px" }}
