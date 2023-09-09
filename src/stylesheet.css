@@ -1,5 +1,6 @@
 #App {
   font-style: 'SF Pro Display';
+
 }
 
 /******** special calls ******/
@@ -12,7 +13,6 @@
 }
 
 .flexCenter {
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -200,6 +200,7 @@
   border-radius: 5px;
   border: 0px;
   margin-bottom: 20px;
+  max-width: 360px;
 }
 
 #shortOnboadingText {
@@ -348,13 +349,13 @@
 #loginButton {
   background-color: #0390A3;
   width: 80vw;
+  max-width: 360px;
   padding: 7px;
   color: white;
   border: 0px;
   border-radius: 5px;
   margin-top: 50px;
   margin-bottom: 30px;
-  max-width: 360px;
 }
 
 /********* touch id Modal ************/
@@ -457,7 +458,7 @@
 
 #activeMainNavBtn {
   width: 25%;
-  max-width: 150px;
+  max-width: 125px;
   height: 45px;
   display: flex;
   flex-direction: column;
@@ -470,6 +471,7 @@
 
 #inActiveMainNavBtn {
   width: 25%;
+  max-width: 125px;
   height: 45px;
   display: flex;
   flex-direction: column;
@@ -493,3 +495,130 @@
 
 
 /************* home page ************/
+
+#home {
+  padding: 0px 15px 20px 15px;
+}
+
+#HomeNav {
+  padding: 5px 0vw 0px 0vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+}
+
+#HomepageWelcomeMessage {
+  font-weight: 600;
+  font-size: 15px;
+  color: black;
+
+
+}
+
+#homeSearchBar {
+  margin-top: 30px;
+  border: 1px solid #0390A3;
+  padding: 0px 10px 2px 10px;
+  border-radius: 6px;
+  width: 70vw;
+  max-width: 500px;
+}
+
+#homeSearchInput {
+  width: 60vw;
+  max-width: 500px;
+  border: 0px;
+  padding: 5px;
+  outline-width: 0px;
+  font-size: 13px;
+  height: 34px;
+}
+
+#homeSearchInput::placeholder {
+  font-size: 12px;
+  opacity: .8;
+
+}
+
+#columnTitleContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#columnTitle {
+  font-size: 16px;
+
+}
+
+#columnViewAllBtn {
+  border: 0px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #00A3B7;
+  font-size: 12px;
+
+}
+
+#columnViewAllIcon {
+  color: #0390A3;
+  font-size: 25px;
+  margin-bottom: 5px
+}
+
+#quickLinks {
+  background-color: #00A3B7;
+  height: 60px;
+  width: 86px;
+  border: 0px;
+  border-radius: 10px;
+  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#quickLinkImg {
+  width: 60px;
+
+}
+
+
+#homePageAd {
+  height: 177px;
+  width: 100%;
+  background-color: #EFF5FB;
+  border-radius: 10px;
+  border: 1px solid #00A3B7;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+}
+
+#homePageAdImg {
+  position: relative;
+  right: -10px;
+  max-width: 120px;
+}
+
+#homepageAdTitle {
+  opacity: .9;
+}
+
+#homepageAdContent {
+  font-size: 11px;
+}
