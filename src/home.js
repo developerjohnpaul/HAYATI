@@ -1,14 +1,13 @@
 import { FaRegBell } from "react-icons/fa";
 import { HiOutlineSearch } from "react-icons/hi";
-import { GrNext } from "react-icons/gr";
-import { FcNext } from "react-icons/fc";
 import { MdNavigateNext } from "react-icons/md";
+import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
 const Home = () => {
   return (
     <>
       <div id="home">
         {" "}
-        <div id="HomeNav">
+        <div id="HomeNav" className="fixed-top">
           <small id="HomepageWelcomeMessage">Welcome back,jeff </small>
           <div className="flexCenter">
             <img
@@ -80,10 +79,10 @@ const Home = () => {
               Get the Best
               <br /> Medical services
             </h6>
-            <small id="homepageAdContent">
+            <li id="homepageAdContent">
               Leading specialist in neurological care dedicated to improving
               lives and empowering patients with knowledge
-            </small>
+            </li>
           </div>
           <img
             src={require("./images/homepageAdNurseImg.png")}
@@ -99,6 +98,51 @@ const Home = () => {
               <MdNavigateNext />{" "}
             </span>
           </button>
+        </div>
+        <div id="specialistNearMe" className="flexCenter">
+          <div id="eachSpeacialistNearMe">
+            <div id="SpeacialistNearMeImgContainer">
+              <img
+                src={require("./images/DrFawadIshar.png")}
+                id="SpeacialistNearMeImg"
+              />
+            </div>
+            <div style={{ padding: "1px 2px 1px 2px " }}>
+              <li style={{ fontSize: "11px", listStyle: "none" }}>
+                Dr Babajide Fashola
+              </li>
+              <li style={{ fontSize: "8px", listStyle: "none" }}>
+                Physiotherapist
+              </li>
+              <li style={{ fontSize: "8px", listStyle: "none" }}>
+                Phone: +123-456-009
+              </li>
+              <li
+                style={{ fontSize: "8px", listStyle: "none", marginTop: "3px" }}
+              >
+                Reviews: 4.5{" "}
+                <span style={{ color: "#FFCC00",fontSize:"12px" }}>
+                  <BsStarFill />
+                </span>
+              </li>
+            </div>
+          </div>
+          <div id="eachSpeacialistNearMe">
+            <div id="SpeacialistNearMeImgContainer">
+              <img
+                src={require("./images/DrBabajideFashola.png")}
+                id="SpeacialistNearMeImg"
+              />
+            </div>
+          </div>{" "}
+          <div id="eachSpeacialistNearMe">
+            <div id="SpeacialistNearMeImgContainer">
+              <img
+                src={require("./images/DrChiamakaAyinna.png")}
+                id="SpeacialistNearMeImg"
+              />
+            </div>
+          </div>{" "}
         </div>
       </div>
     </>

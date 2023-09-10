@@ -1,6 +1,6 @@
 #App {
   font-style: 'SF Pro Display';
-
+  background-color: white;
 }
 
 /******** special calls ******/
@@ -452,8 +452,7 @@
 
 #mainNav {
   background-color: #FFFFFF;
-  height: 47px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 #activeMainNavBtn {
@@ -497,16 +496,18 @@
 /************* home page ************/
 
 #home {
-  padding: 0px 15px 20px 15px;
+  padding: 0px 10px 75px 10px;
+
 }
 
 #HomeNav {
-  padding: 5px 0vw 0px 0vw;
+  padding: 5px 15px 0px 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 35px;
+  background-color: white;
 }
 
 #HomepageWelcomeMessage {
@@ -518,23 +519,24 @@
 }
 
 #homeSearchBar {
-  margin-top: 30px;
+  margin-top: 60px;
   border: 1px solid #0390A3;
   padding: 0px 10px 2px 10px;
   border-radius: 6px;
-  width: 70vw;
+  width: 75vw;
   max-width: 500px;
 }
 
 #homeSearchInput {
-  width: 60vw;
+  width: 65vw;
   max-width: 500px;
   border: 0px;
   padding: 5px;
-  outline-width: 0px;
+outline: none;
   font-size: 13px;
   height: 34px;
 }
+
 
 #homeSearchInput::placeholder {
   font-size: 12px;
@@ -621,4 +623,37 @@
 
 #homepageAdContent {
   font-size: 11px;
+  list-style: none;
+}
+
+#specialistNearMe {
+  overflow: hidden;
+
+}
+
+#eachSpeacialistNearMe {
+  background-color: #D2DEFF;
+  border: 1px solid #0390A3;
+  height: 150px;
+  width: 108px;
+  border-radius: 5px;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+#SpeacialistNearMeImgContainer {
+  width: 105px;
+  height: 58%;
+  background-color: #EBEBED;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#SpeacialistNearMeImg {
+  max-height: 100%;
+  mix-blend-mode: darken;
 }
