@@ -4,10 +4,11 @@ import "./stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import MockApi from "./mockApi";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <App />
+    <MockApi />
 );
 
 // If you want to start measuring performance in your app, pass a function
