@@ -36,7 +36,7 @@ const Home = () => {
             setCarouselNum(3);
           } else if (
             carousel.scrollLeft >
-            carousel.offsetWidth * 2 + carousel.offsetWidth / 4
+            carousel.offsetWidth * 2 + carousel.offsetWidth / 2
           ) {
             carousel.scrollLeft = carousel.offsetWidth * 3;
             setCarouselNum(4);
