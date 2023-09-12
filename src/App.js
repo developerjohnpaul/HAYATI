@@ -11,6 +11,9 @@ import { createContext, useEffect, useState } from "react";
 export const app = createContext();
 
 const App = () => {
+  useEffect(() => {
+    document.body.style.backgroundColor = "#047E8E";
+  }, []);
   const [blurredBackgroundOverlayStatus, setBlurredBackgroundOverlayStatus] =
     useState("hidden");
   const [currentPage, setCurrentPage] = useState("Home");
