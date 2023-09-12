@@ -14,7 +14,7 @@ const MainNav = () => {
   };
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
-    metaTag.setAttribute("content", "#047E8E");
+    metaTag.setAttribute("content", "#FFFFFF");
   }, []);
   const navigatePage = (page) => {
     App.setCurrentPage(page);
