@@ -4,7 +4,7 @@ import { PiHouseFill, PiHouseBold, PiUsersThreeBold } from "react-icons/pi";
 import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
 import { app } from "./App";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const MainNav = () => {
   const App = useContext(app);
@@ -12,6 +12,10 @@ const MainNav = () => {
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
+  useEffect(() => {
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+    metaTag.setAttribute("content", "#047E8E");
+  }, []);
   const navigatePage = (page) => {
     App.setCurrentPage(page);
     scrollToTop();
