@@ -63,6 +63,38 @@ const Home = () => {
       false
     );
   };
+  useEffect(() => {
+    const carousel = document.getElementById("homepageCarouselContainer");
+    let scrollStop;
+    carousel.addEventListener(
+      "scroll",
+      (e) => {
+        clearInterval(scrollStop);
+       
+      },
+      (scrollStop = setInterval(() => {
+        if (carouselNum < 4) {
+          setCarouselNum((prev) => prev + 1);
+        }
+        if (carouselNum == 4) {
+          setCarouselNum(1);
+        }
+        if (carouselNum == 1) {
+          carousel.scrollLeft = carousel.offsetWidth;
+          setCarouselNum(2);
+        } else if (carouselNum == 2) {
+          carousel.scrollLeft = carousel.offsetWidth * 2;
+          setCarouselNum(3);
+        } else if (carouselNum == 3) {
+          carousel.scrollLeft = carousel.offsetWidth * 3;
+          setCarouselNum(4);
+        } else if (carouselNum == 4) {
+          carousel.scrollLeft = 0;
+          setCarouselNum(1);
+        }
+      }, 5000))
+    );
+  }, [carouselNum]);
   return (
     <>
       <div id="home" className="flexColumnCenter">
@@ -101,29 +133,44 @@ const Home = () => {
           </div>
         </div>
         <div id="homepageCarouselContainer" onScroll={carouselScroll}>
-          <div id="eachhomepageCarousel">
-            <img
-              src={require("./images/homePageCarouselImage1.png")}
-              id="homepAgeCarouselImg"
-            />{" "}
+          <div id="eachhomepageCarousel" >
+            <li id="homepageCarouselTitle">Vitamins</li>
+
+            <li id="homepageCarouselContent">
+              Vitamins are essential nutrients that play a crucial role in
+              maintaining overall health and supporting various bodily functions
+            </li>
+            <button id="homepageCarouselReadMoreBtn">Read more</button>
           </div>
-          <div id="eachhomepageCarousel">
-            <img
-              src={require("./images/homePageCarouselImage1.png")}
-              id="homepAgeCarouselImg"
-            />{" "}
+          <div id="eachhomepageCarousel" >
+            {" "}
+            <li id="homepageCarouselTitle">Vitamins</li>
+            <li id="homepageCarouselContent">
+              Vitamins are essential nutrients that play a crucial role in
+              maintaining overall health and supporting various bodily functions
+            </li>
+            <button id="homepageCarouselReadMoreBtn">Read more</button>
           </div>{" "}
-          <div id="eachhomepageCarousel">
-            <img
-              src={require("./images/homePageCarouselImage1.png")}
-              id="homepAgeCarouselImg"
-            />{" "}
+          <div
+            id="eachhomepageCarousel"
+        
+          >
+            <li id="homepageCarouselTitle">Vitamins</li>
+
+            <li id="homepageCarouselContent">
+              Vitamins are essential nutrients that play a crucial role in
+              maintaining overall health and supporting various bodily functions
+            </li>
+            <button id="homepageCarouselReadMoreBtn">Read more</button>
           </div>
-          <div id="eachhomepageCarousel">
-            <img
-              src={require("./images/homePageCarouselImage1.png")}
-              id="homepAgeCarouselImg"
-            />{" "}
+          <div id="eachhomepageCarousel" >
+            <li id="homepageCarouselTitle">Vitamins</li>
+
+            <li id="homepageCarouselContent">
+              Vitamins are essential nutrients that play a crucial role in
+              maintaining overall health and supporting various bodily functions
+            </li>
+            <button id="homepageCarouselReadMoreBtn">Read more</button>
           </div>
         </div>
         <div id="carouselIndicator">
