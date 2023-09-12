@@ -3,6 +3,10 @@ import { BsBellFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 
 const Onboarding = () => {
+  useEffect(() => {
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+    metaTag.setAttribute("content", "#047E8E");
+  }, []);
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
@@ -41,7 +45,7 @@ const Onboarding = () => {
   return (
     <>
       <div id="onboarding">
-        <div >
+        <div>
           {onboardingBgNumber == 0 && (
             <img src={require("./images/onboarding1.png")} id="onboardingBg" />
           )}

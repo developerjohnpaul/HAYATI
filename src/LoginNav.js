@@ -2,6 +2,10 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const LoginNav = () => {
+   useEffect(() => {
+     const metaTag = document.querySelector('meta[name="theme-color"]');
+     metaTag.setAttribute("content", "#047E8E");
+   }, []);
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };

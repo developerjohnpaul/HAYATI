@@ -3,6 +3,7 @@ import { app } from "./App";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
   const [TouchIdModalStatus, setTouchIdModalStatus] = useState("hidden");
   const [loginInStatusModal, setLoginStatusModal] = useState("hidden");
   const [loginDetailsValidityStatus, setLoginDetailsValidityStatus] =
@@ -14,6 +15,7 @@ const LoginPage = () => {
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
+  
 
   const submitDetails = (e) => {
     e.preventDefault();

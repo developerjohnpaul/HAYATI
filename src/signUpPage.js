@@ -3,6 +3,7 @@ import { app } from "./App";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
+  
   const [validPassword, setValidPassword] = useState(true);
   const [validEmailAddress, setValidEmailAddress] = useState(true);
   const [signUpDetailsValidityStatus, setSignUpDetailsValidityStatus] =
