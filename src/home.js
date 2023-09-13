@@ -29,12 +29,13 @@ const Home = () => {
     {
       bgImg: require("./images/balancedDiet.jpeg"),
       title: "B-diet ",
-      Content: `A healthy diet gives you energy and lowers your risk for heart disease, diabetes, cancer, and other diseases.`,
+      Content: `A healthy diet gives you energy and lowers your risk for heart disease,
+       diabetes, cancer, and other diseases.`,
     },
     {
-      bgImg: require("./images/balancedDiet.jpeg"),
+      bgImg: require("./images/exercise.jpg"),
       title: "P-activities",
-      Content: `VThirty minutes a day of physical activity protects heart
+      Content: `Thirty minutes a day of physical activity protects heart
        health. It also lowers the amount of bone loss as you age.`,
     },
   ]);
