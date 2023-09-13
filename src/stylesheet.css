@@ -746,7 +746,7 @@
 
 
 #homepageTrendingArticleContainer {
-  height: 250px;
+
   width: 100%;
   max-width: 500px;
   border-radius: 10px;
@@ -756,7 +756,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
-
+padding: 10px 0px 10px 0px;
 }
 
 #eachHomepageTrendingArticle {
@@ -766,6 +766,7 @@
   border-radius: 10px;
   flex-shrink: 0;
   margin-right: 15px;
+  
 }
 
 #homepageTrendingArticleImgContainer {
