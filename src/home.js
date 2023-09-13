@@ -7,61 +7,82 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { usePrevious } from "@uidotdev/usehooks";
 import { FaRegClock } from "react-icons/fa6";
 import { GoBell } from "react-icons/go";
+import { BsBookmarkFill } from "react-icons/bs";
 const Home = () => {
   const Api = useContext(mockApi);
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
   const prevCarouselScrollLeft = usePrevious(carouselScrollLeft);
-
+  const [homepageCarousel, setHomepageCarousel] = useState([
+    {
+      bgImg: require("./images/vitamins.jpg"),
+      title: "Vitamins",
+      Content: `Vitamins are essential nutrients that play a crucial role in
+              maintaining overall health and supporting various bodily functions`,
+    },
+    {
+      bgImg: require("./images/sleep.jpeg"),
+      title: "Sleep",
+      Content: `A good night's sleep is important to recharge both the body and mind.
+       It helps the body repair cells and get rid of wastes. `,
+    },
+    {
+      bgImg: require("./images/balancedDiet.jpeg"),
+      title: "B-diet ",
+      Content: `A healthy diet gives you energy and lowers your risk for heart disease, diabetes, cancer, and other diseases.`,
+    },
+    {
+      bgImg: require("./images/exercise.jpg"),
+      title: "P-activities",
+      Content: `VThirty minutes a day of physical activity protects heart
+       health. It also lowers the amount of bone loss as you age.`,
+    },
+  ]);
   const carouselScroll = () => {
     const carousel = document.getElementById("homepageCarouselContainer");
     let scrollStop;
-    carousel.addEventListener(
-      "scroll",
-      (e) => {
-        clearTimeout(scrollStop);
-        scrollStop = setTimeout(() => {
-          if (
-            carousel.scrollLeft > carousel.offsetWidth / 2 &&
-            carousel.scrollLeft < carousel.offsetWidth
+    carousel.addEventListener("scroll", (e) => {
+      clearTimeout(scrollStop);
+      scrollStop = setTimeout(() => {
+        if (
+          carousel.scrollLeft > carousel.offsetWidth / 2 &&
+          carousel.scrollLeft < carousel.offsetWidth
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth;
+          setCarouselNum(2);
+        } else if (
+          carousel.scrollLeft >
+            carousel.offsetWidth + carousel.offsetWidth / 2 &&
+          carousel.scrollLeft < carousel.offsetWidth * 2
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth * 2;
+          setCarouselNum(3);
+        } else if (
+          carousel.scrollLeft >
+          carousel.offsetWidth * 2 + carousel.offsetWidth / 2
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth * 3;
+          setCarouselNum(4);
+        } else {
+          if (carousel.scrollLeft < carousel.offsetWidth / 2) {
+            carousel.scrollLeft = 0;
+            setCarouselNum(1);
+          } else if (
+            carousel.scrollLeft <
+            carousel.offsetWidth + carousel.offsetWidth / 2
           ) {
             carousel.scrollLeft = carousel.offsetWidth;
             setCarouselNum(2);
           } else if (
-            carousel.scrollLeft >
-              carousel.offsetWidth + carousel.offsetWidth / 2 &&
-            carousel.scrollLeft < carousel.offsetWidth * 2
+            carousel.scrollLeft <
+            carousel.offsetWidth * 2 + carousel.offsetWidth / 2
           ) {
             carousel.scrollLeft = carousel.offsetWidth * 2;
             setCarouselNum(3);
-          } else if (
-            carousel.scrollLeft >
-            carousel.offsetWidth * 2 + carousel.offsetWidth / 2
-          ) {
-            carousel.scrollLeft = carousel.offsetWidth * 3;
-            setCarouselNum(4);
-          } else {
-            if (carousel.scrollLeft < carousel.offsetWidth / 2) {
-              carousel.scrollLeft = 0;
-              setCarouselNum(1);
-            } else if (
-              carousel.scrollLeft <
-              carousel.offsetWidth + carousel.offsetWidth / 2
-            ) {
-              carousel.scrollLeft = carousel.offsetWidth;
-              setCarouselNum(2);
-            } else if (
-              carousel.scrollLeft <
-              carousel.offsetWidth * 2 + carousel.offsetWidth / 2
-            ) {
-              carousel.scrollLeft = carousel.offsetWidth * 2;
-              setCarouselNum(3);
-            }
           }
-        }, 150);
-      },
-      false
-    );
+        }
+      }, 150);
+    });
   };
   useEffect(() => {
     const carousel = document.getElementById("homepageCarouselContainer");
@@ -70,7 +91,6 @@ const Home = () => {
       "scroll",
       (e) => {
         clearInterval(scrollStop);
-       
       },
       (scrollStop = setInterval(() => {
         if (carouselNum < 4) {
@@ -133,45 +153,28 @@ const Home = () => {
           </div>
         </div>
         <div id="homepageCarouselContainer" onScroll={carouselScroll}>
-          <div id="eachhomepageCarousel" >
-            <li id="homepageCarouselTitle">Vitamins</li>
+          {homepageCarousel.map((value, index) => (
+            <div
+              id="eachhomepageCarousel"
+              style={{
+                backgroundImage: `url(${value.bgImg})`,
+              }}
+              key={index}
+            >
+              <div
+                style={{
+                  height: "90px",
 
-            <li id="homepageCarouselContent">
-              Vitamins are essential nutrients that play a crucial role in
-              maintaining overall health and supporting various bodily functions
-            </li>
-            <button id="homepageCarouselReadMoreBtn">Read more</button>
-          </div>
-          <div id="eachhomepageCarousel" >
-            {" "}
-            <li id="homepageCarouselTitle">Vitamins</li>
-            <li id="homepageCarouselContent">
-              Vitamins are essential nutrients that play a crucial role in
-              maintaining overall health and supporting various bodily functions
-            </li>
-            <button id="homepageCarouselReadMoreBtn">Read more</button>
-          </div>{" "}
-          <div
-            id="eachhomepageCarousel"
-        
-          >
-            <li id="homepageCarouselTitle">Vitamins</li>
+                  marginBottom: "5px",
+                }}
+              >
+                <li id="homepageCarouselTitle">{value.title}</li>
 
-            <li id="homepageCarouselContent">
-              Vitamins are essential nutrients that play a crucial role in
-              maintaining overall health and supporting various bodily functions
-            </li>
-            <button id="homepageCarouselReadMoreBtn">Read more</button>
-          </div>
-          <div id="eachhomepageCarousel" >
-            <li id="homepageCarouselTitle">Vitamins</li>
-
-            <li id="homepageCarouselContent">
-              Vitamins are essential nutrients that play a crucial role in
-              maintaining overall health and supporting various bodily functions
-            </li>
-            <button id="homepageCarouselReadMoreBtn">Read more</button>
-          </div>
+                <li id="homepageCarouselContent">{value.Content}</li>
+              </div>
+              <button id="homepageCarouselReadMoreBtn">Read more</button>
+            </div>
+          ))}
         </div>
         <div id="carouselIndicator">
           {carouselNum == 1 && <li id="activeCarouselIndicator" />}
@@ -430,6 +433,93 @@ const Home = () => {
               <MdNavigateNext />{" "}
             </span>
           </button>
+        </div>
+        <div id="homepageTrendingArticleContainer">
+          {Api.articles.map((value, index) => (
+            <div key={index}>
+              {value.status == "trending" && (
+                <div id="eachHomepageTrendingArticle">
+                  <div id="homepageTrendingArticleImgContainer">
+                    <img
+                      src={value.articleImg}
+                      id="homepageTrendingArticleImg"
+                    />
+                  </div>
+                  <div id="homepageTrendingArticleContent">
+                    <div className="flexSpaceBetweenFirstBaseeline">
+                      <li
+                        id="homepageTrendingArticleTitle"
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: "400",
+                          listStyle: "none",
+                          height: "60px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {value.title}
+                      </li>
+                      {value.title.length > 108 && (
+                        <small
+                          style={{
+                            position: "relative",
+                            right: "1px",
+                            top: "38px",
+                          }}
+                        >
+                          ...
+                        </small>
+                      )}
+                      <li style={{ listStyle: "none", fontSize: "18px" }}>
+                        <BsBookmarkFill />
+                      </li>
+                    </div>
+                    <div
+                      className="flexSpaceBetween"
+                      style={{ marginTop: "10px" }}
+                    >
+                      <li style={{ listStyle: "none" }} className="flexCenter">
+                        {" "}
+                        <li
+                          style={{
+                            fontSize: "10px",
+                            opacity: ".8",
+                            width: "90px",
+                            height: "15px",
+                            wordBreak: "break-all",
+                            overflow: "hidden",
+                          }}
+                        >
+                          Author:{value.author}
+                        </li>
+                        {value.author.length > 11 && (
+                          <li style={{ fontSize: "10px" }}>...</li>
+                        )}
+                      </li>
+                      <li
+                        style={{
+                          fontSize: "10px",
+                          listStyle: "none",
+                          opacity: ".8",
+                        }}
+                      >
+                        {value.timeRead}
+                      </li>
+                      <li
+                        style={{
+                          fontSize: "10px",
+                          listStyle: "none",
+                          opacity: ".8",
+                        }}
+                      >
+                        {value.timePosted}
+                      </li>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}{" "}
         </div>
       </div>
     </>
