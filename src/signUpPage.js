@@ -246,6 +246,10 @@ const SignUpPage = () => {
               color: "#0390A3",
               border: "0px",
             }}
+            onClick={() => {
+              Navigate(`/Login`);
+              scrollToTop();
+            }}
           >
             Log in here!
           </button>

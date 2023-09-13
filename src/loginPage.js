@@ -204,6 +204,10 @@ const LoginPage = () => {
               color: "#0390A3",
               border: "0px",
             }}
+            onClick={() => {
+              Navigate(`/SignUp`);
+              scrollToTop();
+            }}
           >
             Create an account here!
           </button>
