@@ -1,9 +1,8 @@
 import { useContext, useState, useEffect } from "react";
-import { app } from "./App";
+import { app } from "../App";
 import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
-  
   const [validPassword, setValidPassword] = useState(true);
   const [validEmailAddress, setValidEmailAddress] = useState(true);
   const [signUpDetailsValidityStatus, setSignUpDetailsValidityStatus] =
@@ -53,7 +52,7 @@ const SignUpPage = () => {
 
         setTimeout(() => {
           scrollToTop();
-          Navigate(`/Home`);
+          Navigate(`/`);
           setSignUpStatusModalModal("hidden");
           App.setBlurredBackgroundOverlayStatus("hidden");
         }, 4000);
@@ -233,19 +232,10 @@ const SignUpPage = () => {
             Create account
           </button>
         </form>
-        <div
-          style={{
-            fontSize: "14px",
-            fontWeight: "600",
-          }}
-        >
+        <div id="spre1">
           <span>Already have an account? </span>
           <button
-            style={{
-              backgroundColor: "transparent",
-              color: "#0390A3",
-              border: "0px",
-            }}
+            id="spre2"
             onClick={() => {
               Navigate(`/Login`);
               scrollToTop();
@@ -259,7 +249,7 @@ const SignUpPage = () => {
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
-            src={require("./images/maskedLogo192.png")}
+            src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
           <p className="flexCenter" id="statusFloatingText">
@@ -271,7 +261,7 @@ const SignUpPage = () => {
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
-            src={require("./images/maskedLogo192.png")}
+            src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
           <p className="flexCenter" id="statusFloatingText">

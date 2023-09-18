@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
 
-const SignUpNav = () => {
+const LoginNav = () => {
    useEffect(() => {
      const metaTag = document.querySelector('meta[name="theme-color"]');
      metaTag.setAttribute("content", "#047E8E");
@@ -13,12 +13,12 @@ const SignUpNav = () => {
   const Navigate = useNavigate();
   return (
     <>
-      <div id="CreatAccountNavBg" className="fixed-top">
-        <div id="MainCreateAccountNav" className="flexSpaceBetween">
+      <div id="LoginNavBG" className="fixed-top">
+        <div id="MainLoginNav" className="flexSpaceBetween">
           <div className="flexStart">
             <button
               type="button"
-              id="CreateAccountNavPrevBtn"
+              id="LoginNavPrevBtn"
               onClick={() => {
                 Navigate(`/`);
                 scrollToTop();
@@ -26,9 +26,9 @@ const SignUpNav = () => {
             >
               <MdArrowBackIosNew />
             </button>
-            <h3 style={{ color: "white", fontSize: "23px" }}>Create account</h3>
+            <h3 id="loginNavWelcomeMessage">Welcome</h3>
           </div>
-          <img src={require("./images/LOGO.png")} id="createAccountNavLogo" />
+          <img src={require("../images/LOGO.png")} id="loginNavLogo" />
         </div>
       </div>
       <Outlet />
@@ -36,4 +36,4 @@ const SignUpNav = () => {
   );
 };
 
-export default SignUpNav;
+export default LoginNav;

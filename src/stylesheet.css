@@ -1,5 +1,5 @@
 #App {
-  font-style: 'SF Pro Display';
+  font-family: 'SF Pro Display', sans-serif;
   background-color: white;
 }
 
@@ -59,8 +59,573 @@
   border: 0px;
 }
 
+.listStyleNone {
+  list-style: none;
+}
 
-/************ blurred background  overlay ***********/
+
+/********************* random elements ************************/
+/********************* homepage random element ************************/
+#hmre1 {
+  height: 28px;
+  font-size: 18px
+}
+
+#hmre2 {
+  font-size: 20px;
+  opacity: .5
+}
+
+#hmre3 {
+  font-weight: 500;
+  font-size: 24px;
+  list-style: none
+}
+
+#hmre4 {
+  list-style: none;
+  font-size: 11px;
+  margin-bottom: 10px
+}
+
+#hmre5 {
+  list-style: none;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+#hmre6 {
+  list-style: none;
+  font-size: 10px;
+  margin-bottom: 3px
+}
+
+#hmre7 {
+  list-style: none;
+  font-size: 10px;
+  margin-bottom: 3px
+}
+
+#hmre8 {
+  max-height: 55px;
+  max-width: 65px;
+  margin-right: 10px;
+}
+
+#hmre9 {
+  list-style: none;
+  font-size: 11px;
+  font-weight: 400
+}
+
+#hmre10 {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0390A3
+}
+
+#hmre11 {
+  list-style: none;
+  font-size: 11px;
+  font-weight: 400
+}
+
+#hmre12 {
+  font-size: 15px;
+  margin-right: 5px
+}
+
+#hmre13 {
+  font-size: 15px;
+  margin-left: 10px;
+  color: #0390A3
+}
+
+#hmre14 {
+  color: #0390A3;
+  font-size: 25px;
+  list-style: none
+}
+
+#hmre15 {
+  padding: 1px 4px 1px 4px
+}
+
+#hmre16 {
+  font-size: 11px;
+  list-style: none
+}
+
+#hmre17 {
+  font-size: 8px;
+  list-style: none
+}
+
+#hmre18 {
+  font-size: 8px;
+  list-style: none;
+  margin-top: 3px
+}
+
+#hmre19 {
+  color: #FFCC00;
+  font-size: 12px
+}
+
+#hmre20 {
+  position: relative;
+  right: 1px;
+  top: 38px
+}
+
+#hmre21 {
+  list-style: none;
+  font-size: 18px
+}
+
+#hmre22 {
+  font-size: 10px;
+  opacity: .8;
+  width: 90px;
+  height: 15px;
+  word-break: break-all;
+  overflow: hidden
+}
+
+#hmre23 {
+  font-size: 10px;
+}
+
+#hmre24 {
+  font-size: 10px;
+  list-style: none;
+  opacity: .8
+}
+
+#hmre25 {
+  font-size: 10px;
+  list-style: none;
+  opacity: .8
+}
+
+
+/********************* onboarding random element ************************/
+
+#onre1 {
+  position: absolute;
+  bottom: 150px;
+  padding: 10px
+}
+
+#onre2 {
+  color: #00E1FF
+}
+
+#onre3 {
+  background-color: black;
+  color: white;
+  padding: 2px 10px 7px 10px;
+  border-radius: 100%;
+  border: 0px;
+  font-size: 23px
+}
+
+#onre4 {
+  position: absolute;
+  bottom: 4px;
+  padding: 15px
+}
+
+#onre5 {
+  width: 90vw;
+  font-size: 14px
+}
+
+/************* login page random element ***************/
+#lpre1 {
+  width: 85vw;
+  max-width: 360px
+}
+
+#lpre2 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+#lpre3 {
+  background-color: transparent;
+  color: #0390A3;
+  border: 0px
+}
+
+#lpre4 {
+  width: 80%;
+  height: 75%
+}
+
+#lpre5 {
+  font-size: 14px
+}
+
+/************* signup page random element ***************/
+#spre1 {
+  font-size: 14px;
+  font-weight: 600
+}
+
+#spre2 {
+  background-color: transparent;
+  color: #0390A3;
+  border: 0px
+}
+
+/************* appointment navbar random elements ***************/
+#apre1 {
+  padding: 10px 3vw 10px 3vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+#apre2 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+#apre3 {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#apre4 {
+  max-height: 100%;
+}
+
+#apre5 {
+  line-height: 20px;
+}
+
+#apre6 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#apre7 {
+  background-color: #F0F0F0;
+  height: 60px;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+}
+
+#apre8 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#apre9 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333333;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#apre10 {
+  margin-right: 5px;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+#apre11 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#apre12 {
+  padding: 15px 30px 15px 30px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  border: .5px solid #0390A3;
+  border-radius: 20px;
+  color: #5D5D5D;
+}
+
+#apre13 {
+  padding: 15px 30px 15px 30px;
+  font-size: 15px;
+  font-weight: 400;
+  background-color: #0390A3;
+  line-height: 18px;
+  letter-spacing: 0em;
+  border: 0px;
+  text-align: left;
+  border-radius: 20px;
+  color: white;
+
+}
+
+#apre14 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#apre15 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+
+}
+
+#apre16 {
+  border: 0px;
+  background-color: transparent;
+  color: #00A3B7;
+  font-size: 30px;
+}
+
+#apre17 {
+  border: 0px;
+  background-color: transparent;
+  color: rgb(200, 0, 0);
+  font-size: 30px;
+}
+
+
+/************ specialist random element ***********/
+#spere1 {
+  height: 180px;
+  width: 100%;
+  background-color: #0893A5;
+  padding: 20px 3vw 10px 3vw;
+}
+
+#spere2 {
+  background-color: transparent;
+  border: 0px;
+  color: white;
+  font-size: 20px;
+  margin-right: 25px;
+}
+
+#spere3 {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spere4 {
+  background-color: white;
+  height: 124px;
+  width: 80vw;
+  max-width: 400px;
+  border-radius: 10px;
+  position: relative;
+  top: 60px;
+  border: 1px solid #0893A5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4% 10px 4%;
+}
+
+#spre5 {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+#spre6 {
+  height: 100%;
+  width: 40%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#spre7 {
+  max-height: 100%;
+}
+
+#spre8 {
+
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre9 {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre10 {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#spre11 {
+  padding: 20px 3vw 10px 3vw;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 40px;
+}
+
+#spre12 {
+  width: 31%;
+  height: 33vw;
+  max-height: 127px;
+  margin-right: 3%;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+#spre13 {
+  color: #5D5D5D;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre14 {
+  background-color: #0893A5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#spre15 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre16 {
+  margin-top: 30px;
+}
+
+#spre17 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre18 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #333333;
+}
+
+#spre19 {
+  margin-top: 40px;
+}
+
+#spre20 {
+  background-color: transparent;
+  border: 0px;
+  color: #0390A3;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#spre21 {
+  height: 460px;
+  margin-top: 30px;
+}
+
+#spre22 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: #0390A3;
+  border: 0px;
+  color: white;
+  padding: 15px 30px 15px 30px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+/************  background  overlay ***********/
 #BluredBackgroundOverlay {
   cursor: pointer;
   height: 100vh;
@@ -267,6 +832,12 @@
   font-size: 20px;
   margin-bottom: 10px;
   margin-right: 5px;
+}
+
+#loginNavWelcomeMessage,
+#signupNavWelcomeMessage {
+  color: white;
+  font-size: 23px
 }
 
 #loginNavLogo,
@@ -494,8 +1065,8 @@
 /************* home page ************/
 
 #home {
-  padding: 0px 10px 110px 10px;
-  font-style: ' SF Pro Display';
+  padding: 0px 10px 120px 10px;
+  font-family: 'SF Pro Display', sans-serif;
 }
 
 #HomeNav {
@@ -514,6 +1085,11 @@
   color: black;
 
 
+}
+
+#homeNavProfileImg {
+  max-height: 28px;
+  margin-right: 8px
 }
 
 #homeSearchBar {
@@ -589,7 +1165,16 @@
   align-items: center;
   border-radius: 5px;
   overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+#homepageCarouselContainer::-webkit-scrollbar {
+  display: none;
+
+}
+
+
 
 #eachhomepageCarousel {
   height: 142px;
@@ -668,7 +1253,15 @@
 
 
 #specialistNearMe {
-  overflow: hidden;
+  overflow: auto;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  max-width: 500px;
+}
+
+#specialistNearMe::-webkit-scrollbar {
+  display: none;
 
 }
 
@@ -682,6 +1275,7 @@
   border-radius: 10px;
   margin-right: 3px;
   margin-left: 3px;
+  cursor: pointer
 }
 
 #SpeacialistNearMeImgContainer {
@@ -694,11 +1288,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #SpeacialistNearMeImg {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 110%;
+
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -710,9 +1305,10 @@
   height: 165px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  padding: 10px 0px 10px 10px;
+  padding: 10px 2px 10px 10px;
   flex-shrink: 0;
   margin-right: 4px;
+
 }
 
 #UpComingAppointment {
@@ -722,17 +1318,23 @@
   height: 165px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  padding: 10px 0px 10px 10px;
+  padding: 10px 2px 10px 10px;
   flex-shrink: 0;
   margin-left: 4px;
   margin-right: 4px;
+
 }
 
 #upComingAppointmentContainer {
   width: 100%;
   overflow-x: auto;
   max-width: 500px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
+#upComingAppointmentContainer::-webkit-scrollbar {
+  display: none;
 }
 
 #medicationReminderContainer {
@@ -756,7 +1358,14 @@
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
-padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#homepageTrendingArticleContainer::-webkit-scrollbar {
+  display: none;
+
 }
 
 #eachHomepageTrendingArticle {
@@ -766,7 +1375,7 @@ padding: 10px 0px 10px 0px;
   border-radius: 10px;
   flex-shrink: 0;
   margin-right: 15px;
-  
+
 }
 
 #homepageTrendingArticleImgContainer {
@@ -789,7 +1398,83 @@ padding: 10px 0px 10px 0px;
   object-fit: fill;
 }
 
+#homepageTrendingArticleTitle {
+  font-size: 13px;
+  font-weight: 400;
+  list-style: none;
+  height: 60px;
+  overflow: hidden
+}
+
 #homepageTrendingArticleContent {
   padding: 0px 5px 2px 5px;
 
+}
+
+
+
+/************************ Appointment Nav ***************************/
+#AppointmentNav {
+  height: 61px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #EFEFEF;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+}
+
+#activeAppointmentNavBtn {
+  width: 30%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #0390A3;
+  border: 0px;
+  color: white;
+}
+
+#appointmentNavBtn {
+  width: 30%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #E6E6E6;
+  border: 0px;
+  color: black;
+}
+
+#AppointmentPage {
+  padding: 10px 3vw 10px 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 100px;
+}
+
+#appointments {
+  padding: 1% 2% 1% 2%;
+  width: 100%;
+  max-width: 500px;
+  height: 242px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #FAFAFA;
+  border-radius: 5%;
+  box-shadow: 0px 5px 5px #dfdede;
+  flex-shrink: 0;
+}
+
+
+
+
+/************************* specialist page **********************/
+#SpecialistPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
 }

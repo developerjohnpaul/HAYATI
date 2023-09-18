@@ -36,10 +36,10 @@ const Onboarding = () => {
 
   const [onboardingDetails, setOnboardingDetails] = useState([
     {
-      bgUrl: require("./images/onboarding1.png"),
+      bgUrl: require("../images/onboarding1.png"),
     },
-    { bgUrl: require("./images/onboarding2.png") },
-    { bgUrl: require("./images/onboarding3.png") },
+    { bgUrl: require("../images/onboarding2.png") },
+    { bgUrl: require("../images/onboarding3.png") },
   ]);
 
   return (
@@ -47,44 +47,35 @@ const Onboarding = () => {
       <div id="onboarding">
         <div>
           {onboardingBgNumber == 0 && (
-            <img src={require("./images/onboarding1.png")} id="onboardingBg" />
+            <img src={require("../images/onboarding1.png")} id="onboardingBg" />
           )}
           {onboardingBgNumber == 1 && (
-            <img src={require("./images/onboarding2.png")} id="onboardingBg" />
+            <img src={require("../images/onboarding2.png")} id="onboardingBg" />
           )}{" "}
           {onboardingBgNumber == 2 && (
-            <img src={require("./images/onboarding3.png")} id="onboardingBg" />
+            <img src={require("../images/onboarding3.png")} id="onboardingBg" />
           )}
         </div>
-        <img src={require("./images/LOGO.png")} id="onboardingLogo" />
-        <div
-          className="flexSpaceBetween"
-          style={{
-            position: "absolute",
-            bottom: "150px",
-            padding: "10px",
-          }}
-        >
+        <img src={require("../images/LOGO.png")} id="onboardingLogo" />
+        <div className="flexSpaceBetween" id="onre1">
           {shortOnboadingTextStatus == "live" && (
             <>
               {" "}
               {onboardingBgNumber == 0 && (
                 <h1 id="shortOnboadingText">
-                  Empowering your{" "}
-                  <span style={{ color: "#00E1FF" }}>health</span>
+                  Empowering your <span id="onre2">health</span>
                   {"  "} journey together
                 </h1>
               )}
               {onboardingBgNumber == 1 && (
                 <h1 id="shortOnboadingText">
                   Guiding Your Path to Empowered{"  "}
-                  <span style={{ color: "#00E1FF" }}> Living</span>
+                  <span id="onre2"> Living</span>
                 </h1>
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="shortOnboadingText">
-                  Empowering <span style={{ color: "#00E1FF" }}>Hope</span> ,{" "}
-                  One Step at a Time
+                  Empowering <span id="onre2">Hope</span> , One Step at a Time
                 </h1>
               )}
             </>
@@ -94,44 +85,29 @@ const Onboarding = () => {
               {" "}
               {onboardingBgNumber == 0 && (
                 <h1 id="fadingShortOnboadingText">
-                  Empowering your{" "}
-                  <span style={{ color: "#00E1FF" }}>health</span>
+                  Empowering your <span id="onre2">health</span>
                   {"  "} journey together
                 </h1>
               )}
               {onboardingBgNumber == 1 && (
                 <h1 id="fadingShortOnboadingText">
                   Guiding Your Path to Empowered{"  "}
-                  <span style={{ color: "#00E1FF" }}> Living</span>
+                  <span id="onre2"> Living</span>
                 </h1>
               )}
               {onboardingBgNumber == 2 && (
                 <h1 id="fadingShortOnboadingText">
-                  Empowering <span style={{ color: "#00E1FF" }}> Hope</span> ,{" "}
-                  One Step at a Time
+                  Empowering <span id="onre2"> Hope</span> , One Step at a Time
                 </h1>
               )}
             </>
           )}
-          <button
-            type="button"
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              padding: "2px 10px 7px 10px",
-              borderRadius: "100%",
-              border: "0px",
-              fontSize: "23px",
-            }}
-          >
+          <button type="button" id="onre3">
             <BsBellFill />
           </button>
         </div>
 
-        <div
-          className="flexColumnCenter"
-          style={{ position: "absolute", bottom: "4px", padding: "15px" }}
-        >
+        <div className="flexColumnCenter" id="onre4">
           <button
             id="OnboardingLoginBtn"
             onClick={() => {
@@ -142,10 +118,7 @@ const Onboarding = () => {
             Log In
           </button>
 
-          <div
-            className="flexCenter"
-            style={{ width: "90vw", fontSize: "14px" }}
-          >
+          <div className="flexCenter" id="onre5">
             <button
               type="button"
               className="onboardingLinks"

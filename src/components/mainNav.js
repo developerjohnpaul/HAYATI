@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { PiHouseFill, PiHouseBold, PiUsersThreeBold } from "react-icons/pi";
 import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
-import { app } from "./App";
+import { app } from "../App";
 import { useContext, useEffect } from "react";
 
 const MainNav = () => {
@@ -16,17 +16,21 @@ const MainNav = () => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#FFFFFF");
   }, []);
-  const navigatePage = (page) => {
-    App.setCurrentPage(page);
-    scrollToTop();
-    localStorage.setItem("CUP", page);
-  };
+
   return (
     <>
       <div id="mainNav" className="fixed-bottom">
         <div className="flexCenter">
           {App.currentPage == "Home" && (
-            <button id="activeMainNavBtn" onClick={() => navigatePage("home")}>
+            <button
+              id="activeMainNavBtn"
+              onClick={() => {
+                App.setCurrentPage("Home");
+                localStorage.setItem("CUP", "Home");
+                Navigate("/");
+                App.instantScrollToTop();
+              }}
+            >
               <span id="mainNavBtnIcon">
                 <PiHouseFill />
               </span>
@@ -36,7 +40,12 @@ const MainNav = () => {
           {App.currentPage != "Home" && (
             <button
               id="inActiveMainNavBtn"
-              onClick={() => navigatePage("Home")}
+              onClick={() => {
+                App.setCurrentPage("Home");
+                localStorage.setItem("CUP", "Home");
+                Navigate("/");
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <PiHouseFill />
@@ -47,7 +56,12 @@ const MainNav = () => {
           {App.currentPage == "Report" && (
             <button
               id="activeMainNavBtn"
-              onClick={() => navigatePage("Report")}
+              onClick={() => {
+                App.setCurrentPage("Report");
+                localStorage.setItem("CUP", "Report");
+
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <TbReport />
@@ -58,7 +72,12 @@ const MainNav = () => {
           {App.currentPage != "Report" && (
             <button
               id="inActiveMainNavBtn"
-              onClick={() => navigatePage("Report")}
+              onClick={() => {
+                App.setCurrentPage("Report");
+                localStorage.setItem("CUP", "Report");
+
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <TbReport />
@@ -66,32 +85,47 @@ const MainNav = () => {
               <small id="mainNavBtnText">Report</small>
             </button>
           )}
-          {App.currentPage == "Appointment" && (
+          {App.currentPage == "Appointments" && (
             <button
               id="activeMainNavBtn"
-              onClick={() => navigatePage("Appointment")}
+              onClick={() => {
+                App.setCurrentPage("Appointments");
+                localStorage.setItem("CUP", "Appointments");
+                Navigate("/Appointments");
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <HiCalendar />
               </span>
-              <small id="mainNavBtnText">Appointment</small>
+              <small id="mainNavBtnText">Appointments</small>
             </button>
           )}
-          {App.currentPage != "Appointment" && (
+          {App.currentPage != "Appointments" && (
             <button
               id="inActiveMainNavBtn"
-              onClick={() => navigatePage("Appointment")}
+              onClick={() => {
+                App.setCurrentPage("Appointments");
+                localStorage.setItem("CUP", "Appointments");
+                Navigate("/Appointments");
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <HiCalendar />
               </span>
-              <small id="mainNavBtnText">Appointment</small>
+              <small id="mainNavBtnText">Appointments</small>
             </button>
           )}
           {App.currentPage == "Community" && (
             <button
               id="activeMainNavBtn"
-              onClick={() => navigatePage("Community")}
+              onClick={() => {
+                App.setCurrentPage("Community");
+                localStorage.setItem("CUP", "Community");
+
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <PiUsersThreeBold />
@@ -102,7 +136,12 @@ const MainNav = () => {
           {App.currentPage != "Community" && (
             <button
               id="inActiveMainNavBtn"
-              onClick={() => navigatePage("Community")}
+              onClick={() => {
+                App.setCurrentPage("Community");
+                localStorage.setItem("CUP", "Community");
+
+                App.instantScrollToTop();
+              }}
             >
               <span id="mainNavBtnIcon">
                 <PiUsersThreeBold />

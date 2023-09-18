@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
-import { app } from "./App";
+import { app } from "../App";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-
   const [TouchIdModalStatus, setTouchIdModalStatus] = useState("hidden");
   const [loginInStatusModal, setLoginStatusModal] = useState("hidden");
   const [loginDetailsValidityStatus, setLoginDetailsValidityStatus] =
@@ -15,7 +14,6 @@ const LoginPage = () => {
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
-  
 
   const submitDetails = (e) => {
     e.preventDefault();
@@ -45,7 +43,7 @@ const LoginPage = () => {
         setValidPassword(true);
         setTimeout(() => {
           scrollToTop();
-          Navigate(`/Home`);
+          Navigate(`/`);
           setLoginStatusModal("hidden");
           App.setBlurredBackgroundOverlayStatus("hidden");
         }, 2000);
@@ -171,7 +169,7 @@ const LoginPage = () => {
               )}{" "}
             </div>
           )}
-          <div className="flexEnd" style={{ width: "85vw", maxWidth: "360px" }}>
+          <div className="flexEnd" id="lpre1">
             <button type="button" id="LoginForgotPasswordBtn">
               Forgot password?
             </button>
@@ -191,19 +189,10 @@ const LoginPage = () => {
             Log In
           </button>
         </form>
-        <div
-          style={{
-            fontSize: "14px",
-            fontWeight: "600",
-          }}
-        >
+        <div id="lpre2">
           <span>Don’t have an account? </span>
           <button
-            style={{
-              backgroundColor: "transparent",
-              color: "#0390A3",
-              border: "0px",
-            }}
+            id="lpre3"
             onClick={() => {
               Navigate(`/SignUp`);
               scrollToTop();
@@ -216,14 +205,12 @@ const LoginPage = () => {
       {TouchIdModalStatus == "visible" && (
         <div id="touchIdModal" className="flexColumnCenter">
           <h4>Touch ID</h4>
-          <div className="flexCenter" style={{ width: "80%", height: "75%" }}>
+          <div className="flexCenter" id="lpre4">
             <img
-              src={require("./images/fingerPrintIcon.png")}
+              src={require("../images/fingerPrintIcon.png")}
               id="touchIdFingerPrintIcon"
             />
-            <span style={{ fontSize: "14px" }}>
-              Sign in with annajames55@gmail.com
-            </span>
+            <span id="lpre15">Sign in with annajames55@gmail.com</span>
           </div>
           <div className="flexEnd" style={{ width: "100%" }}>
             <button
@@ -244,7 +231,7 @@ const LoginPage = () => {
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
             <img
-              src={require("./images/maskedLogo192.png")}
+              src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}
             <p className="flexCenter" id="statusFloatingText">

@@ -2,38 +2,47 @@ import { FaRegBell } from "react-icons/fa";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdNavigateNext } from "react-icons/md";
 import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
-import { mockApi } from "./mockApi";
+import { mockApi } from "../mockApi";
 import { useContext, useEffect, useRef, useState } from "react";
 import { usePrevious } from "@uidotdev/usehooks";
 import { FaRegClock } from "react-icons/fa6";
 import { GoBell } from "react-icons/go";
 import { BsBookmarkFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { app } from "../App";
+import CryptoJS from "crypto-js";
+
 const Home = () => {
   const Api = useContext(mockApi);
+  const App = useContext(app);
+  const Navigate = useNavigate();
+  const [laterAppointments, setLaterAppointments] = useState([]);
+  const [latestAppointments, setLatestAppointments] = useState([]);
+  const [trendingArticles, setTrendingArticles] = useState([]);
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
-  const prevCarouselScrollLeft = usePrevious(carouselScrollLeft);
+
   const [homepageCarousel, setHomepageCarousel] = useState([
     {
-      bgImg: require("./images/vitamins.jpg"),
+      bgImg: require("../images/vitamins.jpg"),
       title: "Vitamins",
       Content: `Vitamins are essential nutrients that play a crucial role in
               maintaining overall health and supporting various bodily functions`,
     },
     {
-      bgImg: require("./images/sleep.jpeg"),
+      bgImg: require("../images/sleep.jpeg"),
       title: "Sleep",
       Content: `A good night's sleep is important to recharge both the body and mind.
        It helps the body repair cells and get rid of wastes. `,
     },
     {
-      bgImg: require("./images/balancedDiet.jpeg"),
+      bgImg: require("../images/balancedDiet.jpeg"),
       title: "B-diet ",
       Content: `A healthy diet gives you energy and lowers your risk for heart disease,
        diabetes, cancer, and other diseases.`,
     },
     {
-      bgImg: require("./images/exercise.jpg"),
+      bgImg: require("../images/exercise.jpg"),
       title: "P-activities",
       Content: `Thirty minutes a day of physical activity protects heart
        health. It also lowers the amount of bone loss as you age.`,
@@ -116,6 +125,20 @@ const Home = () => {
       }, 5000))
     );
   }, [carouselNum]);
+  useEffect(() => {
+    const latestAppointment = Api.appointment.filter((value) => {
+      return value.latest === true && value.status == "Upcoming";
+    });
+    setLatestAppointments(latestAppointment);
+    const laterAppointment = Api.appointment.filter((value) => {
+      return value.latest === false && value.status == "Upcoming";
+    });
+    setLaterAppointments(laterAppointment);
+    const trendingArticle = Api.articles.filter((value) => {
+      return value.status == "trending";
+    });
+    setTrendingArticles(trendingArticle);
+  }, []);
   return (
     <>
       <div id="home" className="flexColumnCenter">
@@ -124,10 +147,10 @@ const Home = () => {
           <small id="HomepageWelcomeMessage">Welcome back,jeff </small>
           <div className="flexCenter">
             <img
-              src={require("./images/profileImg.png")}
-              style={{ maxHeight: "28px", marginRight: "8px" }}
+              src={require("../images/profileImg.png")}
+              id="homeNavProfileImg"
             />
-            <span style={{ height: "28px", fontSize: "18px" }}>
+            <span id="hmre1">
               <FaRegBell />
             </span>
           </div>
@@ -135,7 +158,7 @@ const Home = () => {
         <div className="flexCenter">
           {" "}
           <div id="homeSearchBar" className="flexStart">
-            <span style={{ fontSize: "20px", opacity: ".5" }}>
+            <span id="hmre2">
               <HiOutlineSearch />
             </span>
             <input
@@ -190,7 +213,16 @@ const Home = () => {
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}
           <small id="columnTitle">Upcoming Appointments</small>
-          <button type="button" id="columnViewAllBtn">
+          <button
+            type="button"
+            id="columnViewAllBtn"
+            onClick={() => {
+              App.setCurrentPage("Appointments");
+              localStorage.setItem("CUP", "Appointments");
+              Navigate("/Appointments");
+              App.instantScrollToTop();
+            }}
+          >
             View All{" "}
             <span id="columnViewAllIcon">
               <MdNavigateNext />{" "}
@@ -200,103 +232,33 @@ const Home = () => {
         <div className="flexStart" id="upComingAppointmentContainer">
           <div>
             {" "}
-            {Api.upcomingAppointment.map((value, index) => (
+            {latestAppointments.map((value, index) => (
               <div key={index}>
-                {value.status == "latest" && (
-                  <div id="latestUpComingAppointment">
-                    <li
-                      style={{
-                        color: "white",
-                        fontWeight: "500",
-                        fontSize: "24px",
-                        listStyle: "none",
-                      }}
-                    >
-                      {value.date}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "11px",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      {value.month}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "12px",
-                        marginBottom: "5]3px",
-                      }}
-                    >
-                      {value.title}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "10px",
-                        marginBottom: "3px",
-                      }}
-                    >
-                      {value.startTime}- {value.endTime}
-                    </li>{" "}
-                    <li style={{ listStyle: "none", fontSize: "10px" }}>
-                      {value.location}
-                    </li>
-                  </div>
-                )}
+                <ul id="latestUpComingAppointment">
+                  <li id="hmre3">{value.date}</li>
+                  <li id="hmre4">{value.month}</li>
+                  <li id="hmre5">{value.title}</li>
+                  <li id="hmre6">
+                    {value.startTime}- {value.endTime}
+                  </li>{" "}
+                  <li id="hmre7">{value.location}</li>
+                </ul>
               </div>
             ))}
           </div>
 
           <div className="flexStart">
-            {Api.upcomingAppointment.map((value, index) => (
+            {laterAppointments.map((value, index) => (
               <div key={index}>
-                {value.status == "later" && (
-                  <div id="UpComingAppointment">
-                    <li
-                      style={{
-                        color: "black",
-                        fontWeight: "500",
-                        fontSize: "24px",
-                        listStyle: "none",
-                      }}
-                    >
-                      {value.date}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "11px",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      {value.month}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "12px",
-                        marginBottom: "5]3px",
-                      }}
-                    >
-                      {value.title}
-                    </li>
-                    <li
-                      style={{
-                        listStyle: "none",
-                        fontSize: "10px",
-                        marginBottom: "3px",
-                      }}
-                    >
-                      {value.startTime}- {value.endTime}
-                    </li>{" "}
-                    <li style={{ listStyle: "none", fontSize: "10px" }}>
-                      {value.location}
-                    </li>
-                  </div>
-                )}
+                <ul id="UpComingAppointment">
+                  <li id="hmre3">{value.date}</li>
+                  <li id="hmre4">{value.month}</li>
+                  <li id="hmre5">{value.title}</li>
+                  <li id="hmre6">
+                    {value.startTime}- {value.endTime}
+                  </li>{" "}
+                  <li id="hmre6">{value.location}</li>
+                </ul>
               </div>
             ))}
           </div>
@@ -313,69 +275,25 @@ const Home = () => {
         </div>
         <div id="medicationReminderContainer" className="flexSpaceBetween">
           <div className="flexStart">
-            <div
-              className="flexCenter"
-              style={{
-                backgroundColor: "#0390A359",
-                height: "60.4px",
-                width: "70px",
-                borderRadius: "5px",
-                marginRight: "15px",
-              }}
-            >
-              <img
-                src={require("./images/NeurontinImg.png")}
-                style={{ maxHeight: "55px", maxWidth: "65px" }}
-              />
+            <div className="flexCenter" id="hmre7">
+              <img src={require("../images/NeurontinImg.png")} id="hmre8" />
             </div>
             <div>
-              <li
-                style={{
-                  listStyle: "none",
-                  fontSize: "11px",
-                  fontWeight: "400",
-                }}
-              >
-                Two pills after meal
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                  color: "#0390A3",
-                }}
-              >
-                Neurontin 300mg
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  fontSize: "11px",
-                  fontWeight: "400",
-                }}
-                className="flexStart"
-              >
-                <b style={{ fontSize: "15px", marginRight: "5px" }}>
+              <li id="hmre9">Two pills after meal</li>
+              <li id="hmre10">Neurontin 300mg</li>
+              <li id="hmre11" className="flexStart">
+                <b id="hmre12">
                   <FaRegClock />{" "}
                 </b>
                 <span> 8:45Am</span>
-                <b
-                  style={{
-                    fontSize: "15px",
-                    marginLeft: "10px",
-                    color: "#0390A3",
-                  }}
-                >
+                <b id="hmre13">
                   <GoBell />{" "}
                 </b>
               </li>
             </div>
           </div>
           <div>
-            <li
-              style={{ color: "#0390A3", fontSize: "25px", listStyle: "none" }}
-            >
+            <li id="hmre14">
               <MdNavigateNext />
             </li>
           </div>
@@ -390,34 +308,34 @@ const Home = () => {
             </span>
           </button>
         </div>
-        <div id="specialistNearMe" className="flexCenter">
+        <div id="specialistNearMe" className="flexStart">
           {Api.specialist.map((value, index) => (
-            <div id="eachSpeacialistNearMe" key={index}>
+            <div
+              id="eachSpeacialistNearMe"
+              key={index}
+              onClick={() => {
+                Navigate(
+                  `Specialist/#${CryptoJS.AES.encrypt(
+                    JSON.stringify(value.id),
+                    App.SK
+                  ).toString()}`
+                );
+                App.instantScrollToTop();
+              }}
+            >
               <div id="SpeacialistNearMeImgContainer">
                 <img
                   src={value.SpeacialistProfileImg}
                   id="SpeacialistNearMeImg"
                 />
               </div>
-              <div style={{ padding: "1px 4px 1px 4px " }}>
-                <li style={{ fontSize: "11px", listStyle: "none" }}>
-                  {value.specialistName}
-                </li>
-                <li style={{ fontSize: "8px", listStyle: "none" }}>
-                  {value.specialty}
-                </li>
-                <li style={{ fontSize: "8px", listStyle: "none" }}>
-                  {value.phone}
-                </li>
-                <li
-                  style={{
-                    fontSize: "8px",
-                    listStyle: "none",
-                    marginTop: "3px",
-                  }}
-                >
+              <div id="hmre15">
+                <li id="hmre16">{value.specialistName}</li>
+                <li id="hmre17">{value.specialty}</li>
+                <li id="hmre17">{value.phone}</li>
+                <li id="hmre18">
                   Reviews: {value.reviews}
-                  <span style={{ color: "#FFCC00", fontSize: "12px" }}>
+                  <span id="hmre19">
                     <BsStarFill />
                   </span>
                 </li>
@@ -436,89 +354,33 @@ const Home = () => {
           </button>
         </div>
         <div id="homepageTrendingArticleContainer">
-          {Api.articles.map((value, index) => (
+          {trendingArticles.map((value, index) => (
             <div key={index}>
-              {value.status == "trending" && (
-                <div id="eachHomepageTrendingArticle">
-                  <div id="homepageTrendingArticleImgContainer">
-                    <img
-                      src={value.articleImg}
-                      id="homepageTrendingArticleImg"
-                    />
+              <div id="eachHomepageTrendingArticle">
+                <div id="homepageTrendingArticleImgContainer">
+                  <img src={value.articleImg} id="homepageTrendingArticleImg" />
+                </div>
+                <div id="homepageTrendingArticleContent">
+                  <div className="flexSpaceBetweenFirstBaseeline">
+                    <li id="homepageTrendingArticleTitle">{value.title}</li>
+                    {value.title.length > 108 && <small id="hmre20">...</small>}
+                    <li id="hmre21">
+                      <BsBookmarkFill />
+                    </li>
                   </div>
-                  <div id="homepageTrendingArticleContent">
-                    <div className="flexSpaceBetweenFirstBaseeline">
-                      <li
-                        id="homepageTrendingArticleTitle"
-                        style={{
-                          fontSize: "13px",
-                          fontWeight: "400",
-                          listStyle: "none",
-                          height: "60px",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {value.title}
-                      </li>
-                      {value.title.length > 108 && (
-                        <small
-                          style={{
-                            position: "relative",
-                            right: "1px",
-                            top: "38px",
-                          }}
-                        >
-                          ...
-                        </small>
+                  <div className="flexSpaceBetween mt-3">
+                    <small className="flexCenter listStyleNone">
+                      {" "}
+                      <small id="hmre22">Author:{value.author}</small>
+                      {value.author.length > 11 && (
+                        <small id="hmre23">...</small>
                       )}
-                      <li style={{ listStyle: "none", fontSize: "18px" }}>
-                        <BsBookmarkFill />
-                      </li>
-                    </div>
-                    <div
-                      className="flexSpaceBetween"
-                      style={{ marginTop: "10px" }}
-                    >
-                      <li style={{ listStyle: "none" }} className="flexCenter">
-                        {" "}
-                        <li
-                          style={{
-                            fontSize: "10px",
-                            opacity: ".8",
-                            width: "90px",
-                            height: "15px",
-                            wordBreak: "break-all",
-                            overflow: "hidden",
-                          }}
-                        >
-                          Author:{value.author}
-                        </li>
-                        {value.author.length > 11 && (
-                          <li style={{ fontSize: "10px" }}>...</li>
-                        )}
-                      </li>
-                      <li
-                        style={{
-                          fontSize: "10px",
-                          listStyle: "none",
-                          opacity: ".8",
-                        }}
-                      >
-                        {value.timeRead}
-                      </li>
-                      <li
-                        style={{
-                          fontSize: "10px",
-                          listStyle: "none",
-                          opacity: ".8",
-                        }}
-                      >
-                        {value.timePosted}
-                      </li>
-                    </div>
+                    </small>
+                    <li id="hmre24">{value.timeRead}</li>
+                    <li id="hmre25">{value.timePosted}</li>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}{" "}
         </div>
