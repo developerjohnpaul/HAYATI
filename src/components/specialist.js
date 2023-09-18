@@ -1,11 +1,16 @@
 import { useContext, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import CryptoJS from "crypto-js";
 import { app } from "../App";
 import { IoIosArrowBack } from "react-icons/io";
 const Specialist = () => {
   const App = useContext(app);
   const location = useLocation();
+  const Navigate = useNavigate();
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#0893A5");
@@ -24,7 +29,13 @@ const Specialist = () => {
       <div id="SpecialistPage">
         <div id="spere1">
           <div className="flexStart fixed-top" id="spre14">
-            <button id="spere2" type="button">
+            <button
+              id="spere2"
+              type="button"
+              onClick={() => {
+                Navigate(-1);
+              }}
+            >
               <IoIosArrowBack />
             </button>
             <small id="spere3"> Doctor's Detail</small>
