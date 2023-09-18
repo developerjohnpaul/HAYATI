@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./stylesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
-import MockApi from "./mockApi";
+import MockApi from "./components/mockApi";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<MockApi />);
 

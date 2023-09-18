@@ -2,7 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { PiCalendarFill, PiClockLight } from "react-icons/pi";
 import { app } from "../App";
-import { mockApi } from "../mockApi";
+import { mockApi } from "./mockApi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 

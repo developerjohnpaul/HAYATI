@@ -2,7 +2,7 @@ import { FaRegBell } from "react-icons/fa";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdNavigateNext } from "react-icons/md";
 import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
-import { mockApi } from "../mockApi";
+import { mockApi } from "./mockApi";
 import { useContext, useEffect, useRef, useState } from "react";
 import { usePrevious } from "@uidotdev/usehooks";
 import { FaRegClock } from "react-icons/fa6";

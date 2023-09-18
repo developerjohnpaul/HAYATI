@@ -513,7 +513,7 @@
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0em;
-  text-align: left;
+  width: 100%;
 }
 
 #spre10 {
@@ -609,6 +609,63 @@
 #spre21 {
   height: 460px;
   margin-top: 30px;
+  animation-name: loadingBgAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes loadingBgAnimation {
+  10% {
+    background: linear-gradient(30deg, rgb(237, 237, 237), white, white, white, white, white, white, white,
+        white);
+  }
+
+  20% {
+    background: linear-gradient(30deg, white, rgb(237, 237, 237), white, white, white, white, white, white,
+        white);
+  }
+
+  30% {
+    background: linear-gradient(30deg, white, white, rgb(237, 237, 237), white, white, white, white, white,
+        white);
+  }
+
+  40% {
+    background: linear-gradient(30deg, white, white, white, rgb(237, 237, 237), white, white, white, white,
+        white);
+  }
+
+  50% {
+    background: linear-gradient(30deg, white, white, white, white, rgb(237, 237, 237), white, white, white,
+        white);
+  }
+
+  60% {
+    background: linear-gradient(30deg, white, white, white, white, white, rgb(237, 237, 237), white, white,
+        white);
+  }
+
+  70% {
+    background: linear-gradient(30deg, white, white, white, white, white, white, rgb(237, 237, 237), white,
+        white);
+  }
+
+  80% {
+    background: linear-gradient(30deg, white, white, white, white, white, white, white,
+        rgb(237, 237, 237),
+        white, );
+  }
+
+  90% {
+    background: linear-gradient(30deg, white, white, white, white, white, white, white,
+        white, rgb(237, 237, 237));
+  }
+
+  100% {
+    background: linear-gradient(30deg, white, white, white, white, white, white, white,
+        white, white);
+  }
 }
 
 #spre22 {
