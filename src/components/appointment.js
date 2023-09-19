@@ -5,6 +5,7 @@ import { app } from "../App";
 import { mockApi } from "./mockApi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import CryptoJS from "crypto-js";
 
 export const AppointmentNavbar = () => {
   const App = useContext(app);
@@ -115,9 +116,7 @@ export const AppointmentNavbar = () => {
 export const UpcomingAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
-  const navigator = (e) => {
-    App.setCurrentAppointmentPage(e);
-  };
+  const Navigate = useNavigate();
 
   return (
     <>
@@ -128,7 +127,18 @@ export const UpcomingAppointments = () => {
             {value.status == "Upcoming" && (
               <div id="appointments">
                 <div className="flexStart">
-                  <div id="apre3">
+                  <div
+                    id="apre3"
+                    onClick={() => {
+                      Navigate(
+                        `/Specialist/#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.specialistId),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  >
                     <img src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">
@@ -178,9 +188,7 @@ export const UpcomingAppointments = () => {
 export const CompletedAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
-  const navigator = (e) => {
-    App.setCurrentAppointmentPage(e);
-  };
+const Navigate = useNavigate()
 
   return (
     <>
@@ -191,7 +199,18 @@ export const CompletedAppointments = () => {
             {value.status == "Completed" && (
               <div id="appointments">
                 <div className="flexStart">
-                  <div id="apre3">
+                  <div
+                    id="apre3"
+                    onClick={() => {
+                      Navigate(
+                        `/Specialist/#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.specialistId),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  >
                     <img src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">
@@ -242,9 +261,7 @@ export const CompletedAppointments = () => {
 export const CancelledAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
-  const navigator = (e) => {
-    App.setCurrentAppointmentPage(e);
-  };
+ const Navigate = useNavigate()
 
   return (
     <>
@@ -255,7 +272,18 @@ export const CancelledAppointments = () => {
             {value.status == "Cancelled" && (
               <div id="appointments">
                 <div className="flexStart">
-                  <div id="apre3">
+                  <div
+                    id="apre3"
+                    onClick={() => {
+                      Navigate(
+                        `/Specialist/#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.specialistId),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  >
                     <img src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">

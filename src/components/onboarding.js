@@ -38,7 +38,7 @@ const Onboarding = () => {
     {
       bgUrl: require("../images/onboarding1.png"),
     },
-    { bgUrl: require("../images/onboarding2.png") },
+    { bgUrl: require("../images/onboarding2.jpg") },
     { bgUrl: require("../images/onboarding3.png") },
   ]);
 
@@ -50,7 +50,7 @@ const Onboarding = () => {
             <img src={require("../images/onboarding1.png")} id="onboardingBg" />
           )}
           {onboardingBgNumber == 1 && (
-            <img src={require("../images/onboarding2.png")} id="onboardingBg" />
+            <img src={require("../images/onboarding2.jpg")} id="onboardingBg" />
           )}{" "}
           {onboardingBgNumber == 2 && (
             <img src={require("../images/onboarding3.png")} id="onboardingBg" />

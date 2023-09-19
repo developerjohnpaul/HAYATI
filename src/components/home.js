@@ -315,7 +315,7 @@ const Home = () => {
               key={index}
               onClick={() => {
                 Navigate(
-                  `Specialist/#${CryptoJS.AES.encrypt(
+                  `/Specialist/#${CryptoJS.AES.encrypt(
                     JSON.stringify(value.id),
                     App.SK
                   ).toString()}`
