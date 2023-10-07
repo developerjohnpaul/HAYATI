@@ -25,8 +25,6 @@ const MainNav = () => {
             <button
               id="activeMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Home");
-                localStorage.setItem("CUP", "Home");
                 Navigate("/");
                 App.instantScrollToTop();
               }}
@@ -41,8 +39,6 @@ const MainNav = () => {
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Home");
-                localStorage.setItem("CUP", "Home");
                 Navigate("/");
                 App.instantScrollToTop();
               }}
@@ -53,45 +49,33 @@ const MainNav = () => {
               <small id="mainNavBtnText">Home</small>
             </button>
           )}
-          {App.currentPage == "Report" && (
-            <button
-              id="activeMainNavBtn"
-              onClick={() => {
-                App.setCurrentPage("Report");
-                localStorage.setItem("CUP", "Report");
-
-                App.instantScrollToTop();
-              }}
-            >
+          {App.currentPage == "Reports" && (
+            <button id="activeMainNavBtn">
               <span id="mainNavBtnIcon">
                 <TbReport />
               </span>
-              <small id="mainNavBtnText">Report</small>
+              <small id="mainNavBtnText">Reports</small>
             </button>
           )}
-          {App.currentPage != "Report" && (
+          {App.currentPage != "Reports" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Report");
-                localStorage.setItem("CUP", "Report");
-
+                Navigate("/Reports");
                 App.instantScrollToTop();
               }}
             >
               <span id="mainNavBtnIcon">
                 <TbReport />
               </span>
-              <small id="mainNavBtnText">Report</small>
+              <small id="mainNavBtnText">Reports</small>
             </button>
           )}
           {App.currentPage == "Appointments" && (
             <button
               id="activeMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Appointments");
-                localStorage.setItem("CUP", "Appointments");
-                Navigate("/Appointments");
+                Navigate("/Appointments/Upcoming");
                 App.instantScrollToTop();
               }}
             >
@@ -107,7 +91,7 @@ const MainNav = () => {
               onClick={() => {
                 App.setCurrentPage("Appointments");
                 localStorage.setItem("CUP", "Appointments");
-                Navigate("/Appointments");
+                Navigate("/Appointments/Upcoming");
                 App.instantScrollToTop();
               }}
             >

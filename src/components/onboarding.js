@@ -38,22 +38,42 @@ const Onboarding = () => {
     {
       bgUrl: require("../images/onboarding1.png"),
     },
-    { bgUrl: require("../images/onboarding2.jpg") },
+    { bgUrl: require("../images/onboarding2.png") },
     { bgUrl: require("../images/onboarding3.png") },
   ]);
 
   return (
     <>
       <div id="onboarding">
-        <div>
+        <div id="onSm">
           {onboardingBgNumber == 0 && (
             <img src={require("../images/onboarding1.png")} id="onboardingBg" />
           )}
           {onboardingBgNumber == 1 && (
-            <img src={require("../images/onboarding2.jpg")} id="onboardingBg" />
+            <img src={require("../images/onboarding2.png")} id="onboardingBg" />
           )}{" "}
           {onboardingBgNumber == 2 && (
             <img src={require("../images/onboarding3.png")} id="onboardingBg" />
+          )}
+        </div>
+        <div id="onlg">
+          {onboardingBgNumber == 0 && (
+            <img
+              src={require("../images/onboarding1Large.jpg")}
+              id="onboardingBg"
+            />
+          )}
+          {onboardingBgNumber == 1 && (
+            <img
+              src={require("../images/onboardingBg2Large.jpg")}
+              id="onboardingBg"
+            />
+          )}{" "}
+          {onboardingBgNumber == 2 && (
+            <img
+              src={require("../images/onboardingBg3Large.jpg")}
+              id="onboardingBg"
+            />
           )}
         </div>
         <img src={require("../images/LOGO.png")} id="onboardingLogo" />

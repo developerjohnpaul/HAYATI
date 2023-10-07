@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PiCalendarFill, PiClockLight } from "react-icons/pi";
 import { app } from "../App";
 import { mockApi } from "./mockApi";
@@ -12,30 +12,52 @@ export const AppointmentNavbar = () => {
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
   useEffect(() => {
-    const CAP = localStorage.getItem("CAP");
-    if (CAP == undefined || CAP == "" || CAP == "Upcoming") {
-      App.setCurrentAppointmentPage("Upcoming");
-      Navigate("/Appointments/Upcoming");
-    } else {
-      App.setCurrentAppointmentPage(CAP);
-      Navigate(`/Appointments/${CAP}`);
-    }
+    App.setCurrentPage("Appointments");
   }, []);
+  const [fixedNav, setFixedNav] = useState(false);
+  const test = () => {
+    if (
+      document.documentElement.scrollTop == 155 ||
+      document.documentElement.scrollTop > 155
+    ) {
+
+      setFixedNav(true);
+    } else {
+ 
+      setFixedNav(false);
+    }
+  };
+  window.addEventListener("scroll", test);
   return (
     <>
       <div className="flexCenter">
         <h1 id="apre2">Appointment</h1>
       </div>
-      <div id="apre1" className="sticky-top">
+      <AppointmentNavCodeBase />
+      {fixedNav && (
+        <div className="fixed-top" id="apre18">
+          <AppointmentNavCodeBase />
+        </div>
+      )}
+      <Outlet />
+    </>
+  );
+};
+
+export const AppointmentNavCodeBase = () => {
+  const App = useContext(app);
+  const Api = useContext(mockApi);
+  const Navigate = useNavigate();
+  return (
+    <>
+      <div id="apre1">
         <div id="AppointmentNav">
           {App.currentAppointmentPage == "Upcoming" && (
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Upcoming");
                 Navigate("/Appointments/Upcoming");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Upcoming");
               }}
             >
               Upcoming
@@ -45,10 +67,8 @@ export const AppointmentNavbar = () => {
             <button
               id="appointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Upcoming");
                 Navigate("/Appointments/Upcoming");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Upcoming");
               }}
             >
               Upcoming
@@ -58,10 +78,8 @@ export const AppointmentNavbar = () => {
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Complete");
                 Navigate("/Appointments/Complete");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Complete");
               }}
             >
               Complete
@@ -71,10 +89,8 @@ export const AppointmentNavbar = () => {
             <button
               id="appointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Complete");
                 Navigate("/Appointments/Complete");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Complete");
               }}
             >
               Complete
@@ -84,10 +100,8 @@ export const AppointmentNavbar = () => {
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Cancelled");
                 Navigate("/Appointments/Cancelled");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Cancelled");
               }}
             >
               Cancelled
@@ -97,10 +111,8 @@ export const AppointmentNavbar = () => {
             <button
               id="appointmentNavBtn"
               onClick={() => {
-                App.setCurrentAppointmentPage("Cancelled");
                 Navigate("/Appointments/Cancelled");
                 App.instantScrollToTop();
-                localStorage.setItem("CAP", "Cancelled");
               }}
             >
               Cancelled
@@ -108,16 +120,17 @@ export const AppointmentNavbar = () => {
           )}
         </div>
       </div>
-      <Outlet />
     </>
   );
 };
-
 export const UpcomingAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
-
+  useEffect(() => {
+    App.setCurrentAppointmentPage("Upcoming");
+    Navigate(`/Appointments/Upcoming`);
+  }, []);
   return (
     <>
       <div id="AppointmentPage">
@@ -173,7 +186,25 @@ export const UpcomingAppointments = () => {
                   </div>
                 </div>
                 <div id="apre11">
-                  <button id="apre12">Cancel</button>
+                  <button
+                    id="apre12"
+                    onClick={() => {
+                      Api.setAppointment((value) => {
+                        return value.map((val, ind) => {
+                          if (ind === index) {
+                            return {
+                              ...val,
+                              status: "Cancelled",
+                            };
+                          } else {
+                            return val;
+                          }
+                        });
+                      });
+                    }}
+                  >
+                    Cancel
+                  </button>
                   <button id="apre13">Reschedule</button>
                 </div>
               </div>
@@ -188,8 +219,11 @@ export const UpcomingAppointments = () => {
 export const CompletedAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
-const Navigate = useNavigate()
-
+  const Navigate = useNavigate();
+  useEffect(() => {
+    App.setCurrentAppointmentPage("Complete");
+    Navigate(`/Appointments/Complete`);
+  }, []);
   return (
     <>
       <div id="AppointmentPage">
@@ -261,8 +295,11 @@ const Navigate = useNavigate()
 export const CancelledAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
- const Navigate = useNavigate()
-
+  const Navigate = useNavigate();
+  useEffect(() => {
+    App.setCurrentAppointmentPage("Cancelled");
+    Navigate(`/Appointments/Cancelled`);
+  }, []);
   return (
     <>
       <div id="AppointmentPage">

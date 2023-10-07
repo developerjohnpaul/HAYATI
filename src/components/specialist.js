@@ -9,7 +9,9 @@ const Specialist = () => {
   const App = useContext(app);
   const location = useLocation();
   const Navigate = useNavigate();
-
+  useEffect(() => {
+    App.setCurrentPage("Specialist");
+  }, []);
   const [specialist, setSpecialist] = useState({});
   const [experience, setExperience] = useState("");
   const [patients, setPatients] = useState("");
@@ -23,7 +25,7 @@ const Specialist = () => {
     const decryptedSID = CryptoJS.AES.decrypt(encryptedSID, App.SK).toString(
       CryptoJS.enc.Utf8
     );
-    console.log(decryptedSID);
+
     const filteredSpecialist = Api.specialist.filter((value) => {
       return value.id == decryptedSID;
     });

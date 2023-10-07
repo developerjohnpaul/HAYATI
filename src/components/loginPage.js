@@ -87,7 +87,6 @@ const LoginPage = () => {
           )}
           {!validEmailAddress && (
             <div id="invalidSignupInputAndWarningText">
-              {" "}
               <input
                 type="email"
                 id="invalidLoginInput"

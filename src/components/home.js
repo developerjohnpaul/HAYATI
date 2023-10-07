@@ -4,9 +4,7 @@ import { MdNavigateNext } from "react-icons/md";
 import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
 import { mockApi } from "./mockApi";
 import { useContext, useEffect, useRef, useState } from "react";
-import { usePrevious } from "@uidotdev/usehooks";
-import { FaRegClock } from "react-icons/fa6";
-import { GoBell } from "react-icons/go";
+import { FaRegClock, FaBell } from "react-icons/fa6";
 import { BsBookmarkFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { app } from "../App";
@@ -18,10 +16,13 @@ const Home = () => {
   const Navigate = useNavigate();
   const [laterAppointments, setLaterAppointments] = useState([]);
   const [latestAppointments, setLatestAppointments] = useState([]);
+  const [latestMedication, setLatestMedication] = useState([]);
   const [trendingArticles, setTrendingArticles] = useState([]);
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
-
+  useEffect(() => {
+    App.setCurrentPage("Home");
+  });
   const [homepageCarousel, setHomepageCarousel] = useState([
     {
       bgImg: require("../images/vitamins.jpg"),
@@ -50,6 +51,7 @@ const Home = () => {
   ]);
   const carouselScroll = () => {
     const carousel = document.getElementById("homepageCarouselContainer");
+
     let scrollStop;
     carousel.addEventListener("scroll", (e) => {
       clearTimeout(scrollStop);
@@ -94,6 +96,7 @@ const Home = () => {
       }, 150);
     });
   };
+
   useEffect(() => {
     const carousel = document.getElementById("homepageCarouselContainer");
     let scrollStop;
@@ -125,6 +128,7 @@ const Home = () => {
       }, 5000))
     );
   }, [carouselNum]);
+
   useEffect(() => {
     const latestAppointment = Api.appointment.filter((value) => {
       return value.latest === true && value.status == "Upcoming";
@@ -138,6 +142,10 @@ const Home = () => {
       return value.status == "trending";
     });
     setTrendingArticles(trendingArticle);
+    const LatestMedication = Api.medications.filter((value, index) => {
+      return index == Api.medications.length - 1;
+    });
+    setLatestMedication(LatestMedication);
   }, []);
   return (
     <>
@@ -218,8 +226,8 @@ const Home = () => {
             id="columnViewAllBtn"
             onClick={() => {
               App.setCurrentPage("Appointments");
-              localStorage.setItem("CUP", "Appointments");
-              Navigate("/Appointments");
+
+              Navigate("/Appointments/Upcoming ");
               App.instantScrollToTop();
             }}
           >
@@ -241,7 +249,7 @@ const Home = () => {
                   <li id="hmre6">
                     {value.startTime}- {value.endTime}
                   </li>{" "}
-                  <li id="hmre7">{value.location}</li>
+                  <li id="hmre6">{value.location}</li>
                 </ul>
               </div>
             ))}
@@ -266,38 +274,66 @@ const Home = () => {
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}
           <small id="columnTitle">Medication reminder</small>
-          <button type="button" id="columnViewAllBtn">
+          <button
+            type="button"
+            id="columnViewAllBtn"
+            onClick={() => {
+              App.setCurrentPage("Medications");
+              Navigate("/Medications");
+              App.instantScrollToTop();
+            }}
+          >
             View All{" "}
             <span id="columnViewAllIcon">
               <MdNavigateNext />{" "}
             </span>
           </button>
         </div>
-        <div id="medicationReminderContainer" className="flexSpaceBetween">
-          <div className="flexStart">
-            <div className="flexCenter" id="hmre7">
-              <img src={require("../images/NeurontinImg.png")} id="hmre8" />
-            </div>
-            <div>
-              <li id="hmre9">Two pills after meal</li>
-              <li id="hmre10">Neurontin 300mg</li>
-              <li id="hmre11" className="flexStart">
-                <b id="hmre12">
-                  <FaRegClock />{" "}
-                </b>
-                <span> 8:45Am</span>
-                <b id="hmre13">
-                  <GoBell />{" "}
-                </b>
-              </li>
-            </div>
+        {Api.medications.map((value, index) => (
+          <div key={index} id="hmre26">
+            {index == Api.medications.length - 1 && (
+              <div
+                id="medicationReminderContainer"
+                className="flexSpaceBetween"
+                onClick={() => {
+                  Navigate(
+                    `/MedicationDetails#${CryptoJS.AES.encrypt(
+                      JSON.stringify(index),
+                      App.SK
+                    ).toString()}`
+                  );
+                  App.instantScrollToTop();
+                }}
+              >
+                <div className="flexStart">
+                  <div className="flexCenter" id="hmre7">
+                    <img src={value.img} id="hmre8" />
+                  </div>
+                  <div>
+                    <li id="hmre9">{value.dosage} </li>
+                    <li id="hmre10">{value.name}</li>
+                    <li id="hmre11" className="flexStart">
+                      <b id="hmre12">
+                        <FaRegClock />{" "}
+                      </b>
+                      {value.time.map((val, ind) => (
+                        <span key={ind}>{ind == 0 && <span>{val}</span>} </span>
+                      ))}
+                      <b id="hmre13">
+                        <FaBell />{" "}
+                      </b>
+                    </li>
+                  </div>
+                </div>
+                <div>
+                  <li id="hmre14">
+                    <MdNavigateNext />
+                  </li>
+                </div>
+              </div>
+            )}
           </div>
-          <div>
-            <li id="hmre14">
-              <MdNavigateNext />
-            </li>
-          </div>
-        </div>
+        ))}
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}
           <small id="columnTitle">Specialist Near Me</small>

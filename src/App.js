@@ -6,13 +6,25 @@ import SignUpNav from "./components/signUpNav";
 import SignUpPage from "./components/signUpPage";
 import MainNav from "./components/mainNav";
 import Home from "./components/home";
-import { AppointmentNavbar } from "./components/appointment";
-import { UpcomingAppointments } from "./components/appointment";
+import {
+  AppointmentNavbar,
+  UpcomingAppointments,
+  CompletedAppointments,
+  CancelledAppointments,
+} from "./components/appointment";
+import {
+  Medications,
+  MedicationNav,
+  MedicationDetailsNav,
+  MedicationDetails,
+  AddMedication,
+  AddMedicationNav,
+  EditMedication,
+  EditMedicationNav,
+} from "./components/medications";
+import { ReportNav, Reports } from "./components/reports";
 import { createContext, useEffect, useState } from "react";
-import { CompletedAppointments } from "./components/appointment";
-import { CancelledAppointments } from "./components/appointment";
 import Specialist from "./components/specialist";
-
 export const app = createContext();
 
 const App = () => {
@@ -29,13 +41,7 @@ const App = () => {
       behavior: "instant",
     });
   };
-  useEffect(() => {
-    if (localStorage.getItem("CUP") == undefined) {
-      setCurrentPage("Home");
-    } else {
-      setCurrentPage(localStorage.getItem("CUP"));
-    }
-  });
+
   const [logInDetails, setlogInDetails] = useState([
     {
       Email: "",
@@ -49,7 +55,11 @@ const App = () => {
       confirmPassword: "",
     },
   ]);
-
+  const [popUpStatus, setPopUpStatus] = useState("none");
+useEffect(()=>{
+  const currentUrl = window.location.href
+  console.log("currentUrl",currentUrl)
+})
   return (
     <app.Provider
       value={{
@@ -66,6 +76,8 @@ const App = () => {
         instantScrollToTop: instantScrollToTop,
         setSk: setSk,
         SK: SK,
+        setPopUpStatus: setPopUpStatus,
+        popUpStatus: popUpStatus,
       }}
     >
       <div id="App">
@@ -80,6 +92,9 @@ const App = () => {
             </Route>
             <Route path="/" element={<MainNav />}>
               <Route index element={<Home />} />
+              <Route path="/Reports" element={<ReportNav />}>
+                <Route index element={<Reports />} />
+              </Route>
               <Route path="Appointments" element={<AppointmentNavbar />}>
                 <Route
                   path="/Appointments/Upcoming"
@@ -96,6 +111,18 @@ const App = () => {
               </Route>
             </Route>
             <Route path="/Specialist" element={<Specialist />} />
+            <Route path="/Medications" element={<MedicationNav />}>
+              <Route index element={<Medications />} />
+            </Route>
+            <Route path="/MedicationDetails" element={<MedicationDetailsNav />}>
+              <Route index element={<MedicationDetails />} />
+            </Route>
+            <Route path="/AddMedication" element={<AddMedicationNav />}>
+              <Route index element={<AddMedication />} />
+            </Route>
+            <Route path="/EditMedication" element={<EditMedicationNav />}>
+              <Route index element={<EditMedication />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </div>
