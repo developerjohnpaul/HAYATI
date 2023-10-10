@@ -153,7 +153,7 @@ export const Article = () => {
                       <li id="arre20">
                         {value.read && (
                           <>
-                            <span> {value.timeRead}</span> <span>read</span>
+                            <span>read</span> <span> {value.timeRead}</span>
                           </>
                         )}
                       </li>
@@ -239,7 +239,7 @@ export const TabbedArticle = () => {
                 {" "}
                 {tabbedArticle.read && (
                   <>
-                    <span> {tabbedArticle.timeRead}</span> <span>read</span>
+                    <span>read</span>  <span> {tabbedArticle.timeRead}</span>
                   </>
                 )}
               </li>{" "}
