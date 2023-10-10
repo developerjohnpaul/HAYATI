@@ -5,13 +5,12 @@ import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
 import { app } from "../App";
 import { useContext, useEffect } from "react";
+import { MdArticle } from "react-icons/md";
 
 const MainNav = () => {
   const App = useContext(app);
   const Navigate = useNavigate();
-  const scrollToTop = () => {
-    document.documentElement.scrollTop = 0;
-  };
+
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#FFFFFF");
@@ -89,8 +88,6 @@ const MainNav = () => {
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Appointments");
-                localStorage.setItem("CUP", "Appointments");
                 Navigate("/Appointments/Upcoming");
                 App.instantScrollToTop();
               }}
@@ -101,36 +98,32 @@ const MainNav = () => {
               <small id="mainNavBtnText">Appointments</small>
             </button>
           )}
-          {App.currentPage == "Community" && (
+          {App.currentPage == "Article" && (
             <button
               id="activeMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Community");
-                localStorage.setItem("CUP", "Community");
-
+                Navigate("/Article");
                 App.instantScrollToTop();
               }}
             >
               <span id="mainNavBtnIcon">
-                <PiUsersThreeBold />
+                <MdArticle />
               </span>
-              <small id="mainNavBtnText">Community</small>
+              <small id="mainNavBtnText">Article</small>
             </button>
           )}
-          {App.currentPage != "Community" && (
+          {App.currentPage != "Article" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
-                App.setCurrentPage("Community");
-                localStorage.setItem("CUP", "Community");
-
+                Navigate("/Article");
                 App.instantScrollToTop();
               }}
             >
               <span id="mainNavBtnIcon">
-                <PiUsersThreeBold />
+                <MdArticle />
               </span>
-              <small id="mainNavBtnText">Community</small>
+              <small id="mainNavBtnText">Article</small>
             </button>
           )}
         </div>

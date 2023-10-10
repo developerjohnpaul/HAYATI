@@ -394,7 +394,19 @@ const Home = () => {
             <div key={index}>
               <div id="eachHomepageTrendingArticle">
                 <div id="homepageTrendingArticleImgContainer">
-                  <img src={value.articleImg} id="homepageTrendingArticleImg" />
+                  <img
+                    src={value.articleImg}
+                    id="homepageTrendingArticleImg"
+                    onClick={() => {
+                      Navigate(
+                        `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.id),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  />
                 </div>
                 <div id="homepageTrendingArticleContent">
                   <div className="flexSpaceBetweenFirstBaseeline">

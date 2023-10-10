@@ -25,6 +25,7 @@ import {
 import { ReportNav, Reports } from "./components/reports";
 import { createContext, useEffect, useState } from "react";
 import Specialist from "./components/specialist";
+import { ArticleNav, Article, TabbedArticle } from "./components/article";
 export const app = createContext();
 
 const App = () => {
@@ -56,10 +57,10 @@ const App = () => {
     },
   ]);
   const [popUpStatus, setPopUpStatus] = useState("none");
-useEffect(()=>{
-  const currentUrl = window.location.href
-  console.log("currentUrl",currentUrl)
-})
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    console.log("currentUrl", currentUrl);
+  });
   return (
     <app.Provider
       value={{
@@ -84,6 +85,7 @@ useEffect(()=>{
         <BrowserRouter>
           <Routes>
             <Route path="welcome" element={<Onboarding />} />
+
             <Route path="Login" element={<LoginNav />}>
               <Route index element={<LoginPage />} />
             </Route>
@@ -95,6 +97,7 @@ useEffect(()=>{
               <Route path="/Reports" element={<ReportNav />}>
                 <Route index element={<Reports />} />
               </Route>
+
               <Route path="Appointments" element={<AppointmentNavbar />}>
                 <Route
                   path="/Appointments/Upcoming"
@@ -109,6 +112,10 @@ useEffect(()=>{
                   element={<CancelledAppointments />}
                 />
               </Route>
+              <Route path="/Article" element={<ArticleNav />}>
+                <Route index element={<Article />} />
+              </Route>
+              <Route path="/Article/Tabbed" element={<TabbedArticle />} />
             </Route>
             <Route path="/Specialist" element={<Specialist />} />
             <Route path="/Medications" element={<MedicationNav />}>

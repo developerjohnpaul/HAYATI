@@ -173,10 +173,27 @@ const MockApi = () => {
       title: `The role of physiotherapy in Hydrocephalus and Spinal cord
                   tumor Treatment`,
       author: "Dr Fawad",
+      authorImg: require("../images/DrFawadIshar.jpg"),
       timeRead: "5mins",
       status: "trending",
       read: false,
       timePosted: "PostedNow",
+      id: 1,
+      content: `Physiotherapy plays a crucial role in the treatment and management of patients living with hydrocephalus and spinal cord tumors. It focuses on improving physical function, mobility, and overall quality of life for individuals affected by these conditions. Here are some key aspects of the role of physiotherapy in their treatment:
+
+1. Mobility and Strength: Physiotherapists work to improve and maintain mobility, strength, and flexibility. This is especially important for individuals with spinal cord tumors, as they may experience muscle weakness or loss of function.
+2. Post-Surgery Rehabilitation: After surgical procedures for spinal cord tumors or shunt placements for hydrocephalus, physiotherapy is crucial in aiding recovery. It helps individuals regain strength, coordination, and range of motion.
+3. Pain Management: Physiotherapists use a variety of techniques, including manual therapy, exercises, and modalities like heat or cold therapy, to help manage pain associated with these conditions.
+4. Neurological Rehabilitation: For individuals with spinal cord tumors, physiotherapy focuses on neurological rehabilitation to address issues such as paralysis, loss of sensation, and impaired coordination.
+5. Gait Training: Physiotherapists assist patients in relearning how to walk, especially if they've experienced mobility issues due to spinal cord tumors or surgical procedures.
+6. Balance and Coordination: Hydrocephalus and spinal cord tumors can affect balance and coordination. Physiotherapy interventions target these areas to improve stability and reduce the risk of falls.
+7. Assistive Devices and Mobility Aids: Physiotherapists can assess the need for and provide guidance on using mobility aids such as walkers, canes, or wheelchairs.
+8. Respiratory Care: For individuals with spinal cord tumors affecting the respiratory system, physiotherapists can provide exercises and techniques to improve lung function.
+9. Hydrotherapy (Aquatic Therapy): Water-based exercises in a controlled environment can be beneficial for individuals with limited mobility due to spinal cord tumors or hydrocephalus.
+10. Patient Education: Physiotherapists educate patients and their families on exercises, techniques, and strategies for maintaining and improving physical function.
+11. Preventing Complications: Physiotherapy helps prevent complications like muscle contractures, pressure sores, and respiratory issues that may arise due to reduced mobility.
+12. Emotional Support: Physiotherapists often provide emotional support and motivation, which can be crucial for patients facing the challenges associated with hydrocephalus and spinal cord tumors.
+`,
     },
     {
       articleImg: require("../images/radiologist.jpg"),
@@ -184,10 +201,40 @@ const MockApi = () => {
       conditions using imaging equipment. Radiologists often specialize in specific areas of
        radiology, such as pediatric radiology, oncology radiology or interventional radiology.`,
       author: "Dr Chiamaka Ayinna",
+      authorImg: require("../images/DrChiamakaAyinna.jpg"),
       timeRead: "10mins",
       status: "trending",
       read: false,
       timePosted: "PostedNow",
+      id: 2,
+      content: `A radiologist is a medical doctor who specializes in the interpretation of medical images to diagnose and treat diseases or conditions. They play a crucial role in the healthcare system by providing valuable information to guide patient care.
+
+Here are some key aspects of a radiologist's role:
+
+Interpretation of Medical Images: Radiologists review and interpret a variety of medical images, including X-rays, CT scans, MRI scans, ultrasounds, and nuclear medicine studies. They identify abnormalities, injuries, or diseases based on these images.
+
+Diagnostic Expertise: Radiologists are skilled in recognizing the subtle differences in shades of gray, structures, and patterns on medical images. This expertise allows them to detect and diagnose a wide range of conditions.
+
+Specialized Training: Becoming a radiologist requires extensive education and training. After completing medical school, they typically undergo a residency program in radiology, which provides specialized training in medical imaging techniques and interpretation.
+
+Collaboration with Healthcare Teams: Radiologists work closely with other healthcare professionals, including referring physicians and surgeons, to provide accurate and timely diagnoses. They play a crucial role in guiding treatment plans.
+
+Subspecialties: Radiology encompasses various subspecialties, such as neuroradiology (focused on the nervous system), musculoskeletal radiology (focused on bones and joints), and interventional radiology (which involves using imaging guidance for minimally invasive procedures). Radiologists may choose to specialize in one of these areas.
+
+Staying Current with Technology: Radiologists must keep up-to-date with the latest advancements in imaging technology and techniques. This includes staying informed about new equipment, software, and imaging protocols.
+
+Ethical Considerations: Radiologists must uphold ethical standards in patient care, including issues related to patient privacy, informed consent, and maintaining the confidentiality of medical information.
+
+Quality Assurance: Radiologists are responsible for ensuring the quality of the images they interpret. This includes working with radiologic technologists to optimize image quality and reporting any technical issues that may affect the accuracy of diagnoses.
+
+Teaching and Research: Many radiologists are involved in teaching medical students, residents, and fellows. They may also engage in research to advance the field of radiology and improve imaging techniques.
+
+Continuous Learning and Certification: Radiologists are required to participate in continuing medical education to stay current with advances in their field. They also need to maintain board certification through periodic examinations.
+
+Radiologists play a critical role in modern medicine by providing essential information for diagnosing and treating a wide range of medical conditions. Their expertise in medical imaging is vital for patient care and the overall functioning of the healthcare system.
+
+
+`,
     },
     {
       articleImg: require("../images/surgeon.jpg"),
@@ -196,20 +243,201 @@ const MockApi = () => {
        done to diagnose or treat disease or injury. In the operating room, surgeons lead a 
        team of other doctors and nurses to make sure that a procedure goes smoothly.`,
       author: "Dr Babajide Fashola",
+      authorImg: require("../images/DrBabajideFashola.jpg"),
       timeRead: "12mins",
       status: "trending",
       read: false,
-      timePosted: "PostedNow",
+      timePosted: "Posted Now",
+      id: 3,
+      content: `A surgeon is a medical doctor who specializes in performing surgical procedures to treat injuries, diseases, and various medical conditions. Surgeons play a critical role in healthcare by providing both elective and emergency surgical interventions. Their primary focus is on using surgical techniques to restore, repair, or remove damaged or diseased tissues in the human body.
+
+Here are some key aspects of a surgeon's role:
+
+Surgical Expertise: Surgeons are highly trained in surgical techniques and procedures. They possess advanced knowledge of anatomy, physiology, and pathology relevant to their area of specialization.
+
+Preoperative Evaluation: Surgeons assess patients before surgery, conducting thorough examinations, reviewing medical histories, and ordering necessary tests to ensure they are medically fit for the procedure.
+
+Surgical Planning: Surgeons develop comprehensive surgical plans, considering factors like the type of procedure, anesthesia, equipment, and postoperative care.
+
+Intraoperative Care: Surgeons perform the actual surgical procedure, often assisted by a surgical team that includes nurses, anesthesiologists, and surgical technologists.
+
+Precision and Dexterity: Surgeons require exceptional manual dexterity and hand-eye coordination to perform intricate surgical procedures with precision.
+
+Decision-Making in the Operating Room: Surgeons must make critical decisions in real-time during surgery, adapting to unexpected findings or complications that may arise.
+
+Postoperative Care: Surgeons oversee the immediate postoperative care of patients, ensuring they recover safely from the surgical procedure. This includes monitoring vital signs, managing pain, and addressing any immediate concerns.
+
+Follow-Up and Recovery: Surgeons provide postoperative follow-up care, monitoring patients' progress and addressing any complications or concerns that may arise during the recovery period.
+
+Collaboration with Healthcare Teams: Surgeons work closely with other healthcare professionals, including anesthesiologists, radiologists, nurses, and specialists, to ensure comprehensive patient care.
+
+Continuing Medical Education: Surgeons engage in ongoing education to stay updated on the latest advancements in surgical techniques, technologies, and best practices.
+
+Ethical Considerations: Surgeons must uphold high ethical standards in patient care, ensuring informed consent, privacy, and confidentiality are maintained.
+
+Emergency and Trauma Surgery: Some surgeons specialize in emergency or trauma surgery, where immediate intervention is required to save lives.
+
+It's important to note that surgeons often have specialized areas of practice, such as cardiovascular surgery, orthopedic surgery, neurosurgery, and more. They work in a variety of settings, including hospitals, surgical centers, and clinics.
+
+Surgeons play a critical role in healthcare, performing a wide range of procedures that contribute to the overall health and well-being of patients. Their expertise and skills are essential in both planned surgeries and emergency interventions.
+`,
     },
     {
       articleImg: require("../images/neurologist.jpg"),
       title: `A neurologist is a medical doctor who specializes in treating diseases of
        the brain and nervous system1`,
-      author: "Dr Fawad Ishar",
+      author: "Dr.Richard William",
+      authorImg: require("../images/Dr.Richard William.jpg"),
       timeRead: "16mins",
       status: "trending",
       read: false,
-      timePosted: "PostedNow",
+      timePosted: "Posted Now",
+      id: 4,
+      content: `A neurologist is a medical doctor who specializes in the diagnosis and treatment of disorders related to the nervous system. This includes the brain, spinal cord, peripheral nerves, and muscles. Neurologists play a crucial role in evaluating and managing a wide range of neurological conditions, from common issues like headaches and epilepsy to more complex conditions such as multiple sclerosis and neurodegenerative diseases like Alzheimer's and Parkinson's.
+
+Here are some key aspects of a neurologist's role:
+
+Medical Expertise: Neurologists are highly trained medical doctors with specialized knowledge of the nervous system and its functions.
+
+Diagnostic Evaluation: They use a combination of clinical assessment, specialized tests, and imaging studies (like MRI or CT scans) to diagnose neurological conditions.
+
+Treatment Planning: Neurologists develop personalized treatment plans for patients based on their specific neurological condition. This may include medication management, physical therapy, or referral to other specialists.
+
+Management of Chronic Conditions: Neurologists often treat chronic conditions that require long-term care, such as epilepsy, multiple sclerosis, or chronic migraines.
+
+Neurological Disorders: They address a wide range of neurological disorders, including but not limited to epilepsy, stroke, dementia, movement disorders (like Parkinson's disease), neuropathies, and neuromuscular disorders.
+
+Collaboration with Other Specialists: Neurologists often collaborate with other healthcare professionals, including neurosurgeons, neuropsychologists, physical therapists, and occupational therapists, to provide comprehensive care.
+
+Stroke Management: Neurologists are key members of stroke care teams, involved in the acute management of stroke patients and long-term stroke prevention strategies.
+
+Research and Innovation: Many neurologists engage in research to advance the understanding of neurological conditions and to develop new treatment options.
+
+Patient Education: They educate patients and their families about their condition, treatment options, and lifestyle modifications to improve overall well-being.
+
+Emergency Care: In some cases, neurologists may provide emergency care for acute neurological conditions, especially in hospital settings.
+
+Ethical Considerations: Neurologists must uphold ethical standards in patient care, ensuring informed consent, privacy, and confidentiality are maintained.
+
+Continuing Medical Education: They engage in ongoing education to stay updated on the latest advancements in neurology, including new treatment options and technologies.
+
+Neurologists play a vital role in the healthcare system, providing expert care for patients with a wide range of neurological conditions. Their expertise is critical in managing conditions that can significantly impact a person's quality of life and overall well-being.`,
+    },
+    {
+      articleImg: require("../images/nutritionanddiet.jpg"),
+      title: `Nutrition and Diets for patients living with hydrocephalus and spinal cord tumor`,
+      author: "Dr. Mira Raynah",
+      authorImg: require("../images/Dr. Mira Raynah.jpg"),
+      timeRead: "13mins",
+      status: "related",
+      read: true,
+      timePosted: "13mins ago",
+      id: 5,
+      content: `Managing the nutrition of patients living with hydrocephalus and spinal cord tumors is essential for their overall health and well-being. It's important to consult with a healthcare professional, such as a registered dietitian, who can provide personalized advice based on the individual's specific needs and medical condition. That being said, here are some general guidelines to consider:
+1. Balanced Diet:
+Focus on a balanced diet that includes a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats. This helps provide essential nutrients for overall health.
+2. Adequate Protein Intake:
+Protein is crucial for tissue repair and immune function. Include lean meats, poultry, fish, eggs, dairy products, legumes, and plant-based protein sources.
+3. Adequate Calcium and Vitamin D:
+These nutrients are important for bone health, especially if the patient has limited mobility. Include dairy products, fortified plant-based milks, leafy greens, and exposure to sunlight.
+4. Hydration:
+Ensure the patient stays well-hydrated, as dehydration can worsen symptoms. Encourage regular intake of water and fluids.
+5. Fiber-Rich Foods:
+Fiber helps with regular bowel movements, which can be important for those with spinal cord tumors. Include whole grains, fruits, vegetables, and legumes.
+6. Omega-3 Fatty Acids:
+Include sources of omega-3 fatty acids like fatty fish (salmon, mackerel), flaxseeds, chia seeds, and walnuts. These can help reduce inflammation.
+7. Limit Added Sugars and Processed Foods:
+Minimize the consumption of sugary snacks, sugary beverages, and highly processed foods. These can contribute to inflammation and overall poor health.
+8. Soft Diet (if needed):
+Depending on the individual's condition, they may benefit from a soft or modified texture diet. This can make it easier to swallow and digest food.
+9. Consider Nutritional Supplements:
+In some cases, supplements may be recommended to meet specific nutrient needs. This should be done under the guidance of a healthcare professional.
+10. Monitor Weight:
+Regularly monitor weight to ensure the patient is maintaining a healthy body weight. Significant weight changes may require adjustments to the diet plan.
+11. Medication Considerations:
+Be aware of any medication interactions with certain nutrients or foods. Discuss this with the healthcare team.`,
+    },
+    {
+      articleImg: require("../images/InspiringPatients.jpg"),
+      title: `Inspiring Patient’s stories Triumph and  Challenges in the Face of Hydrocephalus and Spinal Cord Tumor`,
+      author: "Dr.Richard William",
+      authorImg: require("../images/Dr.Richard William.jpg"),
+      timeRead: "just now",
+      status: "related",
+      read: true,
+      timePosted: "35mins ago",
+      id: 6,
+      content: `
+      
+Absolutely, here are two fictional but inspirational patient stories:
+
+Patient Story 1: Defying the Odds - Beating Hydrocephalus
+
+Sarah's Journey: Triumph Over Hydrocephalus
+
+Sarah was born with hydrocephalus, a condition that presented immediate challenges. However, her parents were determined to give her the best chance at a fulfilling life. Through numerous surgeries and continuous medical care, Sarah's determination shone through.
+
+Despite facing physical and cognitive hurdles, Sarah's resilience knew no bounds. With the unwavering support of her family and a team of dedicated healthcare professionals, she not only learned to walk, but also excelled academically.
+
+Sarah's passion for advocacy blossomed as she grew older. She became a voice for individuals with hydrocephalus, raising awareness and funds for research. Her story is a testament to the power of determination and the impact of a strong support system.
+
+Patient Story 2: Finding Strength Amidst Adversity - Conquering Spinal Cord Tumor
+
+David's Odyssey: Overcoming a Spinal Cord Tumor
+
+David's life took an unexpected turn when he was diagnosed with a spinal cord tumor. The news was daunting, but David refused to let it define him. With the guidance of his medical team, he embarked on a challenging treatment journey.
+
+The road was marked with surgery, radiation therapy, and intense rehabilitation. David faced each day with unyielding determination, motivated by his desire to regain mobility and independence. Through countless hours of physical therapy, he learned to adapt and thrive.
+
+David's story is a testament to the human spirit's capacity for resilience. He not only regained his ability to walk but also found newfound purpose in helping others facing similar challenges. Today, he volunteers as a mentor, providing support and encouragement to those navigating the path to recovery.
+
+These stories highlight the incredible strength, resilience, and determination of individuals facing hydrocephalus and spinal cord tumors. They serve as beacons of hope and inspiration for others who may be on similar journeys.
+`,
+    },
+    {
+      articleImg: require("../images/young-family-with-their-sons-home-having-fun.jpg"),
+      title: `Family and Caregiver support: Strategies for Providing Assistance and Maintaining Wellbeing`,
+      author: "DrBabajide Fashola",
+      authorImg: require("../images/DrBabajideFashola.jpg"),
+      timeRead: "15 min ago",
+      status: "related",
+      read: true,
+      timePosted: "20mins ago",
+      id: 7,
+      content: `Supporting a family member or loved one facing challenges like hydrocephalus or spinal cord tumors can be both rewarding and demanding. Here are some strategies for providing assistance while also maintaining your own wellbeing:
+
+Open Communication: Maintain open and honest communication with the individual you're caring for. Listen to their needs and concerns, and share your own feelings and limitations as well.
+
+Educate Yourself: Learn as much as you can about the specific condition and treatment options. This knowledge will empower you to make informed decisions and better support your loved one.
+
+Create a Support Network: Connect with support groups, online forums, or local organizations focused on the specific condition. These communities can provide valuable information, resources, and emotional support.
+
+Respect Independence: Encourage independence when possible. Allow the individual to take charge of tasks they're capable of, and offer assistance only when needed.
+
+Establish Routines: Consistency can provide a sense of stability for both you and your loved one. Establishing routines can help manage daily activities and reduce stress.
+
+Delegate Tasks: Don't be afraid to ask for help from other family members, friends, or professional caregivers. Delegate tasks to prevent burnout and ensure the best care possible.
+
+Self-Care is Vital: Take time for yourself. Engage in activities that you enjoy, practice relaxation techniques, and prioritize your physical and mental health.
+
+Set Realistic Expectations: Recognize your own limitations and set realistic expectations. It's okay to ask for help, seek respite care, or take breaks when needed.
+
+Advocate for Their Needs: Be an advocate for your loved one in healthcare settings. Ensure they receive the best possible care, and don't hesitate to seek second opinions if necessary.
+
+Seek Professional Guidance: Consult with healthcare professionals, therapists, or counselors who specialize in the specific condition. They can provide valuable advice and coping strategies.
+
+Be Mindful of Emotional Wellbeing: Both you and your loved one may experience a range of emotions. Acknowledge and validate these feelings, and consider seeking professional support if needed.
+
+Celebrate Small Achievements: Acknowledge and celebrate even the smallest milestones and achievements. This can boost morale and provide a sense of accomplishment.
+
+Remember, being a caregiver is a significant responsibility, and it's important to take care of yourself as well. By implementing these strategies, you can provide the best possible support for your loved one while also maintaining your own wellbeing.
+
+
+
+
+
+Regenerate
+`,
     },
   ]);
 
@@ -339,7 +567,7 @@ const MockApi = () => {
     },
     {
       Day: "Sat",
-      Calories:800 ,
+      Calories: 800,
       Protein: 130,
       Fats: 60,
       Carbs: 150,
