@@ -19,7 +19,7 @@ export const ArticleNav = () => {
   const App = useContext(app);
   return (
     <>
-      {App.status == "loggedIn" && (
+    
         <div id="rere4">
           {" "}
           {App.popUpStatus == "save" && <div id="ge2"></div>}
@@ -38,7 +38,7 @@ export const ArticleNav = () => {
             </div>
           </div>
         </div>
-      )}
+      
       <Outlet />
     </>
   );
@@ -71,7 +71,7 @@ export const Article = () => {
  
   return (
     <>
-      {App.status == "loggedIn" && (
+    
         <div className="flexColumnStart">
           <div id="ge3">
             <div className="flexSpaceBetween" id="columnTitleContainer">
@@ -398,7 +398,7 @@ export const Article = () => {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 };
@@ -427,7 +427,7 @@ export const TabbedArticle = () => {
  
   return (
     <>
-      {App.status == "loggedIn" && (
+    
         <div className="flexColumnStart">
           <div>
             <div id="tare1">
@@ -471,7 +471,7 @@ export const TabbedArticle = () => {
             <p id="tare10">{tabbedArticle.content}</p>
           </div>
         </div>
-      )}
+      
     </>
   );
 };
@@ -486,7 +486,7 @@ export const BookmarkNav = () => {
  
   return (
     <>
-      {App.status == "loggedIn" && (
+    
         <div id="rere4">
           {" "}
           {App.popUpStatus == "save" && <div id="ge2"></div>}
@@ -505,7 +505,7 @@ export const BookmarkNav = () => {
             </div>
           </div>
         </div>
-      )}
+      
       <Outlet />
     </>
   );
@@ -525,7 +525,7 @@ export const Bookmark = () => {
   }, [Api.articles]);
   return (
     <div className="flexColumnStart">
-      {App.status == "loggedIn" && (
+    
         <div id="ge3">
           {" "}
           {bookmark.length == 0 && (
@@ -643,7 +643,7 @@ export const Bookmark = () => {
             </div>
           ))}
         </div>
-      )}
+      
     </div>
   );
 };

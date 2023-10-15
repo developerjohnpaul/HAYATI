@@ -26,7 +26,7 @@ export const SettingsNav = () => {
   return (
     <>
       {" "}
-      {App.status == "loggedIn" && (
+      
         <div id="sere4">
           {App.blurredBackgroundOverlayStatus == "visible" && (
             <div
@@ -51,7 +51,7 @@ export const SettingsNav = () => {
             <li id="sere3">Settings</li>
           </div>
         </div>
-      )}
+      
       <Outlet />
     </>
   );
@@ -141,7 +141,7 @@ export const Settings = () => {
           </div>
         </>
       )}
-      {App.status == "loggedIn" && (
+      
         <div className="flexColumnStart">
           <div id="ge3">
             <h4 id="sere5">My account</h4>
@@ -309,7 +309,7 @@ export const Settings = () => {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 };
@@ -324,7 +324,7 @@ export const EditProfileNav = () => {
   return (
     <>
       {" "}
-      {App.status == "loggedIn"  && (<div id="sere4">
+    <div id="sere4">
         {App.blurredBackgroundOverlayStatus == "visible" && (
           <div
             id="ge2"
@@ -347,7 +347,7 @@ export const EditProfileNav = () => {
           </button>
           <li id="sere3">Edit Profile</li>
         </div>
-      </div>)}
+      </div>
       <Outlet />
     </>
   );
@@ -367,7 +367,7 @@ export const EditProfile = () => {
           <div id="BluredBackgroundOverlay"></div>
         </>
       )}{" "}
-      {App.status == "loggedIn"  && (<div className="flexColumnStart">
+    <div className="flexColumnStart">
         <div id="sere24">
           <div className="flexCenter">
             <div id="sere16">
@@ -573,7 +573,7 @@ export const EditProfile = () => {
             )}
           </li>
         </div>
-      </div>)}
+      </div>
       <input
         type="date"
         id="sere29"

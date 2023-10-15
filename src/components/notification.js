@@ -11,7 +11,7 @@ export const NotificationNav = () => {
   const App = useContext(app);
   return (
     <>
-      {App.status == "loggedIn" && (<div id="nore4">
+    <div id="nore4">
         {" "}
         {App.popUpStatus == "save" && <div id="ge2"></div>}
         <div id="nore1">
@@ -28,7 +28,7 @@ export const NotificationNav = () => {
             <li id="nore3">Notification</li>
           </div>
         </div>
-      </div>)}
+      </div>
       <Outlet />
     </>
   );
@@ -38,7 +38,7 @@ export const Notification = () => {
     const App = useContext(app)
   return (
     <>
-      {App.status == "loggedIn" && (<div className="flexColumnStart">
+    <div className="flexColumnStart">
         <div id="ge3">
           <div id="nore5">
             <img
@@ -48,7 +48,7 @@ export const Notification = () => {
             <p id="apre20">oops you dont have any notification </p>
           </div>
         </div>
-      </div>)}
+      </div>
     </>
   );
 };

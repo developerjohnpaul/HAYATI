@@ -124,98 +124,96 @@ const Specialist = () => {
   };
   return (
     <>
-      {App.status == "loggedIn" && (
-        <div id="SpecialistPage">
-          <div id="spere1">
-            <div className="flexStart fixed-top" id="spre14">
-              <button
-                id="spere2"
-                type="button"
-                onClick={() => {
-                  Navigate("/");
-                }}
-              >
-                <IoIosArrowBack />
-              </button>
-              <small id="spere3"> Doctor's Detail</small>
-            </div>
-            <div className="flexCenter">
-              {" "}
-              <div id="spere4">
-                <div className="flexColumnCenter" id="spre10">
-                  <div id="spre5">
-                    <small id="spre8">{specialist.specialistName}</small>
-                    <small id="spre9">
-                      {specialist.specialty} -{specialist.stateOfResidence}
-                    </small>
-                  </div>
-                </div>
-                <div id="spre6">
-                  <img src={specialist.SpeacialistProfileImg} id="spre7" />
-                </div>
-              </div>
-            </div>
+      <div id="SpecialistPage">
+        <div id="spere1">
+          <div className="flexStart fixed-top" id="spre14">
+            <button
+              id="spere2"
+              type="button"
+              onClick={() => {
+                Navigate("/");
+              }}
+            >
+              <IoIosArrowBack />
+            </button>
+            <small id="spere3"> Doctor's Detail</small>
           </div>
-
-          <div id="spre11">
-            <div className="flexStart">
-              <div id="spre12">
-                <small id="spre13">Patients</small>
-                <small id="spre15">{patients}</small>
+          <div className="flexCenter">
+            {" "}
+            <div id="spere4">
+              <div className="flexColumnCenter" id="spre10">
+                <div id="spre5">
+                  <small id="spre8">{specialist.specialistName}</small>
+                  <small id="spre9">
+                    {specialist.specialty} -{specialist.stateOfResidence}
+                  </small>
+                </div>
               </div>
-              <div id="spre12">
-                {" "}
-                <small id="spre13">Experience</small>
-                <small id="spre15">{experience} Yrs</small>
+              <div id="spre6">
+                <img src={specialist.SpeacialistProfileImg} id="spre7" />
               </div>
-              <div id="spre12">
-                <small id="spre13">Rating</small>
-                <small id="spre15">4.0</small>
-              </div>
-            </div>
-
-            <div id="spre16">
-              <h5 id="spre17">About Doctor</h5>
-              <p id="spre18">{specialist.about}</p>
-            </div>
-
-            <div className="flexSpaceBetween" id="spre19">
-              <small id="spre17">Location</small>
-              <a href={specialist.gMapLocationRLink}>
-                {" "}
-                <button id="spre20" type="button">
-                  View map
-                </button>
-              </a>
-            </div>
-            <div id="spre21">
-              <iframe
-                src={specialist.gMapLocationDLink}
-                width="100%"
-                height="450"
-                style={{ border: "0" }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            <div className="flexCenter">
-              {" "}
-              <button type="button" id="spre22" onClick={bookAppointment}>
-                {!pendingAppointment && <span>Book Appointment</span>}
-                {pendingAppointment && (
-                  <span
-                    className="spinner-border"
-                    id="spre23"
-                    role="status"
-                  ></span>
-                )}
-              </button>
             </div>
           </div>
         </div>
-      )}
+
+        <div id="spre11">
+          <div className="flexStart">
+            <div id="spre12">
+              <small id="spre13">Patients</small>
+              <small id="spre15">{patients}</small>
+            </div>
+            <div id="spre12">
+              {" "}
+              <small id="spre13">Experience</small>
+              <small id="spre15">{experience} Yrs</small>
+            </div>
+            <div id="spre12">
+              <small id="spre13">Rating</small>
+              <small id="spre15">4.0</small>
+            </div>
+          </div>
+
+          <div id="spre16">
+            <h5 id="spre17">About Doctor</h5>
+            <p id="spre18">{specialist.about}</p>
+          </div>
+
+          <div className="flexSpaceBetween" id="spre19">
+            <small id="spre17">Location</small>
+            <a href={specialist.gMapLocationRLink}>
+              {" "}
+              <button id="spre20" type="button">
+                View map
+              </button>
+            </a>
+          </div>
+          <div id="spre21">
+            <iframe
+              src={specialist.gMapLocationDLink}
+              width="100%"
+              height="450"
+              style={{ border: "0" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div className="flexCenter">
+            {" "}
+            <button type="button" id="spre22" onClick={bookAppointment}>
+              {!pendingAppointment && <span>Book Appointment</span>}
+              {pendingAppointment && (
+                <span
+                  className="spinner-border"
+                  id="spre23"
+                  role="status"
+                ></span>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

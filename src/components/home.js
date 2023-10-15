@@ -29,12 +29,7 @@ const Home = () => {
   useEffect(() => {
     App.setCurrentPage("Home");
   });
-  useEffect(() => {
-    const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
-      setStatus("ready");
-    }
-  });
+
   const [homepageCarousel, setHomepageCarousel] = useState([
     {
       bgImg: require("../images/vitamins.jpg"),
@@ -112,433 +107,419 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (App.status == "loggedIn") {
-      const carousel = document.getElementById("homepageCarouselContainer");
-      let scrollStop;
-      carousel.addEventListener(
-        "scroll",
-        (e) => {
-          clearInterval(scrollStop);
-        },
-        (scrollStop = setInterval(() => {
-          if (carouselNum < 4) {
-            setCarouselNum((prev) => prev + 1);
-          }
-          if (carouselNum == 4) {
-            setCarouselNum(1);
-          }
-          if (carouselNum == 1) {
-            carousel.scrollLeft = carousel.offsetWidth;
-            setCarouselNum(2);
-          } else if (carouselNum == 2) {
-            carousel.scrollLeft = carousel.offsetWidth * 2;
-            setCarouselNum(3);
-          } else if (carouselNum == 3) {
-            carousel.scrollLeft = carousel.offsetWidth * 3;
-            setCarouselNum(4);
-          } else if (carouselNum == 4) {
-            carousel.scrollLeft = 0;
-            setCarouselNum(1);
-          }
-        }, 5000))
-      );
-    }
+    const carousel = document.getElementById("homepageCarouselContainer");
+    let scrollStop;
+    carousel.addEventListener(
+      "scroll",
+      (e) => {
+        clearInterval(scrollStop);
+      },
+      (scrollStop = setInterval(() => {
+        if (carouselNum < 4) {
+          setCarouselNum((prev) => prev + 1);
+        }
+        if (carouselNum == 4) {
+          setCarouselNum(1);
+        }
+        if (carouselNum == 1) {
+          carousel.scrollLeft = carousel.offsetWidth;
+          setCarouselNum(2);
+        } else if (carouselNum == 2) {
+          carousel.scrollLeft = carousel.offsetWidth * 2;
+          setCarouselNum(3);
+        } else if (carouselNum == 3) {
+          carousel.scrollLeft = carousel.offsetWidth * 3;
+          setCarouselNum(4);
+        } else if (carouselNum == 4) {
+          carousel.scrollLeft = 0;
+          setCarouselNum(1);
+        }
+      }, 5000))
+    );
   }, [carouselNum]);
 
   useEffect(() => {
-    if (App.status == "loggedIn") {
-      const LatestMedication = Api.medications.filter((value, index) => {
-        return index == Api.medications.length - 1;
-      });
-      setLatestMedication(LatestMedication);
-      const lastAppointment = Api.appointment[Api.appointment.length - 1];
+    const LatestMedication = Api.medications.filter((value, index) => {
+      return index == Api.medications.length - 1;
+    });
+    setLatestMedication(LatestMedication);
+    const lastAppointment = Api.appointment[Api.appointment.length - 1];
 
-      if (lastAppointment.status == "Upcoming") {
-        setLatestAppointments(lastAppointment);
-      }
+    if (lastAppointment.status == "Upcoming") {
+      setLatestAppointments(lastAppointment);
+    }
 
-      if (lastAppointment.status != "Upcoming") {
-        setLatestAppointments({});
-      }
+    if (lastAppointment.status != "Upcoming") {
+      setLatestAppointments({});
     }
   }, []);
   useEffect(() => {
-    if (App.status == "loggedIn") {
-      const trendingArticle = Api.articles.filter((value) => {
-        return value.status == "trending";
-      });
-      setTrendingArticles(trendingArticle);
-    }
+    const trendingArticle = Api.articles.filter((value) => {
+      return value.status == "trending";
+    });
+    setTrendingArticles(trendingArticle);
   }, [Api.articles]);
 
   useEffect(() => {
-    if (App.status == "loggedIn") {
-      const upcomingAppointment = Api.appointment.filter((value, index) => {
-        return value.status == "Upcoming";
-      });
-      setUpcomingAppointments(upcomingAppointment);
-      const upcomingAppointmentLatestFiltered = Api.appointment.filter(
-        (value, index) => {
-          return (
-            value.status == "Upcoming" && index != Api.appointment.length - 1
-          );
-        }
-      );
-      setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
-    }
+    const upcomingAppointment = Api.appointment.filter((value, index) => {
+      return value.status == "Upcoming";
+    });
+    setUpcomingAppointments(upcomingAppointment);
+    const upcomingAppointmentLatestFiltered = Api.appointment.filter(
+      (value, index) => {
+        return (
+          value.status == "Upcoming" && index != Api.appointment.length - 1
+        );
+      }
+    );
+    setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
   }, [Api.appointment]);
 
   return (
     <>
-      {App.status == "loggedIn" && (
-        <div id="home" className="flexColumnCenter">
-          {" "}
-          <div className="flexCenter fixed-top">
-            <div id="HomeNav">
-              <small id="HomepageWelcomeMessage">
-                Welcome back,{App.user.Name}{" "}
-              </small>
-              <div className="flexCenter">
-                <img
-                  src={require("../images/profileImg.png")}
-                  id="homeNavProfileImg"
-                  onClick={() => {
-                    Navigate("/Settings");
-                    App.instantScrollToTop();
-                  }}
-                />
-                <button
-                  id="hmre1"
-                  onClick={() => {
-                    Navigate("/Notification");
-                    App.instantScrollToTop();
-                  }}
-                >
-                  <FaRegBell />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="flexCenter">
-            {" "}
-            <div id="homeSearchBar" className="flexStart">
-              <span id="hmre2">
-                <HiOutlineSearch />
-              </span>
-              <input
-                id="homeSearchInput"
-                type="text"
-                placeholder="Search"
-                onFocus={() => {
-                  document.getElementById("homeSearchBar").style =
-                    "border :2px solid #0390A3";
-                }}
-                onBlur={() => {
-                  document.getElementById("homeSearchBar").style =
-                    "border :1px solid #0390A3";
+      <div id="home" className="flexColumnCenter">
+        {" "}
+        <div className="flexCenter fixed-top">
+          <div id="HomeNav">
+            <small id="HomepageWelcomeMessage">
+              Welcome back,{App.user.Name}{" "}
+            </small>
+            <div className="flexCenter">
+              <img
+                src={require("../images/profileImg.png")}
+                id="homeNavProfileImg"
+                onClick={() => {
+                  Navigate("/Settings");
+                  App.instantScrollToTop();
                 }}
               />
+              <button
+                id="hmre1"
+                onClick={() => {
+                  Navigate("/Notification");
+                  App.instantScrollToTop();
+                }}
+              >
+                <FaRegBell />
+              </button>
             </div>
           </div>
-          <div id="homepageCarouselContainer" onScroll={carouselScroll}>
-            {homepageCarousel.map((value, index) => (
+        </div>
+        <div className="flexCenter">
+          {" "}
+          <div id="homeSearchBar" className="flexStart">
+            <span id="hmre2">
+              <HiOutlineSearch />
+            </span>
+            <input
+              id="homeSearchInput"
+              type="text"
+              placeholder="Search"
+              onFocus={() => {
+                document.getElementById("homeSearchBar").style =
+                  "border :2px solid #0390A3";
+              }}
+              onBlur={() => {
+                document.getElementById("homeSearchBar").style =
+                  "border :1px solid #0390A3";
+              }}
+            />
+          </div>
+        </div>
+        <div id="homepageCarouselContainer" onScroll={carouselScroll}>
+          {homepageCarousel.map((value, index) => (
+            <div
+              id="eachhomepageCarousel"
+              style={{
+                backgroundImage: `url(${value.bgImg})`,
+              }}
+              key={index}
+            >
               <div
-                id="eachhomepageCarousel"
                 style={{
-                  backgroundImage: `url(${value.bgImg})`,
+                  height: "90px",
+
+                  marginBottom: "5px",
                 }}
-                key={index}
               >
-                <div
-                  style={{
-                    height: "90px",
+                <li id="homepageCarouselTitle">{value.title}</li>
 
-                    marginBottom: "5px",
-                  }}
-                >
-                  <li id="homepageCarouselTitle">{value.title}</li>
-
-                  <li id="homepageCarouselContent">{value.Content}</li>
-                </div>
-                <button id="homepageCarouselReadMoreBtn">Read more</button>
+                <li id="homepageCarouselContent">{value.Content}</li>
+              </div>
+              <button id="homepageCarouselReadMoreBtn">Read more</button>
+            </div>
+          ))}
+        </div>
+        <div id="carouselIndicator">
+          {carouselNum == 1 && <li id="activeCarouselIndicator" />}
+          {carouselNum != 1 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum == 2 && <li id="activeCarouselIndicator" />}
+          {carouselNum != 2 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum == 3 && <li id="activeCarouselIndicator" />}
+          {carouselNum != 3 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum == 4 && <li id="activeCarouselIndicator" />}
+          {carouselNum != 4 && <li id="inActiveCarouselIndicator" />}
+        </div>
+        <div className="flexSpaceBetween" id="columnTitleContainer">
+          {" "}
+          <small id="columnTitle">Upcoming Appointments</small>
+          <button
+            type="button"
+            id="columnViewAllBtn"
+            onClick={() => {
+              Navigate("/Appointments/Upcoming ");
+              App.instantScrollToTop();
+            }}
+          >
+            View All{" "}
+            <span id="columnViewAllIcon">
+              <MdNavigateNext />{" "}
+            </span>
+          </button>
+        </div>
+        <div className="flexStart" id="upComingAppointmentContainer">
+          {Object.keys(latestAppointments).length != 0 && (
+            <div>
+              {" "}
+              <ul id="latestUpComingAppointment">
+                <li id="hmre3">{latestAppointments.date}</li>
+                <li id="hmre4">{latestAppointments.month}</li>
+                <li id="hmre5">{latestAppointments.title}</li>
+                <li id="hmre6">
+                  {latestAppointments.startTime}- {latestAppointments.endTime}
+                </li>{" "}
+                <li id="hmre6">{latestAppointments.location}</li>
+              </ul>
+            </div>
+          )}
+          <div className="flexStart">
+            {upcomingAppointmentsLatestFiltered.map((value, index) => (
+              <div key={index}>
+                <ul id="UpComingAppointment">
+                  <li id="hmre3">{value.date}</li>
+                  <li id="hmre4">{value.month}</li>
+                  <li id="hmre5">{value.title}</li>
+                  <li id="hmre6">
+                    {value.startTime}- {value.endTime}
+                  </li>{" "}
+                  <li id="hmre6">{value.location}</li>
+                </ul>
               </div>
             ))}
           </div>
-          <div id="carouselIndicator">
-            {carouselNum == 1 && <li id="activeCarouselIndicator" />}
-            {carouselNum != 1 && <li id="inActiveCarouselIndicator" />}
-            {carouselNum == 2 && <li id="activeCarouselIndicator" />}
-            {carouselNum != 2 && <li id="inActiveCarouselIndicator" />}
-            {carouselNum == 3 && <li id="activeCarouselIndicator" />}
-            {carouselNum != 3 && <li id="inActiveCarouselIndicator" />}
-            {carouselNum == 4 && <li id="activeCarouselIndicator" />}
-            {carouselNum != 4 && <li id="inActiveCarouselIndicator" />}
-          </div>
-          <div className="flexSpaceBetween" id="columnTitleContainer">
-            {" "}
-            <small id="columnTitle">Upcoming Appointments</small>
-            <button
-              type="button"
-              id="columnViewAllBtn"
-              onClick={() => {
-                Navigate("/Appointments/Upcoming ");
-                App.instantScrollToTop();
-              }}
-            >
-              View All{" "}
-              <span id="columnViewAllIcon">
-                <MdNavigateNext />{" "}
-              </span>
-            </button>
-          </div>
-          <div className="flexStart" id="upComingAppointmentContainer">
-            {Object.keys(latestAppointments).length != 0 && (
-              <div>
-                {" "}
-                <ul id="latestUpComingAppointment">
-                  <li id="hmre3">{latestAppointments.date}</li>
-                  <li id="hmre4">{latestAppointments.month}</li>
-                  <li id="hmre5">{latestAppointments.title}</li>
-                  <li id="hmre6">
-                    {latestAppointments.startTime}- {latestAppointments.endTime}
-                  </li>{" "}
-                  <li id="hmre6">{latestAppointments.location}</li>
-                </ul>
-              </div>
-            )}
-            <div className="flexStart">
-              {upcomingAppointmentsLatestFiltered.map((value, index) => (
-                <div key={index}>
-                  <ul id="UpComingAppointment">
-                    <li id="hmre3">{value.date}</li>
-                    <li id="hmre4">{value.month}</li>
-                    <li id="hmre5">{value.title}</li>
-                    <li id="hmre6">
-                      {value.startTime}- {value.endTime}
-                    </li>{" "}
-                    <li id="hmre6">{value.location}</li>
-                  </ul>
-                </div>
-              ))}
+          {upcomingAppointments.length == 0 && (
+            <div id="hmre29">
+              {" "}
+              <img
+                src={require("../images/emptyAppointmentAnimation.jpg")}
+                id="hmre27"
+              />
+              <p id="hmre28">oops you dont have any upcoming appointments </p>
             </div>
-            {upcomingAppointments.length == 0 && (
-              <div id="hmre29">
-                {" "}
-                <img
-                  src={require("../images/emptyAppointmentAnimation.jpg")}
-                  id="hmre27"
-                />
-                <p id="hmre28">oops you dont have any upcoming appointments </p>
-              </div>
-            )}
-          </div>
-          <div className="flexSpaceBetween" id="columnTitleContainer">
-            {" "}
-            <small id="columnTitle">Medication reminder</small>
-            <button
-              type="button"
-              id="columnViewAllBtn"
-              onClick={() => {
-                App.setCurrentPage("Medications");
-                Navigate("/Medications");
-                App.instantScrollToTop();
-              }}
-            >
-              View All{" "}
-              <span id="columnViewAllIcon">
-                <MdNavigateNext />{" "}
-              </span>
-            </button>
-          </div>
-          {Api.medications.map((value, index) => (
-            <div key={index} id="hmre26">
-              {index == Api.medications.length - 1 && (
-                <div
-                  id="medicationReminderContainer"
-                  className="flexSpaceBetween"
-                  onClick={() => {
-                    Navigate(
-                      `/MedicationDetails#${CryptoJS.AES.encrypt(
-                        JSON.stringify(index),
-                        App.SK
-                      ).toString()}`
-                    );
-                    App.instantScrollToTop();
-                  }}
-                >
-                  <div className="flexStart">
-                    <div className="flexCenter" id="hmre7">
-                      <img src={value.img} id="hmre8" />
-                    </div>
-                    <div>
-                      <li id="hmre9">{value.dosage} </li>
-                      <li id="hmre10">{value.name}</li>
-                      <li id="hmre11" className="flexStart">
-                        <b id="hmre12">
-                          <FaRegClock />{" "}
-                        </b>
-                        {value.time.map((val, ind) => (
-                          <span key={ind}>
-                            {ind == 0 && <span>{val}</span>}{" "}
-                          </span>
-                        ))}
-                        <b id="hmre13">
-                          <FaBell />{" "}
-                        </b>
-                      </li>
-                    </div>
-                  </div>
-                  <div>
-                    <li id="hmre14">
-                      <MdNavigateNext />
-                    </li>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-          <div className="flexSpaceBetween" id="columnTitleContainer">
-            {" "}
-            <small id="columnTitle">Specialist Near Me</small>
-            <button type="button" id="columnViewAllBtn">
-              View All{" "}
-              <span id="columnViewAllIcon">
-                <MdNavigateNext />{" "}
-              </span>
-            </button>
-          </div>
-          <div id="specialistNearMe" className="flexStart">
-            {Api.specialist.map((value, index) => (
+          )}
+        </div>
+        <div className="flexSpaceBetween" id="columnTitleContainer">
+          {" "}
+          <small id="columnTitle">Medication reminder</small>
+          <button
+            type="button"
+            id="columnViewAllBtn"
+            onClick={() => {
+              App.setCurrentPage("Medications");
+              Navigate("/Medications");
+              App.instantScrollToTop();
+            }}
+          >
+            View All{" "}
+            <span id="columnViewAllIcon">
+              <MdNavigateNext />{" "}
+            </span>
+          </button>
+        </div>
+        {Api.medications.map((value, index) => (
+          <div key={index} id="hmre26">
+            {index == Api.medications.length - 1 && (
               <div
-                id="eachSpeacialistNearMe"
-                key={index}
+                id="medicationReminderContainer"
+                className="flexSpaceBetween"
                 onClick={() => {
                   Navigate(
-                    `/Specialist/#${CryptoJS.AES.encrypt(
-                      JSON.stringify(value.id),
+                    `/MedicationDetails#${CryptoJS.AES.encrypt(
+                      JSON.stringify(index),
                       App.SK
                     ).toString()}`
                   );
                   App.instantScrollToTop();
                 }}
               >
-                <div id="SpeacialistNearMeImgContainer">
-                  <img
-                    src={value.SpeacialistProfileImg}
-                    id="SpeacialistNearMeImg"
-                  />
+                <div className="flexStart">
+                  <div className="flexCenter" id="hmre7">
+                    <img src={value.img} id="hmre8" />
+                  </div>
+                  <div>
+                    <li id="hmre9">{value.dosage} </li>
+                    <li id="hmre10">{value.name}</li>
+                    <li id="hmre11" className="flexStart">
+                      <b id="hmre12">
+                        <FaRegClock />{" "}
+                      </b>
+                      {value.time.map((val, ind) => (
+                        <span key={ind}>{ind == 0 && <span>{val}</span>} </span>
+                      ))}
+                      <b id="hmre13">
+                        <FaBell />{" "}
+                      </b>
+                    </li>
+                  </div>
                 </div>
-                <div id="hmre15">
-                  <li id="hmre16">{value.specialistName}</li>
-                  <li id="hmre17">{value.specialty}</li>
-                  <li id="hmre17">{value.phone}</li>
-                  <li id="hmre18">
-                    Reviews: {value.reviews}
-                    <span id="hmre19">
-                      <BsStarFill />
-                    </span>
+                <div>
+                  <li id="hmre14">
+                    <MdNavigateNext />
                   </li>
                 </div>
               </div>
-            ))}
+            )}
           </div>
-          <div className="flexSpaceBetween" id="columnTitleContainer">
-            {" "}
-            <small id="columnTitle">Trending Articles</small>
-            <button type="button" id="columnViewAllBtn">
-              View All{" "}
-              <span id="columnViewAllIcon">
-                <MdNavigateNext />{" "}
-              </span>
-            </button>
-          </div>
-          <div id="homepageTrendingArticleContainer">
-            {trendingArticles.map((value, index) => (
-              <div key={index}>
-                <div id="eachHomepageTrendingArticle">
-                  <div id="homepageTrendingArticleImgContainer">
-                    <img
-                      src={value.articleImg}
-                      id="homepageTrendingArticleImg"
-                      onClick={() => {
-                        Navigate(
-                          `/Article/Tabbed#${CryptoJS.AES.encrypt(
-                            JSON.stringify(value.id),
-                            App.SK
-                          ).toString()}`
-                        );
-                        App.instantScrollToTop();
-                      }}
-                    />
-                  </div>
-                  <div id="homepageTrendingArticleContent">
-                    <div className="flexSpaceBetweenFirstBaseeline">
-                      <li id="homepageTrendingArticleTitle">{value.title}</li>
-                      {value.title.length > 108 && (
-                        <small id="hmre20">...</small>
-                      )}
+        ))}
+        <div className="flexSpaceBetween" id="columnTitleContainer">
+          {" "}
+          <small id="columnTitle">Specialist Near Me</small>
+          <button type="button" id="columnViewAllBtn">
+            View All{" "}
+            <span id="columnViewAllIcon">
+              <MdNavigateNext />{" "}
+            </span>
+          </button>
+        </div>
+        <div id="specialistNearMe" className="flexStart">
+          {Api.specialist.map((value, index) => (
+            <div
+              id="eachSpeacialistNearMe"
+              key={index}
+              onClick={() => {
+                Navigate(
+                  `/Specialist/#${CryptoJS.AES.encrypt(
+                    JSON.stringify(value.id),
+                    App.SK
+                  ).toString()}`
+                );
+                App.instantScrollToTop();
+              }}
+            >
+              <div id="SpeacialistNearMeImgContainer">
+                <img
+                  src={value.SpeacialistProfileImg}
+                  id="SpeacialistNearMeImg"
+                />
+              </div>
+              <div id="hmre15">
+                <li id="hmre16">{value.specialistName}</li>
+                <li id="hmre17">{value.specialty}</li>
+                <li id="hmre17">{value.phone}</li>
+                <li id="hmre18">
+                  Reviews: {value.reviews}
+                  <span id="hmre19">
+                    <BsStarFill />
+                  </span>
+                </li>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flexSpaceBetween" id="columnTitleContainer">
+          {" "}
+          <small id="columnTitle">Trending Articles</small>
+          <button type="button" id="columnViewAllBtn">
+            View All{" "}
+            <span id="columnViewAllIcon">
+              <MdNavigateNext />{" "}
+            </span>
+          </button>
+        </div>
+        <div id="homepageTrendingArticleContainer">
+          {trendingArticles.map((value, index) => (
+            <div key={index}>
+              <div id="eachHomepageTrendingArticle">
+                <div id="homepageTrendingArticleImgContainer">
+                  <img
+                    src={value.articleImg}
+                    id="homepageTrendingArticleImg"
+                    onClick={() => {
+                      Navigate(
+                        `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.id),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  />
+                </div>
+                <div id="homepageTrendingArticleContent">
+                  <div className="flexSpaceBetweenFirstBaseeline">
+                    <li id="homepageTrendingArticleTitle">{value.title}</li>
+                    {value.title.length > 108 && <small id="hmre20">...</small>}
 
-                      {value.bookMarked && (
-                        <button
-                          id="hmre21"
-                          onClick={() => {
-                            Api.setArticles((valu) => {
-                              return valu.map((val) => {
-                                if (value.id === val.id) {
-                                  return {
-                                    ...val,
-                                    bookMarked: false,
-                                  };
-                                } else {
-                                  return val;
-                                }
-                              });
+                    {value.bookMarked && (
+                      <button
+                        id="hmre21"
+                        onClick={() => {
+                          Api.setArticles((valu) => {
+                            return valu.map((val) => {
+                              if (value.id === val.id) {
+                                return {
+                                  ...val,
+                                  bookMarked: false,
+                                };
+                              } else {
+                                return val;
+                              }
                             });
-                          }}
-                        >
-                          <BsBookmarkFill />
-                        </button>
-                      )}
-                      {!value.bookMarked && (
-                        <button
-                          id="hmre30"
-                          onClick={() => {
-                            Api.setArticles((valu) => {
-                              return valu.map((val) => {
-                                if (value.id === val.id) {
-                                  return {
-                                    ...val,
-                                    bookMarked: true,
-                                  };
-                                } else {
-                                  return val;
-                                }
-                              });
+                          });
+                        }}
+                      >
+                        <BsBookmarkFill />
+                      </button>
+                    )}
+                    {!value.bookMarked && (
+                      <button
+                        id="hmre30"
+                        onClick={() => {
+                          Api.setArticles((valu) => {
+                            return valu.map((val) => {
+                              if (value.id === val.id) {
+                                return {
+                                  ...val,
+                                  bookMarked: true,
+                                };
+                              } else {
+                                return val;
+                              }
                             });
-                          }}
-                        >
-                          <BsBookmarkFill />
-                        </button>
+                          });
+                        }}
+                      >
+                        <BsBookmarkFill />
+                      </button>
+                    )}
+                  </div>
+                  <div className="flexSpaceBetween mt-3">
+                    <small className="flexCenter listStyleNone">
+                      {" "}
+                      <small id="hmre22">Author:{value.author}</small>
+                      {value.author.length > 11 && (
+                        <small id="hmre23">...</small>
                       )}
-                    </div>
-                    <div className="flexSpaceBetween mt-3">
-                      <small className="flexCenter listStyleNone">
-                        {" "}
-                        <small id="hmre22">Author:{value.author}</small>
-                        {value.author.length > 11 && (
-                          <small id="hmre23">...</small>
-                        )}
-                      </small>
-                      <li id="hmre24">{value.timeRead}</li>
-                      <li id="hmre25">{value.timePosted}</li>
-                    </div>
+                    </small>
+                    <li id="hmre24">{value.timeRead}</li>
+                    <li id="hmre25">{value.timePosted}</li>
                   </div>
                 </div>
               </div>
-            ))}{" "}
-          </div>
+            </div>
+          ))}{" "}
         </div>
-      )}
+      </div>
     </>
   );
 };

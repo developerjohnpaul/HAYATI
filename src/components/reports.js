@@ -22,7 +22,7 @@ export const ReportNav = () => {
   const App = useContext(app);
   return (
     <>
-      {App.status == "loggedIn" && (<div id="rere4">
+      <div id="rere4">
         {" "}
         {App.popUpStatus == "save" && <div id="ge2"></div>}
         <div id="rere1">
@@ -39,7 +39,7 @@ export const ReportNav = () => {
             <li id="rere3">Reports</li>
           </div>
         </div>
-      </div>)}
+      </div>
       <Outlet />
     </>
   );
