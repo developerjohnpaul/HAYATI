@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Onboarding from "./components/onboarding";
 import LoginNav from "./components/LoginNav";
 import LoginPage from "./components/loginPage";
@@ -6,11 +6,14 @@ import SignUpNav from "./components/signUpNav";
 import SignUpPage from "./components/signUpPage";
 import MainNav from "./components/mainNav";
 import Home from "./components/home";
+import { Notification, NotificationNav } from "./components/notification";
 import {
   AppointmentNavbar,
   UpcomingAppointments,
   CompletedAppointments,
   CancelledAppointments,
+  BookedAppointmentNav,
+  BookedAppointment,
 } from "./components/appointment";
 import {
   Medications,
@@ -22,10 +25,22 @@ import {
   EditMedication,
   EditMedicationNav,
 } from "./components/medications";
+import {
+  Settings,
+  SettingsNav,
+  EditProfileNav,
+  EditProfile,
+} from "./components/settings";
 import { ReportNav, Reports } from "./components/reports";
 import { createContext, useEffect, useState } from "react";
 import Specialist from "./components/specialist";
-import { ArticleNav, Article, TabbedArticle } from "./components/article";
+import {
+  ArticleNav,
+  Article,
+  TabbedArticle,
+  Bookmark,
+  BookmarkNav,
+} from "./components/article";
 export const app = createContext();
 
 const App = () => {
@@ -57,10 +72,15 @@ const App = () => {
     },
   ]);
   const [popUpStatus, setPopUpStatus] = useState("none");
-  useEffect(() => {
-    const currentUrl = window.location.href;
-    console.log("currentUrl", currentUrl);
-  });
+  const [user, setUser] = useState([{
+    Name:"Anna",
+    Email:"xapic@gmail.com",
+    Password:"12345",
+    Gender:"",
+    DOB:"",
+    Country:"",
+  }]);
+
   return (
     <app.Provider
       value={{
@@ -79,13 +99,14 @@ const App = () => {
         SK: SK,
         setPopUpStatus: setPopUpStatus,
         popUpStatus: popUpStatus,
+        user: user,
+        setUser: setUser,
       }}
     >
       <div id="App">
         <BrowserRouter>
           <Routes>
             <Route path="welcome" element={<Onboarding />} />
-
             <Route path="Login" element={<LoginNav />}>
               <Route index element={<LoginPage />} />
             </Route>
@@ -115,7 +136,26 @@ const App = () => {
               <Route path="/Article" element={<ArticleNav />}>
                 <Route index element={<Article />} />
               </Route>
+
               <Route path="/Article/Tabbed" element={<TabbedArticle />} />
+              <Route path="/Bookmark" element={<BookmarkNav />}>
+                <Route index element={<Bookmark />} />
+              </Route>
+              <Route
+                path="/BookedAppointment"
+                element={<BookedAppointmentNav />}
+              >
+                <Route index element={<BookedAppointment />} />
+              </Route>
+            </Route>
+            <Route path="/Settings" element={<SettingsNav />}>
+              <Route index element={<Settings />} />
+            </Route>
+            <Route path="/EditProfile" element={<EditProfileNav />}>
+              <Route index element={<EditProfile />} />
+            </Route>
+            <Route path="/Notification" element={<NotificationNav />}>
+              <Route index element={<Notification />} />
             </Route>
             <Route path="/Specialist" element={<Specialist />} />
             <Route path="/Medications" element={<MedicationNav />}>

@@ -23,7 +23,7 @@ const LoginPage = () => {
     } else if (!App.logInDetails[0].Email.endsWith("@gmail.com")) {
       setValidEmailAddress(false);
       setLoginDetailsValidityStatus("invalidEmail");
-    } else if (App.logInDetails[0].Email != "xapic@gmail.com") {
+    } else if (App.logInDetails[0].Email != App.user[0].Email) {
       setValidEmailAddress(false);
       setLoginDetailsValidityStatus("emailNotFound");
     } else {
@@ -31,21 +31,28 @@ const LoginPage = () => {
       if (App.logInDetails[0].Password == "") {
         setValidPassword(false);
         setLoginDetailsValidityStatus("emptyPasswordInput");
-      } else if (App.logInDetails[0].Password != 12345) {
+      } else if (App.logInDetails[0].Password != App.user[0].Password) {
         setValidPassword(false);
         setLoginDetailsValidityStatus("incorrectPassword");
       } else if (
-        App.logInDetails[0].Email == "xapic@gmail.com" &&
-        App.logInDetails[0].Password == 12345
+        App.logInDetails[0].Email == App.user[0].Email &&
+        App.logInDetails[0].Password == App.user[0].Password
       ) {
         setLoginStatusModal("loggingIn");
         App.setBlurredBackgroundOverlayStatus("visible");
         setValidPassword(true);
         setTimeout(() => {
+          localStorage.setItem("CUIN", 7);
           scrollToTop();
           Navigate(`/`);
           setLoginStatusModal("hidden");
           App.setBlurredBackgroundOverlayStatus("hidden");
+          App.setlogInDetails([
+            {
+              Email: "",
+              Password: "",
+            },
+          ]);
         }, 2000);
       }
     }

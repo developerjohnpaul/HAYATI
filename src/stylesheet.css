@@ -104,7 +104,7 @@ body::-webkit-scrollbar {
 
 #ge2 {
   cursor: pointer;
-  height: 44px;
+  height: 50px;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -147,10 +147,71 @@ body::-webkit-scrollbar {
   max-width: 500px;
 }
 
+/************** mdre **********************/
+#mdre1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 280px;
+  width: 80vw;
+  max-width: 320px;
+  box-shadow: 0px 0px 20px rgb(125, 125, 125);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+
+#mdre2 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #020000;
+  font-family: 'Space Grotesk', sans-serif;
+  text-align: center;
+}
+
+#mdre3 {
+  font-size: 16px;
+  text-align: center;
+  color: #020000;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#mdre4 {
+  border: 0px;
+  background-color: #00A2B7;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+#mdre5 {
+  border: 0px;
+  background-color: rgb(232, 0, 0);
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+#mdre6 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
 /********************* homepage random element ************************/
 #hmre1 {
   height: 28px;
-  font-size: 18px
+  font-size: 18px;
+  background-color: transparent;
+  border: 0px;
+  padding: 0px;
 }
 
 #hmre2 {
@@ -267,7 +328,10 @@ body::-webkit-scrollbar {
 
 #hmre21 {
   list-style: none;
-  font-size: 18px
+  font-size: 18px;
+  border: 0px;
+  background-color: transparent;
+  color: #00E1FF;
 }
 
 #hmre22 {
@@ -276,7 +340,9 @@ body::-webkit-scrollbar {
   width: 90px;
   height: 15px;
   word-break: break-all;
-  overflow: hidden
+  overflow: hidden;
+  background-color: transparent;
+  border: 0px
 }
 
 #hmre23 {
@@ -298,6 +364,32 @@ body::-webkit-scrollbar {
 #hmre26 {
   width: 100%;
   max-width: 500px;
+}
+
+#hmre27 {
+  width: 60%;
+  max-width: 300px;
+}
+
+#hmre28 {
+  font-size: 13px;
+  color: #00A2B7;
+}
+
+#hmre29 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#hmre30 {
+  list-style: none;
+  font-size: 18px;
+  border: 0px;
+  background-color: transparent;
+  color: white;
 }
 
 /********************* onboarding random element ************************/
@@ -408,6 +500,7 @@ body::-webkit-scrollbar {
 
 #apre4 {
   max-height: 100%;
+  cursor: pointer;
 }
 
 #apre5 {
@@ -533,6 +626,7 @@ body::-webkit-scrollbar {
 
 }
 
+
 @keyframes apre18 {
   from {
     transform: translate(0, -100%);
@@ -541,6 +635,16 @@ body::-webkit-scrollbar {
   to {
     transform: translate(0, 0);
   }
+}
+
+#apre19 {
+  width: 80%;
+  max-width: 400px;
+}
+
+#apre20 {
+  font-size: 13px;
+  color: #00A2B7;
 }
 
 /************ specialist random element ***********/
@@ -788,6 +892,10 @@ body::-webkit-scrollbar {
   padding: 15px 30px 15px 30px;
   border-radius: 10px;
   margin-top: 30px;
+}
+
+#spre23 {
+  font-size: 15px;
 }
 
 /***************** mere ***************************/
@@ -1902,6 +2010,7 @@ body::-webkit-scrollbar {
   border-top-right-radius: 10px;
   max-width: 100%;
   object-fit: fill;
+  cursor: pointer;
 }
 
 #arre5 {
@@ -2009,6 +2118,7 @@ body::-webkit-scrollbar {
 
 #arre19 {
   max-height: 100%;
+  cursor: pointer;
 }
 
 #arre20 {
@@ -2019,7 +2129,7 @@ body::-webkit-scrollbar {
   letter-spacing: 0em;
   text-align: left;
   list-style: none;
-  
+
 }
 
 #arre21 {
@@ -2049,6 +2159,69 @@ body::-webkit-scrollbar {
   border: 0px;
   text-align: center;
   margin-top: 10px;
+}
+
+#arre23 {
+  border: 1px solid #0390A3;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  height: 168px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 10px;
+
+}
+
+#arre24 {
+  list-style: none;
+  font-size: 18px;
+  border: 0px;
+  background-color: transparent;
+  color: #00A2B7;
+}
+
+#arre25 {
+  list-style: none;
+  font-size: 18px;
+  border: 0px;
+  background-color: transparent;
+  color: #d2e7e9;
+}
+
+#arre26 {
+  width: 60%;
+  max-width: 300px;
+}
+
+#arre27 {
+  font-size: 13px;
+  color: #00A2B7;
+}
+
+#arre28 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#arre29 {
+  margin-bottom: 50px;
+
+}
+
+#arre30 {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /****************** tare **********************/
@@ -2136,6 +2309,503 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+
+/*********************** bare************************************/
+#bare1 {
+  width: 240px;
+}
+
+#bare2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#bare3 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  width: 353px;
+}
+
+#bare4 {
+  height: 192px;
+  width: 313px;
+  border: 1px solid rgba(3, 144, 163, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+#bare5 {
+  height: 54px;
+  width: 100%;
+  background-color: #03B9D1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#bare6 {
+  padding: 30px 10px 15px 10px;
+  width: 100%;
+  height: 138px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#bare7 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+}
+
+#bare8 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #5D5D5D;
+  list-style: none;
+}
+
+#bare9 {
+  font-family: 'SF Pro Display';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  list-style: none;
+}
+
+#bare10,
+#bare11 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  width: 238px;
+  height: 38px;
+  left: 95px;
+  border-radius: 6px;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+}
+
+#bare10 {
+  background-color: #0390A3;
+  color: white;
+  border: 1px solid white;
+  margin-bottom: 20px;
+}
+
+#bare11 {
+  background-color: transparent;
+  color: #0390A3;
+  border: 1px solid #0390A3;
+}
+
+#bare12 {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+/******************** sere *****************/
+#sere1 {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+
+
+#sere2 {
+  background-color: transparent;
+  border: 0px;
+  color: #0893A5;
+  font-size: 20px;
+  padding: 0px;
+
+}
+
+#sere3 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  color: #0893A5;
+  list-style: none;
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#sere4 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+
+#sere5 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+#sere6 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: 0.5px solid #C2C2C2;
+  cursor: pointer;
+  border: 0px;
+  background-color: transparent;
+  padding: 0px;
+  width: 100%;
+}
+
+#sere7 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+#sere8 {
+  background-color: transparent;
+  color: #0390A3;
+  font-size: 20px;
+  border: 0px;
+}
+
+#sere9 {
+  width: 32px;
+  height: 30px;
+  background-color: #0390A3;
+  border-radius: 6px;
+  margin-right: 10px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+#sere10 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
+  list-style: none;
+
+}
+
+#sere11 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  border-bottom: 0.5px solid #C2C2C2;
+}
+
+#sere12 {
+  background-color: transparent;
+  color: #2D2E31;
+  font-size: 25px;
+  border: 0px;
+}
+
+#sere13 {
+  background-color: transparent;
+  color: #0390A3;
+  font-size: 25px;
+  border: 0px;
+}
+
+#sere14 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0em;
+  text-align: left;
+  list-style: none;
+  color: #707070;
+}
+
+#sere15 {
+  max-width: 110%;
+}
+
+#sere16 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #04B7CE;
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 1px solid #04B7CE;
+}
+
+#sere17 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#sere18 {
+  width: 100%;
+  border: 0px;
+  border-bottom: .5px solid #C2C2C2;
+  outline: none;
+  margin-bottom: 20px;
+  height: 20px;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: transparent;
+}
+
+#sere18:focus {
+  border-bottom: 2px solid black;
+}
+
+#sere19 {
+  width: 100%;
+  border: 0px;
+  border-bottom: .5px solid #C2C2C2;
+  outline: none;
+  margin-bottom: 20px;
+  list-style: none;
+  margin-top: 25px;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+#sere19:focus {
+  border-bottom: 2px solid black;
+}
+
+#sere20 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  list-style: none;
+  border-bottom: .5px solid #C2C2C2;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+#sere21 {
+  margin-right: 5px;
+  min-width: 100px;
+  list-style: none;
+  text-align: left;
+}
+
+#sere22 {
+  font-size: 20px;
+  color: #0893A5;
+  list-style: none;
+}
+
+#sere23 {
+  position: absolute;
+  max-height: 160px;
+  width: 300px;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, .5);
+  overflow: hidden;
+}
+
+#sere24 {
+  margin-top: 70px;
+  padding: 0px 10px 70px 10px;
+  width: 100%;
+  max-width: 500px;
+
+}
+
+#sere25 {
+  list-style: none;
+  width: 100%;
+  border: 0px;
+  border-bottom: 1px solid rgb(0, 0, 0, .5);
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5%;
+  font-size: 18px;
+  background-color: transparent;
+  padding: 0px 0px 0px 10px;
+
+}
+
+#sere26 {
+  position: absolute;
+  height: 79px;
+  width: 200px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0, .5);
+  overflow: hidden;
+
+}
+
+#sere27 {
+  border: 0px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#sere28 {
+  width: 300px;
+  height: 40px;
+  border: 1px solid rgb(0, 0, 0, .5);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#sere29 {
+  width: 0px;
+  height: 0px;
+}#sere30 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  list-style: none;
+  border-bottom: .5px solid #C2C2C2;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+/**************************  nore **********************/
+#nore1 {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+
+
+#nore2 {
+  background-color: transparent;
+  border: 0px;
+  color: #0893A5;
+  font-size: 20px;
+  margin-right: 25px;
+  padding: 0px;
+}
+
+#nore3 {
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  color: #0893A5;
+  list-style: none;
+}
+
+#nore4 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+}
+
+#nore5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+
 }
 
 /************  background  overlay ***********/
@@ -2526,13 +3196,12 @@ body::-webkit-scrollbar {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
-
 }
 
 #signUpButton {
   background-color: #0390A3;
   width: 80vw;
+  max-width: 360px;
   padding: 7px;
   color: white;
   border: 0px;
@@ -2604,6 +3273,9 @@ body::-webkit-scrollbar {
   align-items: center;
   height: 35px;
   background-color: white;
+  width: 100%;
+  max-width: 500px;
+
 }
 
 #HomepageWelcomeMessage {
@@ -2616,7 +3288,8 @@ body::-webkit-scrollbar {
 
 #homeNavProfileImg {
   max-height: 28px;
-  margin-right: 8px
+  margin-right: 15px;
+  cursor: pointer;
 }
 
 #homeSearchBar {
@@ -2918,6 +3591,7 @@ body::-webkit-scrollbar {
   align-items: center;
   background-color: #076b78;
   overflow: hidden;
+  cursor: pointer;
 }
 
 #homepageTrendingArticleImg {

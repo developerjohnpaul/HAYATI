@@ -31,7 +31,7 @@ export const ReportNav = () => {
               type="button"
               id="rere2"
               onClick={() => {
-                Navigate(-1);
+                Navigate("/");
               }}
             >
               <IoIosArrowBack />

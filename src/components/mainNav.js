@@ -4,13 +4,18 @@ import { PiHouseFill, PiHouseBold, PiUsersThreeBold } from "react-icons/pi";
 import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
 import { app } from "../App";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdArticle } from "react-icons/md";
 
 const MainNav = () => {
   const App = useContext(app);
   const Navigate = useNavigate();
-
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");  
+    }
+  }, []);
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#FFFFFF");

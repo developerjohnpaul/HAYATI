@@ -10,6 +10,13 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 export const MedicationNav = () => {
   const Navigate = useNavigate();
+
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");
+    }
+  }, []);
   return (
     <>
       <div id="mere15">
@@ -112,6 +119,12 @@ export const Medications = () => {
 
 export const MedicationDetailsNav = () => {
   const Navigate = useNavigate();
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");
+    }
+  }, []);
   return (
     <>
       <div id="mere15">
@@ -121,7 +134,7 @@ export const MedicationDetailsNav = () => {
               type="button"
               id="mere2"
               onClick={() => {
-                Navigate(-1);
+                Navigate("/Medications");
               }}
             >
               <IoIosArrowBack />
@@ -212,6 +225,12 @@ export const MedicationDetails = () => {
 export const AddMedicationNav = () => {
   const Navigate = useNavigate();
   const App = useContext(app);
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");
+    }
+  }, []);
   return (
     <>
       <div id="mere15">
@@ -223,7 +242,7 @@ export const AddMedicationNav = () => {
               type="button"
               id="mere2"
               onClick={() => {
-                Navigate(-1);
+           Navigate("/Medications");
               }}
             >
               <IoIosArrowBack />
@@ -691,6 +710,12 @@ export const AddMedication = () => {
 export const EditMedicationNav = () => {
   const Navigate = useNavigate();
   const App = useContext(app);
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");
+    }
+  }, []);
   return (
     <>
       <div id="mere15">

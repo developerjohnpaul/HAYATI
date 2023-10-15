@@ -7,6 +7,7 @@ import { mockApi } from "./mockApi";
 import { MdNavigateNext } from "react-icons/md";
 import { BsBookmarkFill } from "react-icons/bs";
 import { MdOutlineMenuBook } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
 import CryptoJS from "crypto-js";
 export const ArticleNav = () => {
   useEffect(() => {
@@ -25,7 +26,7 @@ export const ArticleNav = () => {
               type="button"
               id="rere2"
               onClick={() => {
-                Navigate(-1);
+                Navigate("/");
               }}
             >
               <IoIosArrowBack />
@@ -44,6 +45,8 @@ export const Article = () => {
   const App = useContext(app);
   const [trendingArticles, setTrendingArticles] = useState([]);
   const [relatedArticles, setRelatedArticles] = useState([]);
+  const [bookmark, setBookmark] = useState({});
+
   useEffect(() => {
     const trendingArticle = Api.articles.filter((value) => {
       return value.status == "trending";
@@ -53,8 +56,13 @@ export const Article = () => {
       return value.status == "related";
     });
     setRelatedArticles(relatedArticle);
-  }, []);
-
+  }, [Api.articles]);
+  useEffect(() => {
+    const bookmarkedArticles = Api.articles.filter((value) => {
+      return value.bookMarked == true;
+    });
+    setBookmark(bookmarkedArticles[0]);
+  }, [Api.articles]);
   return (
     <>
       <div className="flexColumnStart">
@@ -88,9 +96,49 @@ export const Article = () => {
                       {value.title.length > 108 && (
                         <small id="arre9">...</small>
                       )}
-                      <li id="arre10">
-                        <BsBookmarkFill />
-                      </li>
+
+                      {value.bookMarked && (
+                        <button
+                          id="arre24"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: false,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                      {!value.bookMarked && (
+                        <button
+                          id="arre25"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: true,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
                     </div>
                     <div className="flexSpaceBetween mt-1" id="arre15">
                       <small className="flexCenter listStyleNone">
@@ -110,14 +158,138 @@ export const Article = () => {
           </div>
           <div className="flexSpaceBetween" id="columnTitleContainer">
             {" "}
-            <small id="columnTitle">Related Articles</small>
-            <button type="button" id="columnViewAllBtn">
+            <small id="columnTitle">Bookmark</small>
+            <button
+              type="button"
+              id="columnViewAllBtn"
+              onClick={() => {
+                Navigate("/Bookmark");
+                App.instantScrollToTop();
+              }}
+            >
               View All{" "}
               <span id="columnViewAllIcon">
                 <MdNavigateNext />{" "}
               </span>
             </button>
           </div>
+          {bookmark == null && (
+            <div>
+              <div id="arre28">
+                {" "}
+                <img
+                  src={require("../images/emptyBookmarkAnimation.jpg")}
+                  id="arre26"
+                />
+                <p id="arre27">oops your bookmark appears to be empty</p>
+              </div>
+            </div>
+          )}
+          {bookmark != null && (
+            <div id="arre29">
+              {" "}
+              <div id="arre23">
+                <div id="arre17">
+                  <img
+                    src={bookmark.articleImg}
+                    id="arre19"
+                    onClick={() => {
+                      Navigate(
+                        `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                          JSON.stringify(bookmark.id),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  />
+                </div>
+                <div id="arre18">
+                  <div>
+                    {" "}
+                    <div className="flexSpaceBetweenFirstBaseeline">
+                      <li id="arre20">{bookmark.timePosted}</li>
+
+                      {bookmark.bookMarked && (
+                        <button
+                          id="arre24"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (bookmark.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: false,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                      {!bookmark.bookMarked && (
+                        <button
+                          id="arre25"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (bookmark.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: true,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                    </div>
+                    <li id="arre21">{bookmark.title}</li>
+                    <div className="flexSpaceBetween">
+                      {" "}
+                      <li id="arre20">{bookmark.author}</li>
+                      <li id="arre20">
+                        {bookmark.read && (
+                          <>
+                            <span>read</span> <span> {bookmark.timeRead}</span>
+                          </>
+                        )}
+                      </li>
+                    </div>
+                    <button
+                      type="button"
+                      id="arre22"
+                      onClick={() => {
+                        Navigate(
+                          `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                            JSON.stringify(bookmark.id),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      Read Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="flexSpaceBetween" id="columnTitleContainer">
+            {" "}
+            <small id="columnTitle">Related Articles</small>
+          </div>
+
           <div className="flexColumnCenter">
             {relatedArticles.map((value, index) => (
               <div id="arre16" key={index}>
@@ -141,10 +313,48 @@ export const Article = () => {
                     {" "}
                     <div className="flexSpaceBetweenFirstBaseeline">
                       <li id="arre20">{value.timePosted}</li>
-
-                      <li id="arre10">
-                        <BsBookmarkFill />
-                      </li>
+                      {value.bookMarked && (
+                        <button
+                          id="arre24"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: false,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                      {!value.bookMarked && (
+                        <button
+                          id="arre25"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: true,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
                     </div>
                     <li id="arre21">{value.title}</li>
                     <div className="flexSpaceBetween">
@@ -222,9 +432,7 @@ export const TabbedArticle = () => {
           >
             <IoIosArrowBack />
           </button>
-          <li id="tare5">
-            <BsBookmarkFill />
-          </li>
+         
         </div>
         <div id="ge5">
           {" "}
@@ -239,7 +447,7 @@ export const TabbedArticle = () => {
                 {" "}
                 {tabbedArticle.read && (
                   <>
-                    <span>read</span>  <span> {tabbedArticle.timeRead}</span>
+                    <span>read</span> <span> {tabbedArticle.timeRead}</span>
                   </>
                 )}
               </li>{" "}
@@ -253,5 +461,170 @@ export const TabbedArticle = () => {
         </div>
       </div>
     </>
+  );
+};
+
+export const BookmarkNav = () => {
+  useEffect(() => {
+    App.setCurrentPage("Article");
+  }, []);
+  const Navigate = useNavigate();
+  const App = useContext(app);
+  return (
+    <>
+      <div id="rere4">
+        {" "}
+        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        <div id="rere1">
+          <div className="flexStart">
+            <button
+              type="button"
+              id="rere2"
+              onClick={() => {
+                Navigate("/Article");
+              }}
+            >
+              <IoIosArrowBack />
+            </button>
+            <li id="rere3">Bookmark</li>
+          </div>
+        </div>
+      </div>
+      <Outlet />
+    </>
+  );
+};
+export const Bookmark = () => {
+  const Api = useContext(mockApi);
+  const App = useContext(app);
+  const Navigate = useNavigate();
+
+  const [bookmark, setBookmark] = useState([]);
+  useEffect(() => {
+    const bookmarkedArticles = Api.articles.filter((value) => {
+      return value.bookMarked == true;
+    });
+    setBookmark(bookmarkedArticles);
+  }, [Api.articles]);
+  return (
+    <div className="flexColumnStart">
+      <div id="ge3">
+        {" "}
+        {bookmark.length == 0 && (
+          <div id="arre30">
+            <div id="arre28">
+              {" "}
+              <img
+                src={require("../images/emptyBookmarkAnimation.jpg")}
+                id="arre26"
+              />
+              <p id="arre27">oops your bookmark appears to be empty</p>
+            </div>
+          </div>
+        )}
+        {bookmark.map((value, index) => (
+          <div key={index}>
+            <div id="arre29">
+              {" "}
+              <div id="arre23">
+                <div id="arre17">
+                  <img
+                    src={value.articleImg}
+                    id="arre19"
+                    onClick={() => {
+                      Navigate(
+                        `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                          JSON.stringify(bookmark.id),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  />
+                </div>
+                <div id="arre18">
+                  <div>
+                    {" "}
+                    <div className="flexSpaceBetweenFirstBaseeline">
+                      <li id="arre20">{value.timePosted}</li>
+
+                      {value.bookMarked && (
+                        <button
+                          id="arre24"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: false,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                      {!value.bookMarked && (
+                        <button
+                          id="arre25"
+                          onClick={() => {
+                            Api.setArticles((valu) => {
+                              return valu.map((val) => {
+                                if (value.id === val.id) {
+                                  return {
+                                    ...val,
+                                    bookMarked: true,
+                                  };
+                                } else {
+                                  return val;
+                                }
+                              });
+                            });
+                          }}
+                        >
+                          <BsBookmarkFill />
+                        </button>
+                      )}
+                    </div>
+                    <li id="arre21">{value.title}</li>
+                    <div className="flexSpaceBetween">
+                      {" "}
+                      <li id="arre20">{value.author}</li>
+                      <li id="arre20">
+                        {value.read && (
+                          <>
+                            <span>read</span> <span> {value.timeRead}</span>
+                          </>
+                        )}
+                      </li>
+                    </div>
+                    <button
+                      type="button"
+                      id="arre22"
+                      onClick={() => {
+                        Navigate(
+                          `/Article/Tabbed#${CryptoJS.AES.encrypt(
+                            JSON.stringify(value.id),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      Read Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };

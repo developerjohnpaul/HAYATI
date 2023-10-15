@@ -1,10 +1,11 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { PiCalendarFill, PiClockLight } from "react-icons/pi";
 import { app } from "../App";
 import { mockApi } from "./mockApi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { IoIosArrowBack } from "react-icons/io";
 import CryptoJS from "crypto-js";
 
 export const AppointmentNavbar = () => {
@@ -20,10 +21,8 @@ export const AppointmentNavbar = () => {
       document.documentElement.scrollTop == 155 ||
       document.documentElement.scrollTop > 155
     ) {
-
       setFixedNav(true);
     } else {
- 
       setFixedNav(false);
     }
   };
@@ -127,6 +126,14 @@ export const UpcomingAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value) => {
+      return value.status == "Upcoming";
+    });
+    setUpcomingAppointments(upcomingAppointment);
+  }, [Api.appointment]);
+
   useEffect(() => {
     App.setCurrentAppointmentPage("Upcoming");
     Navigate(`/Appointments/Upcoming`);
@@ -134,7 +141,16 @@ export const UpcomingAppointments = () => {
   return (
     <>
       <div id="AppointmentPage">
-        {Api.appointment.map((value, index) => (
+        {upcomingAppointments == 0 && (
+          <>
+            <img
+              src={require("../images/emptyAppointmentAnimation.jpg")}
+              id="apre19"
+            />
+            <p id="apre20">oops you dont have any upcoming appointments </p>
+          </>
+        )}
+        {Api.appointment.toReversed().map((value, index) => (
           <div key={index} id="apre14">
             {" "}
             {value.status == "Upcoming" && (
@@ -168,7 +184,9 @@ export const UpcomingAppointments = () => {
                           {" "}
                           <PiCalendarFill />
                         </span>{" "}
-                        <span>Monday, June 28</span>
+                        <span>
+                          {value.date},{value.month} {value.year}
+                        </span>
                       </span>
                     </>
                     <>
@@ -189,9 +207,9 @@ export const UpcomingAppointments = () => {
                   <button
                     id="apre12"
                     onClick={() => {
-                      Api.setAppointment((value) => {
-                        return value.map((val, ind) => {
-                          if (ind === index) {
+                      Api.setAppointment((valu) => {
+                        return valu.map((val, ind) => {
+                          if (val.appointmentId === value.appointmentId) {
                             return {
                               ...val,
                               status: "Cancelled",
@@ -205,7 +223,20 @@ export const UpcomingAppointments = () => {
                   >
                     Cancel
                   </button>
-                  <button id="apre13">Reschedule</button>
+                  <button
+                    id="apre13"
+                    onClick={() => {
+                      Navigate(
+                        `/BookedAppointment#${CryptoJS.AES.encrypt(
+                          JSON.stringify(value.appointmentId),
+                          App.SK
+                        ).toString()}`
+                      );
+                      App.instantScrollToTop();
+                    }}
+                  >
+                    Reschedule
+                  </button>
                 </div>
               </div>
             )}{" "}
@@ -261,7 +292,10 @@ export const CompletedAppointments = () => {
                           {" "}
                           <PiCalendarFill />
                         </span>{" "}
-                        <span>Monday, June 28</span>
+                        <span>
+                          {" "}
+                          {value.date},{value.month} {value.year}
+                        </span>
                       </span>
                     </>
                     <>
@@ -337,7 +371,10 @@ export const CancelledAppointments = () => {
                           {" "}
                           <PiCalendarFill />
                         </span>{" "}
-                        <span>Monday, June 28</span>
+                        <span>
+                          {" "}
+                          {value.date},{value.month} {value.year}
+                        </span>
                       </span>
                     </>
                     <>
@@ -363,6 +400,129 @@ export const CancelledAppointments = () => {
             )}{" "}
           </div>
         ))}
+      </div>
+    </>
+  );
+};
+
+export const BookedAppointmentNav = () => {
+  useEffect(() => {
+    App.setCurrentPage("BookedAppointment");
+  }, []);
+  const Navigate = useNavigate();
+  const App = useContext(app);
+  return (
+    <>
+      <div id="rere4">
+        {" "}
+        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        <div id="rere1">
+          <div className="flexStart">
+            <button
+              type="button"
+              id="rere2"
+              onClick={() => {
+                Navigate("/");
+              }}
+            >
+              <IoIosArrowBack />
+            </button>{" "}
+          </div>
+        </div>
+      </div>
+      <Outlet />
+    </>
+  );
+};
+
+export const BookedAppointment = () => {
+  const App = useContext(app);
+  const Api = useContext(mockApi);
+  const Navigate = useNavigate();
+  const location = useLocation();
+  const [appointmentId, setAppointmentId] = useState("");
+  const [tabbedAppointment, setTabbedAppointment] = useState({});
+  const [AbortingAppointment, setAbortingAppointment] = useState(false);
+  useEffect(() => {
+    const encryptedSID = location.hash.substring(1);
+    const decryptedSID = CryptoJS.AES.decrypt(encryptedSID, App.SK).toString(
+      CryptoJS.enc.Utf8
+    );
+    const filteredAppointment = Api.appointment.filter((value) => {
+      return Number(value.appointmentId) == Number(decryptedSID);
+    });
+    setTabbedAppointment(filteredAppointment[0]);
+  }, []);
+  const cancelAppointment = () => {
+    setAbortingAppointment(true);
+    const encryptedSID = location.hash.substring(1);
+    const decryptedSID = CryptoJS.AES.decrypt(encryptedSID, App.SK).toString(
+      CryptoJS.enc.Utf8
+    );
+    const filteredAppointment = Api.appointment.filter((value) => {
+      return Number(value.appointmentId) !== Number(decryptedSID);
+    });
+    Api.setAppointment(filteredAppointment);
+    setTimeout(() => {
+      setAbortingAppointment(false);
+      Navigate(`/`);
+      App.instantScrollToTop();
+    }, 1000);
+  };
+  return (
+    <>
+      <div className="flexCenter">
+        {" "}
+        <div id="ge3">
+          <div id="bare2">
+            <img
+              src={require("../images/bookedAppointmentAnimation.png")}
+              id="bare1"
+            />
+          </div>{" "}
+          <div className="flexCenter">
+            <p id="bare3">
+              Your Appointment has been successfully booked. You will get a
+              notification now
+            </p>
+          </div>
+          <div className="flexCenter">
+            <div id="bare4">
+              <div id="bare5">
+                <p>{tabbedAppointment.title}</p>
+              </div>
+              <div id="bare6">
+                <div id="bare7">
+                  <li id="bare8">{tabbedAppointment.appointeesProffession}</li>
+                  <li id="bare9">{tabbedAppointment.appointee}</li>
+                </div>
+                <div id="bare7">
+                  <li id="bare8">Date</li>
+                  <li id="bare9">
+                    {tabbedAppointment.date},{tabbedAppointment.month}{" "}
+                    {tabbedAppointment.year}
+                  </li>
+                </div>{" "}
+                <div id="bare7">
+                  <li id="bare8">Time</li>
+                  <li id="bare9">{tabbedAppointment.startTime}</li>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="bare12">
+            <button type="button" id="bare11" onClick={cancelAppointment}>
+              {!AbortingAppointment && <span> Cancel consultation</span>}
+              {AbortingAppointment && (
+                <span
+                  className="spinner-border"
+                  id="spre23"
+                  role="status"
+                ></span>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

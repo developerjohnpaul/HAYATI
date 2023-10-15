@@ -15,6 +15,18 @@ const Specialist = () => {
   const [specialist, setSpecialist] = useState({});
   const [experience, setExperience] = useState("");
   const [patients, setPatients] = useState("");
+  const [newDate, setNewDate] = useState("");
+
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN == undefined) {
+      Navigate("Welcome");
+    }
+  }, []);
+  const [newMonth, setNewMonth] = useState(
+    Api.appointment[Api.appointment.length - 1].month
+  );
+  const [pendingAppointment, setPendingAppointment] = useState(false);
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#0893A5");
@@ -41,7 +53,75 @@ const Specialist = () => {
       setExperience("50+");
     }
   }, []);
+  const bookAppointment = () => {
+    setPendingAppointment(true);
+    const Appointment = Api.appointment;
+    const lastAppointment = Appointment[Appointment.length - 1];
+    var newdate;
+    var newYear;
+    if (lastAppointment.date > 29) {
+      setNewDate(1);
+      newdate = 1;
+      if (lastAppointment.month == "january") {
+        setNewMonth("february");
+      } else if (lastAppointment.month == "february") {
+        setNewMonth("march");
+      } else if (lastAppointment.month == "march") {
+        setNewMonth("april");
+      } else if (lastAppointment.month == "april") {
+        setNewMonth("may");
+      } else if (lastAppointment.month == "may") {
+        setNewMonth("june");
+      } else if (lastAppointment.month == "june") {
+        setNewMonth("july");
+      } else if (lastAppointment.month == "july") {
+        setNewMonth("august");
+      } else if (lastAppointment.month == "august") {
+        setNewMonth("september");
+      } else if (lastAppointment.month == "september") {
+        setNewMonth("october");
+      } else if (lastAppointment.month == "october") {
+        setNewMonth("november");
+      } else if (lastAppointment.month == "november") {
+        setNewMonth("december");
+      } else if (lastAppointment.month == "december") {
+        setNewMonth("january");
+        newYear = lastAppointment.year + 1;
+      }
+    } else {
+      setNewDate(() => {
+        return lastAppointment.date + 1;
+      });
+      newdate = lastAppointment.date + 1;
+    }
+    const newAppointment = {
+      date: newdate,
+      month: newMonth,
+      year: 2020,
+      title: `Meeting with  ${specialist.specialistName}`,
+      appointee: `${specialist.specialistName}`,
+      appointeesImg: specialist.SpeacialistProfileImg,
+      appointeesProffession: ` ${specialist.specialty}`,
+      startTime: "12:43am",
+      endTime: " 5:00pm",
+      location: "@Active life physiotherapy clinic",
+      status: "Upcoming",
+      specialistId: lastAppointment.specialistId + 1,
+      appointmentId: lastAppointment.appointmentId + 1,
+    };
+    Appointment.push(newAppointment);
 
+    setTimeout(() => {
+      setPendingAppointment(false);
+      Navigate(
+        `/BookedAppointment#${CryptoJS.AES.encrypt(
+          JSON.stringify(lastAppointment.appointmentId + 1),
+          App.SK
+        ).toString()}`
+      );
+      App.instantScrollToTop();
+    }, 1000);
+  };
   return (
     <>
       <div id="SpecialistPage">
@@ -51,7 +131,7 @@ const Specialist = () => {
               id="spere2"
               type="button"
               onClick={() => {
-                Navigate(-1);
+                Navigate("/");
               }}
             >
               <IoIosArrowBack />
@@ -121,8 +201,15 @@ const Specialist = () => {
 
           <div className="flexCenter">
             {" "}
-            <button type="button" id="spre22">
-              Book Appointment
+            <button type="button" id="spre22" onClick={bookAppointment}>
+              {!pendingAppointment && <span>Book Appointment</span>}
+              {pendingAppointment && (
+                <span
+                  className="spinner-border"
+                  id="spre23"
+                  role="status"
+                ></span>
+              )}
             </button>
           </div>
         </div>

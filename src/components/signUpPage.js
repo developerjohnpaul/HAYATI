@@ -51,10 +51,18 @@ const SignUpPage = () => {
         }, 2000);
 
         setTimeout(() => {
+          localStorage.setItem("CUIN", 7);
           scrollToTop();
           Navigate(`/`);
           setSignUpStatusModalModal("hidden");
           App.setBlurredBackgroundOverlayStatus("hidden");
+          App.setlogInDetails([
+            {
+              Email: "",
+              Password: "",
+              confirmPassword: "",
+            },
+          ]);
         }, 4000);
       }
     }
@@ -150,34 +158,36 @@ const SignUpPage = () => {
             />
           )}
           {!validPassword && (
-            <div id="invalidSignupInputAndWarningText">
-              {" "}
-              <input
-                type="password"
-                id="invalidSignupInput"
-                value={App.signUpDetails[0].Password}
-                onChange={(e) => {
-                  App.setSignUpDetails((value) => {
-                    return value.map((val, ind) => {
-                      return {
-                        ...val,
-                        Password: e.target.value.trimStart(),
-                      };
+            <div className="flexCenter">
+              <div id="invalidSignupInputAndWarningText">
+                {" "}
+                <input
+                  type="password"
+                  id="invalidSignupInput"
+                  value={App.signUpDetails[0].Password}
+                  onChange={(e) => {
+                    App.setSignUpDetails((value) => {
+                      return value.map((val, ind) => {
+                        return {
+                          ...val,
+                          Password: e.target.value.trimStart(),
+                        };
+                      });
                     });
-                  });
-                }}
-                placeholder="Enter password"
-              />
-              {signUpDetailsValidityStatus == "emptyPassword" && (
-                <small id="invalidInputTextWarning">
-                  Password cannot be empty
-                </small>
-              )}{" "}
-              {signUpDetailsValidityStatus == "passwordTooShort" && (
-                <small id="invalidInputTextWarning">
-                  password must conatain at least 5 characters
-                </small>
-              )}{" "}
+                  }}
+                  placeholder="Enter password"
+                />
+                {signUpDetailsValidityStatus == "emptyPassword" && (
+                  <small id="invalidInputTextWarning">
+                    Password cannot be empty
+                  </small>
+                )}{" "}
+                {signUpDetailsValidityStatus == "passwordTooShort" && (
+                  <small id="invalidInputTextWarning">
+                    password must conatain at least 5 characters
+                  </small>
+                )}{" "}
+              </div>
             </div>
           )}
           {validPassword && (

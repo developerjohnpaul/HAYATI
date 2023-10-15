@@ -14,10 +14,15 @@ const Home = () => {
   const Api = useContext(mockApi);
   const App = useContext(app);
   const Navigate = useNavigate();
-  const [laterAppointments, setLaterAppointments] = useState([]);
-  const [latestAppointments, setLatestAppointments] = useState([]);
+
+  const [latestAppointments, setLatestAppointments] = useState({});
   const [latestMedication, setLatestMedication] = useState([]);
   const [trendingArticles, setTrendingArticles] = useState([]);
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [
+    upcomingAppointmentsLatestFiltered,
+    setUpcomingAppointmentsLatestFiltered,
+  ] = useState([]);
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
   useEffect(() => {
@@ -130,37 +135,68 @@ const Home = () => {
   }, [carouselNum]);
 
   useEffect(() => {
-    const latestAppointment = Api.appointment.filter((value) => {
-      return value.latest === true && value.status == "Upcoming";
-    });
-    setLatestAppointments(latestAppointment);
-    const laterAppointment = Api.appointment.filter((value) => {
-      return value.latest === false && value.status == "Upcoming";
-    });
-    setLaterAppointments(laterAppointment);
-    const trendingArticle = Api.articles.filter((value) => {
-      return value.status == "trending";
-    });
-    setTrendingArticles(trendingArticle);
     const LatestMedication = Api.medications.filter((value, index) => {
       return index == Api.medications.length - 1;
     });
     setLatestMedication(LatestMedication);
+    const lastAppointment = Api.appointment[Api.appointment.length - 1];
+
+    if (lastAppointment.status == "Upcoming") {
+      setLatestAppointments(lastAppointment);
+    }
+
+    if (lastAppointment.status != "Upcoming") {
+      setLatestAppointments({});
+    }
   }, []);
+  useEffect(() => {
+    const trendingArticle = Api.articles.filter((value) => {
+      return value.status == "trending";
+    });
+    setTrendingArticles(trendingArticle);
+  }, [Api.articles]);
+
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value, index) => {
+      return value.status == "Upcoming";
+    });
+    setUpcomingAppointments(upcomingAppointment);
+    const upcomingAppointmentLatestFiltered = Api.appointment.filter(
+      (value, index) => {
+        return (
+          value.status == "Upcoming" && index != Api.appointment.length - 1
+        );
+      }
+    );
+    setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
+  }, [Api.appointment]);
+
   return (
     <>
       <div id="home" className="flexColumnCenter">
         {" "}
-        <div id="HomeNav" className="fixed-top">
-          <small id="HomepageWelcomeMessage">Welcome back,jeff </small>
-          <div className="flexCenter">
-            <img
-              src={require("../images/profileImg.png")}
-              id="homeNavProfileImg"
-            />
-            <span id="hmre1">
-              <FaRegBell />
-            </span>
+        <div className="flexCenter fixed-top">
+          <div id="HomeNav">
+            <small id="HomepageWelcomeMessage">Welcome back,{App.user.Name}  </small>
+            <div className="flexCenter">
+              <img
+                src={require("../images/profileImg.png")}
+                id="homeNavProfileImg"
+                onClick={() => {
+                  Navigate("/Settings");
+                  App.instantScrollToTop();
+                }}
+              />
+              <button
+                id="hmre1"
+                onClick={() => {
+                  Navigate("/Notification");
+                  App.instantScrollToTop();
+                }}
+              >
+                <FaRegBell />
+              </button>
+            </div>
           </div>
         </div>
         <div className="flexCenter">
@@ -225,8 +261,6 @@ const Home = () => {
             type="button"
             id="columnViewAllBtn"
             onClick={() => {
-              App.setCurrentPage("Appointments");
-
               Navigate("/Appointments/Upcoming ");
               App.instantScrollToTop();
             }}
@@ -238,25 +272,22 @@ const Home = () => {
           </button>
         </div>
         <div className="flexStart" id="upComingAppointmentContainer">
-          <div>
-            {" "}
-            {latestAppointments.map((value, index) => (
-              <div key={index}>
-                <ul id="latestUpComingAppointment">
-                  <li id="hmre3">{value.date}</li>
-                  <li id="hmre4">{value.month}</li>
-                  <li id="hmre5">{value.title}</li>
-                  <li id="hmre6">
-                    {value.startTime}- {value.endTime}
-                  </li>{" "}
-                  <li id="hmre6">{value.location}</li>
-                </ul>
-              </div>
-            ))}
-          </div>
-
+          {Object.keys(latestAppointments).length != 0 && (
+            <div>
+              {" "}
+              <ul id="latestUpComingAppointment">
+                <li id="hmre3">{latestAppointments.date}</li>
+                <li id="hmre4">{latestAppointments.month}</li>
+                <li id="hmre5">{latestAppointments.title}</li>
+                <li id="hmre6">
+                  {latestAppointments.startTime}- {latestAppointments.endTime}
+                </li>{" "}
+                <li id="hmre6">{latestAppointments.location}</li>
+              </ul>
+            </div>
+          )}
           <div className="flexStart">
-            {laterAppointments.map((value, index) => (
+            {upcomingAppointmentsLatestFiltered.map((value, index) => (
               <div key={index}>
                 <ul id="UpComingAppointment">
                   <li id="hmre3">{value.date}</li>
@@ -270,6 +301,16 @@ const Home = () => {
               </div>
             ))}
           </div>
+          {upcomingAppointments.length == 0 && (
+            <div id="hmre29">
+              {" "}
+              <img
+                src={require("../images/emptyAppointmentAnimation.jpg")}
+                id="hmre27"
+              />
+              <p id="hmre28">oops you dont have any upcoming appointments </p>
+            </div>
+          )}
         </div>
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}
@@ -412,9 +453,49 @@ const Home = () => {
                   <div className="flexSpaceBetweenFirstBaseeline">
                     <li id="homepageTrendingArticleTitle">{value.title}</li>
                     {value.title.length > 108 && <small id="hmre20">...</small>}
-                    <li id="hmre21">
-                      <BsBookmarkFill />
-                    </li>
+
+                    {value.bookMarked && (
+                      <button
+                        id="hmre21"
+                        onClick={() => {
+                          Api.setArticles((valu) => {
+                            return valu.map((val) => {
+                              if (value.id === val.id) {
+                                return {
+                                  ...val,
+                                  bookMarked: false,
+                                };
+                              } else {
+                                return val;
+                              }
+                            });
+                          });
+                        }}
+                      >
+                        <BsBookmarkFill />
+                      </button>
+                    )}
+                    {!value.bookMarked && (
+                      <button
+                        id="hmre30"
+                        onClick={() => {
+                          Api.setArticles((valu) => {
+                            return valu.map((val) => {
+                              if (value.id === val.id) {
+                                return {
+                                  ...val,
+                                  bookMarked: true,
+                                };
+                              } else {
+                                return val;
+                              }
+                            });
+                          });
+                        }}
+                      >
+                        <BsBookmarkFill />
+                      </button>
+                    )}
                   </div>
                   <div className="flexSpaceBetween mt-3">
                     <small className="flexCenter listStyleNone">

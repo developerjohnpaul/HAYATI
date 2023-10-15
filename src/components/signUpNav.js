@@ -3,14 +3,21 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const SignUpNav = () => {
-   useEffect(() => {
-     const metaTag = document.querySelector('meta[name="theme-color"]');
-     metaTag.setAttribute("content", "#047E8E");
-   }, []);
+  const Navigate = useNavigate();
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN != undefined) {
+      Navigate("/");
+    }
+  }, []);
+  useEffect(() => {
+    const metaTag = document.querySelector('meta[name="theme-color"]');
+    metaTag.setAttribute("content", "#047E8E");
+  }, []);
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
-  const Navigate = useNavigate();
+
   return (
     <>
       <div id="CreatAccountNavBg" className="fixed-top">
