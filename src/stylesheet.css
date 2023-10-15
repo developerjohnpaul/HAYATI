@@ -2859,6 +2859,14 @@ body::-webkit-scrollbar {
 
 }
 
+#darkStatusFloatingText {
+  color: black;
+  margin-top: 200px;
+  padding: 2px 30px 5px 30px;
+  border-radius: 20px;
+
+}
+
 
 
 

@@ -61,13 +61,28 @@ const Onboarding = () => {
       setNBGLI((prev) => prev + 1);
     };
     const img3 = new Image();
-    img3.src = require("../images/onboarding2.png");
+    img3.src = require("../images/onboarding3.png");
     img3.onload = () => {
       setNBGLI((prev) => prev + 1);
     };
   }, []);
   return (
     <>
+      {NBGLI != 3 && (
+        <>
+          {" "}
+          <div id="statusFloatingModal" className="flexColumnCenter">
+            {" "}
+            <img
+              src={require("../images/maskedLogo192.png")}
+              id="statusFloatingLogo"
+            />{" "}
+            <p className="flexCenter" id="darkStatusFloatingText">
+              Loading...
+            </p>
+          </div>
+        </>
+      )}
       {NBGLI == 3 && (
         <div id="onboarding">
           <div id="onSm">
