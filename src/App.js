@@ -48,6 +48,8 @@ const App = () => {
     useState("hidden");
   const [currentAppointmentPage, setCurrentAppointmentPage] =
     useState("Upcoming");
+  const [status, setStatus] = useState("pending");
+
   const [currentPage, setCurrentPage] = useState("Home");
   const [SK, setSk] = useState("1234567891011");
   const instantScrollToTop = () => {
@@ -57,6 +59,14 @@ const App = () => {
       behavior: "instant",
     });
   };
+  useEffect(() => {
+    const CUIN = localStorage.getItem("CUIN");
+    if (CUIN != undefined) {
+      setStatus("loggedOut");
+    } else {
+      setStatus("loggedIn");
+    }
+  });
 
   const [logInDetails, setlogInDetails] = useState([
     {
@@ -72,14 +82,16 @@ const App = () => {
     },
   ]);
   const [popUpStatus, setPopUpStatus] = useState("none");
-  const [user, setUser] = useState([{
-    Name:"Anna",
-    Email:"xapic@gmail.com",
-    Password:"12345",
-    Gender:"",
-    DOB:"",
-    Country:"",
-  }]);
+  const [user, setUser] = useState([
+    {
+      Name: "Anna",
+      Email: "xapic@gmail.com",
+      Password: "12345",
+      Gender: "",
+      DOB: "",
+      Country: "",
+    },
+  ]);
 
   return (
     <app.Provider
@@ -101,6 +113,8 @@ const App = () => {
         popUpStatus: popUpStatus,
         user: user,
         setUser: setUser,
+        setStatus: setStatus,
+        status: status,
       }}
     >
       <div id="App">

@@ -14,7 +14,7 @@ export const MedicationNav = () => {
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
     if (CUIN == undefined) {
-      Navigate("Welcome");
+      Navigate("/Welcome");
     }
   }, []);
   return (
@@ -122,7 +122,7 @@ export const MedicationDetailsNav = () => {
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
     if (CUIN == undefined) {
-      Navigate("Welcome");
+      Navigate("/Welcome");
     }
   }, []);
   return (
@@ -228,7 +228,7 @@ export const AddMedicationNav = () => {
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
     if (CUIN == undefined) {
-      Navigate("Welcome");
+      Navigate("/Welcome");
     }
   }, []);
   return (
@@ -713,7 +713,7 @@ export const EditMedicationNav = () => {
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
     if (CUIN == undefined) {
-      Navigate("Welcome");
+      Navigate("/Welcome");
     }
   }, []);
   return (

@@ -29,14 +29,18 @@ export const AppointmentNavbar = () => {
   window.addEventListener("scroll", test);
   return (
     <>
-      <div className="flexCenter">
-        <h1 id="apre2">Appointment</h1>
-      </div>
-      <AppointmentNavCodeBase />
-      {fixedNav && (
-        <div className="fixed-top" id="apre18">
+      {App.status == "loggedIn" && (
+        <>
+          <div className="flexCenter">
+            <h1 id="apre2">Appointment</h1>
+          </div>
           <AppointmentNavCodeBase />
-        </div>
+          {fixedNav && (
+            <div className="fixed-top" id="apre18">
+              <AppointmentNavCodeBase />
+            </div>
+          )}
+        </>
       )}
       <Outlet />
     </>
@@ -140,109 +144,111 @@ export const UpcomingAppointments = () => {
   }, []);
   return (
     <>
-      <div id="AppointmentPage">
-        {upcomingAppointments == 0 && (
-          <>
-            <img
-              src={require("../images/emptyAppointmentAnimation.jpg")}
-              id="apre19"
-            />
-            <p id="apre20">oops you dont have any upcoming appointments </p>
-          </>
-        )}
-        {Api.appointment.toReversed().map((value, index) => (
-          <div key={index} id="apre14">
-            {" "}
-            {value.status == "Upcoming" && (
-              <div id="appointments">
-                <div className="flexStart">
-                  <div
-                    id="apre3"
-                    onClick={() => {
-                      Navigate(
-                        `/Specialist/#${CryptoJS.AES.encrypt(
-                          JSON.stringify(value.specialistId),
-                          App.SK
-                        ).toString()}`
-                      );
-                      App.instantScrollToTop();
-                    }}
-                  >
-                    <img src={value.appointeesImg} id="apre4" />
+      {App.status == "loggedIn" && (
+        <div id="AppointmentPage">
+          {upcomingAppointments == 0 && (
+            <>
+              <img
+                src={require("../images/emptyAppointmentAnimation.jpg")}
+                id="apre19"
+              />
+              <p id="apre20">oops you dont have any upcoming appointments </p>
+            </>
+          )}
+          {Api.appointment.toReversed().map((value, index) => (
+            <div key={index} id="apre14">
+              {" "}
+              {value.status == "Upcoming" && (
+                <div id="appointments">
+                  <div className="flexStart">
+                    <div
+                      id="apre3"
+                      onClick={() => {
+                        Navigate(
+                          `/Specialist/#${CryptoJS.AES.encrypt(
+                            JSON.stringify(value.specialistId),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      <img src={value.appointeesImg} id="apre4" />
+                    </div>
+                    <div id="apre5">
+                      <h1 id="apre6">{value.appointee}</h1>
+                      <small>{value.appointeesProffession}</small>
+                    </div>
                   </div>
-                  <div id="apre5">
-                    <h1 id="apre6">{value.appointee}</h1>
-                    <small>{value.appointeesProffession}</small>
-                  </div>
-                </div>
-                <div id="apre7">
-                  <div id="apre8">
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
+                  <div id="apre7">
+                    <div id="apre8">
+                      <>
+                        <span id="apre9">
                           {" "}
-                          <PiCalendarFill />
-                        </span>{" "}
-                        <span>
-                          {value.date},{value.month} {value.year}
+                          <span id="apre10">
+                            {" "}
+                            <PiCalendarFill />
+                          </span>{" "}
+                          <span>
+                            {value.date},{value.month} {value.year}
+                          </span>
                         </span>
-                      </span>
-                    </>
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
+                      </>
+                      <>
+                        <span id="apre9">
                           {" "}
-                          <PiClockLight />{" "}
+                          <span id="apre10">
+                            {" "}
+                            <PiClockLight />{" "}
+                          </span>
+                          <span>
+                            {value.startTime}-{value.endTime} GMT
+                          </span>
                         </span>
-                        <span>
-                          {value.startTime}-{value.endTime} GMT
-                        </span>
-                      </span>
-                    </>
+                      </>
+                    </div>
                   </div>
-                </div>
-                <div id="apre11">
-                  <button
-                    id="apre12"
-                    onClick={() => {
-                      Api.setAppointment((valu) => {
-                        return valu.map((val, ind) => {
-                          if (val.appointmentId === value.appointmentId) {
-                            return {
-                              ...val,
-                              status: "Cancelled",
-                            };
-                          } else {
-                            return val;
-                          }
+                  <div id="apre11">
+                    <button
+                      id="apre12"
+                      onClick={() => {
+                        Api.setAppointment((valu) => {
+                          return valu.map((val, ind) => {
+                            if (val.appointmentId === value.appointmentId) {
+                              return {
+                                ...val,
+                                status: "Cancelled",
+                              };
+                            } else {
+                              return val;
+                            }
+                          });
                         });
-                      });
-                    }}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    id="apre13"
-                    onClick={() => {
-                      Navigate(
-                        `/BookedAppointment#${CryptoJS.AES.encrypt(
-                          JSON.stringify(value.appointmentId),
-                          App.SK
-                        ).toString()}`
-                      );
-                      App.instantScrollToTop();
-                    }}
-                  >
-                    Reschedule
-                  </button>
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      id="apre13"
+                      onClick={() => {
+                        Navigate(
+                          `/BookedAppointment#${CryptoJS.AES.encrypt(
+                            JSON.stringify(value.appointmentId),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      Reschedule
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}{" "}
-          </div>
-        ))}
-      </div>
+              )}{" "}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
@@ -257,71 +263,73 @@ export const CompletedAppointments = () => {
   }, []);
   return (
     <>
-      <div id="AppointmentPage">
-        {Api.appointment.map((value, index) => (
-          <div key={index} id="apre14">
-            {" "}
-            {value.status == "Completed" && (
-              <div id="appointments">
-                <div className="flexStart">
-                  <div
-                    id="apre3"
-                    onClick={() => {
-                      Navigate(
-                        `/Specialist/#${CryptoJS.AES.encrypt(
-                          JSON.stringify(value.specialistId),
-                          App.SK
-                        ).toString()}`
-                      );
-                      App.instantScrollToTop();
-                    }}
-                  >
-                    <img src={value.appointeesImg} id="apre4" />
+      {App.status == "loggedIn" && (
+        <div id="AppointmentPage">
+          {Api.appointment.map((value, index) => (
+            <div key={index} id="apre14">
+              {" "}
+              {value.status == "Completed" && (
+                <div id="appointments">
+                  <div className="flexStart">
+                    <div
+                      id="apre3"
+                      onClick={() => {
+                        Navigate(
+                          `/Specialist/#${CryptoJS.AES.encrypt(
+                            JSON.stringify(value.specialistId),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      <img src={value.appointeesImg} id="apre4" />
+                    </div>
+                    <div id="apre5">
+                      <h1 id="apre6">{value.appointee}</h1>
+                      <small>{value.appointeesProffession}</small>
+                    </div>
                   </div>
-                  <div id="apre5">
-                    <h1 id="apre6">{value.appointee}</h1>
-                    <small>{value.appointeesProffession}</small>
+                  <div id="apre7">
+                    <div id="apre8">
+                      <>
+                        <span id="apre9">
+                          {" "}
+                          <span id="apre10">
+                            {" "}
+                            <PiCalendarFill />
+                          </span>{" "}
+                          <span>
+                            {" "}
+                            {value.date},{value.month} {value.year}
+                          </span>
+                        </span>
+                      </>
+                      <>
+                        <span id="apre9">
+                          {" "}
+                          <span id="apre10">
+                            {" "}
+                            <PiClockLight />{" "}
+                          </span>
+                          <span>
+                            {value.startTime}-{value.endTime} GMT
+                          </span>
+                        </span>
+                      </>
+                    </div>
+                  </div>
+                  <div id="apre15">
+                    <button id="apre16">
+                      <BsFillCheckCircleFill />
+                    </button>
                   </div>
                 </div>
-                <div id="apre7">
-                  <div id="apre8">
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
-                          {" "}
-                          <PiCalendarFill />
-                        </span>{" "}
-                        <span>
-                          {" "}
-                          {value.date},{value.month} {value.year}
-                        </span>
-                      </span>
-                    </>
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
-                          {" "}
-                          <PiClockLight />{" "}
-                        </span>
-                        <span>
-                          {value.startTime}-{value.endTime} GMT
-                        </span>
-                      </span>
-                    </>
-                  </div>
-                </div>
-                <div id="apre15">
-                  <button id="apre16">
-                    <BsFillCheckCircleFill />
-                  </button>
-                </div>
-              </div>
-            )}{" "}
-          </div>
-        ))}
-      </div>
+              )}{" "}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
@@ -330,77 +338,76 @@ export const CancelledAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
-  useEffect(() => {
-    App.setCurrentAppointmentPage("Cancelled");
-    Navigate(`/Appointments/Cancelled`);
-  }, []);
+
   return (
     <>
-      <div id="AppointmentPage">
-        {Api.appointment.map((value, index) => (
-          <div key={index} id="apre14">
-            {" "}
-            {value.status == "Cancelled" && (
-              <div id="appointments">
-                <div className="flexStart">
-                  <div
-                    id="apre3"
-                    onClick={() => {
-                      Navigate(
-                        `/Specialist/#${CryptoJS.AES.encrypt(
-                          JSON.stringify(value.specialistId),
-                          App.SK
-                        ).toString()}`
-                      );
-                      App.instantScrollToTop();
-                    }}
-                  >
-                    <img src={value.appointeesImg} id="apre4" />
+      {App.status == "loggedIn" && (
+        <div id="AppointmentPage">
+          {Api.appointment.map((value, index) => (
+            <div key={index} id="apre14">
+              {" "}
+              {value.status == "Cancelled" && (
+                <div id="appointments">
+                  <div className="flexStart">
+                    <div
+                      id="apre3"
+                      onClick={() => {
+                        Navigate(
+                          `/Specialist/#${CryptoJS.AES.encrypt(
+                            JSON.stringify(value.specialistId),
+                            App.SK
+                          ).toString()}`
+                        );
+                        App.instantScrollToTop();
+                      }}
+                    >
+                      <img src={value.appointeesImg} id="apre4" />
+                    </div>
+                    <div id="apre5">
+                      <h1 id="apre6">{value.appointee}</h1>
+                      <small>{value.appointeesProffession}</small>
+                    </div>
                   </div>
-                  <div id="apre5">
-                    <h1 id="apre6">{value.appointee}</h1>
-                    <small>{value.appointeesProffession}</small>
+                  <div id="apre7">
+                    <div id="apre8">
+                      <>
+                        <span id="apre9">
+                          {" "}
+                          <span id="apre10">
+                            {" "}
+                            <PiCalendarFill />
+                          </span>{" "}
+                          <span>
+                            {" "}
+                            {value.date},{value.month} {value.year}
+                          </span>
+                        </span>
+                      </>
+                      <>
+                        <span id="apre9">
+                          {" "}
+                          <span id="apre10">
+                            {" "}
+                            <PiClockLight />{" "}
+                          </span>
+                          <span>
+                            {value.startTime}-{value.endTime} GMT
+                          </span>
+                        </span>
+                      </>
+                    </div>
+                  </div>
+                  <div id="apre15">
+                    <button id="apre17">
+                      <AiFillCloseCircle />
+                    </button>
                   </div>
                 </div>
-                <div id="apre7">
-                  <div id="apre8">
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
-                          {" "}
-                          <PiCalendarFill />
-                        </span>{" "}
-                        <span>
-                          {" "}
-                          {value.date},{value.month} {value.year}
-                        </span>
-                      </span>
-                    </>
-                    <>
-                      <span id="apre9">
-                        {" "}
-                        <span id="apre10">
-                          {" "}
-                          <PiClockLight />{" "}
-                        </span>
-                        <span>
-                          {value.startTime}-{value.endTime} GMT
-                        </span>
-                      </span>
-                    </>
-                  </div>
-                </div>
-                <div id="apre15">
-                  <button id="apre17">
-                    <AiFillCloseCircle />
-                  </button>
-                </div>
-              </div>
-            )}{" "}
-          </div>
-        ))}
-      </div>
+              )}{" "}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
@@ -413,23 +420,25 @@ export const BookedAppointmentNav = () => {
   const App = useContext(app);
   return (
     <>
-      <div id="rere4">
-        {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
-        <div id="rere1">
-          <div className="flexStart">
-            <button
-              type="button"
-              id="rere2"
-              onClick={() => {
-                Navigate("/");
-              }}
-            >
-              <IoIosArrowBack />
-            </button>{" "}
+      {App.status == "loggedIn" && (
+        <div id="rere4">
+          {" "}
+          {App.popUpStatus == "save" && <div id="ge2"></div>}
+          <div id="rere1">
+            <div className="flexStart">
+              <button
+                type="button"
+                id="rere2"
+                onClick={() => {
+                  Navigate("/");
+                }}
+              >
+                <IoIosArrowBack />
+              </button>{" "}
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Outlet />
     </>
   );
@@ -471,59 +480,63 @@ export const BookedAppointment = () => {
   };
   return (
     <>
-      <div className="flexCenter">
-        {" "}
-        <div id="ge3">
-          <div id="bare2">
-            <img
-              src={require("../images/bookedAppointmentAnimation.png")}
-              id="bare1"
-            />
-          </div>{" "}
-          <div className="flexCenter">
-            <p id="bare3">
-              Your Appointment has been successfully booked. You will get a
-              notification now
-            </p>
-          </div>
-          <div className="flexCenter">
-            <div id="bare4">
-              <div id="bare5">
-                <p>{tabbedAppointment.title}</p>
-              </div>
-              <div id="bare6">
-                <div id="bare7">
-                  <li id="bare8">{tabbedAppointment.appointeesProffession}</li>
-                  <li id="bare9">{tabbedAppointment.appointee}</li>
+      {App.status == "loggedIn" && (
+        <div className="flexCenter">
+          {" "}
+          <div id="ge3">
+            <div id="bare2">
+              <img
+                src={require("../images/bookedAppointmentAnimation.png")}
+                id="bare1"
+              />
+            </div>{" "}
+            <div className="flexCenter">
+              <p id="bare3">
+                Your Appointment has been successfully booked. You will get a
+                notification now
+              </p>
+            </div>
+            <div className="flexCenter">
+              <div id="bare4">
+                <div id="bare5">
+                  <p>{tabbedAppointment.title}</p>
                 </div>
-                <div id="bare7">
-                  <li id="bare8">Date</li>
-                  <li id="bare9">
-                    {tabbedAppointment.date},{tabbedAppointment.month}{" "}
-                    {tabbedAppointment.year}
-                  </li>
-                </div>{" "}
-                <div id="bare7">
-                  <li id="bare8">Time</li>
-                  <li id="bare9">{tabbedAppointment.startTime}</li>
+                <div id="bare6">
+                  <div id="bare7">
+                    <li id="bare8">
+                      {tabbedAppointment.appointeesProffession}
+                    </li>
+                    <li id="bare9">{tabbedAppointment.appointee}</li>
+                  </div>
+                  <div id="bare7">
+                    <li id="bare8">Date</li>
+                    <li id="bare9">
+                      {tabbedAppointment.date},{tabbedAppointment.month}{" "}
+                      {tabbedAppointment.year}
+                    </li>
+                  </div>{" "}
+                  <div id="bare7">
+                    <li id="bare8">Time</li>
+                    <li id="bare9">{tabbedAppointment.startTime}</li>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div id="bare12">
-            <button type="button" id="bare11" onClick={cancelAppointment}>
-              {!AbortingAppointment && <span> Cancel consultation</span>}
-              {AbortingAppointment && (
-                <span
-                  className="spinner-border"
-                  id="spre23"
-                  role="status"
-                ></span>
-              )}
-            </button>
+            <div id="bare12">
+              <button type="button" id="bare11" onClick={cancelAppointment}>
+                {!AbortingAppointment && <span> Cancel consultation</span>}
+                {AbortingAppointment && (
+                  <span
+                    className="spinner-border"
+                    id="spre23"
+                    role="status"
+                  ></span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
