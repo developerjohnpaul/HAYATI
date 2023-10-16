@@ -127,14 +127,7 @@ export const UpcomingAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
-  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
-  useEffect(() => {
-    const upcomingAppointment = Api.appointment.filter((value) => {
-      return value.status == "Upcoming";
-    });
-    setUpcomingAppointments(upcomingAppointment);
-  }, [Api.appointment]);
-
+ 
   useEffect(() => {
     App.setCurrentAppointmentPage("Upcoming");
     Navigate(`/Appointments/Upcoming`);
@@ -142,7 +135,7 @@ export const UpcomingAppointments = () => {
   return (
     <>
       <div id="AppointmentPage">
-        {upcomingAppointments == 0 && (
+        {App.upcomingAppointments == 0 && (
           <>
             <img
               src={require("../images/emptyAppointmentAnimation.jpg")}

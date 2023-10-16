@@ -307,7 +307,7 @@ const Home = () => {
               </div>
             ))}
           </div>
-          {upcomingAppointments.length == 0 && (
+          {App.upcomingAppointments.length == 0 && (
             <div id="hmre29">
               {" "}
               <img

@@ -6,6 +6,7 @@ import SignUpNav from "./components/signUpNav";
 import SignUpPage from "./components/signUpPage";
 import MainNav from "./components/mainNav";
 import Home from "./components/home";
+import { mockApi } from "./components/mockApi";
 import { Notification, NotificationNav } from "./components/notification";
 import {
   AppointmentNavbar,
@@ -32,7 +33,7 @@ import {
   EditProfile,
 } from "./components/settings";
 import { ReportNav, Reports } from "./components/reports";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Specialist from "./components/specialist";
 import {
   ArticleNav,
@@ -44,11 +45,13 @@ import {
 export const app = createContext();
 
 const App = () => {
+  const Api = useContext(mockApi);
   const [blurredBackgroundOverlayStatus, setBlurredBackgroundOverlayStatus] =
     useState("hidden");
   const [currentAppointmentPage, setCurrentAppointmentPage] =
     useState("Upcoming");
   const [status, setStatus] = useState("pending");
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
 
   const [currentPage, setCurrentPage] = useState("Home");
   const [SK, setSk] = useState("1234567891011");
@@ -67,6 +70,12 @@ const App = () => {
       setStatus("loggedIn");
     }
   });
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value) => {
+      return value.status == "Upcoming";
+    });
+    setUpcomingAppointments(upcomingAppointment);
+  }, [Api.appointment]);
 
   const [logInDetails, setlogInDetails] = useState([
     {
@@ -115,6 +124,8 @@ const App = () => {
         setUser: setUser,
         setStatus: setStatus,
         status: status,
+        setUpcomingAppointments: setUpcomingAppointments,
+        upcomingAppointments: upcomingAppointments,
       }}
     >
       <div id="App">
