@@ -19,11 +19,7 @@ const Home = () => {
   const [latestAppointments, setLatestAppointments] = useState({});
   const [latestMedication, setLatestMedication] = useState([]);
   const [trendingArticles, setTrendingArticles] = useState([]);
-  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
-  const [
-    upcomingAppointmentsLatestFiltered,
-    setUpcomingAppointmentsLatestFiltered,
-  ] = useState([]);
+
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
   useEffect(() => {
@@ -160,20 +156,6 @@ const Home = () => {
     setTrendingArticles(trendingArticle);
   }, [Api.articles]);
 
-  useEffect(() => {
-    const upcomingAppointment = Api.appointment.filter((value, index) => {
-      return value.status == "Upcoming";
-    });
-    setUpcomingAppointments(upcomingAppointment);
-    const upcomingAppointmentLatestFiltered = Api.appointment.filter(
-      (value, index) => {
-        return (
-          value.status == "Upcoming" && index != Api.appointment.length - 1
-        );
-      }
-    );
-    setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
-  }, [Api.appointment]);
 
   return (
     <>
@@ -278,22 +260,23 @@ const Home = () => {
           </button>
         </div>
         <div className="flexStart" id="upComingAppointmentContainer">
-          {Object.keys(latestAppointments).length != 0 && (
+          {Object.keys(App.latestAppointments).length != 0 && (
             <div>
               {" "}
               <ul id="latestUpComingAppointment">
-                <li id="hmre3">{latestAppointments.date}</li>
-                <li id="hmre4">{latestAppointments.month}</li>
-                <li id="hmre5">{latestAppointments.title}</li>
+                <li id="hmre3">{App.latestAppointments.date}</li>
+                <li id="hmre4">{App.latestAppointments.month}</li>
+                <li id="hmre5">{App.latestAppointments.title}</li>
                 <li id="hmre6">
-                  {latestAppointments.startTime}- {latestAppointments.endTime}
+                  {App.latestAppointments.startTime}-{" "}
+                  {App.latestAppointments.endTime}
                 </li>{" "}
-                <li id="hmre6">{latestAppointments.location}</li>
+                <li id="hmre6">{App.latestAppointments.location}</li>
               </ul>
             </div>
           )}
           <div className="flexStart">
-            {upcomingAppointmentsLatestFiltered.map((value, index) => (
+            {App.upcomingAppointmentsLatestFiltered.map((value, index) => (
               <div key={index}>
                 <ul id="UpComingAppointment">
                   <li id="hmre3">{value.date}</li>

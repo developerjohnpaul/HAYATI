@@ -47,138 +47,129 @@ export const ReportNav = () => {
 
 export const Reports = () => {
   const Api = useContext(mockApi);
-  const [dayReporting, setDayReporting] = useState("Mon");
-  const [filteredReports, setFilteredReports] = useState([]);
-  useEffect(() => {
-    setFilteredReports(() => {
-      const filteredReport = Api.weeklyActivities.filter((val, ind) => {
-        return val.Day == dayReporting;
-      });
-      console.log(filteredReport);
-      console.log(dayReporting);
-      return filteredReport;
-    });
-  }, [dayReporting]);
+const App = useContext(app)
+
+ 
   return (
     <>
-      {filteredReports.map((value, index) => (
+      {App.filteredReports.map((value, index) => (
         <div className="flexColumnStart" key={index}>
           <div id="ge4">
             <p id="rere5"> Take a look at your activities for this week!</p>
             <div className="flexStart" id="rere10">
-              {dayReporting != "Mon" && (
+              {App.dayReporting != "Mon" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Mon");
+                    App.setDayReporting("Mon");
                   }}
                 >
                   <li id="rere7">Mon</li>
                   <li id="rere8">1</li>
                 </button>
               )}
-              {dayReporting == "Mon" && (
+              {App.dayReporting == "Mon" && (
                 <button id="rere6">
                   <li id="rere7">Mon</li>
                   <li id="rere11">1</li>
                 </button>
               )}
-              {dayReporting != "Tue" && (
+              {App.dayReporting != "Tue" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Tue");
+                    App.setDayReporting("Tue");
                   }}
                 >
                   <li id="rere7">Tue</li>
                   <li id="rere8">2</li>
                 </button>
               )}
-              {dayReporting == "Tue" && (
+              {App.dayReporting == "Tue" && (
                 <button id="rere6">
                   <li id="rere7">Tue</li>
                   <li id="rere11">2</li>
                 </button>
               )}
-              {dayReporting != "Wed" && (
+              {App.dayReporting != "Wed" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Wed");
+                   App.setDayReporting("Wed");
                   }}
                 >
                   <li id="rere7">Wed</li>
                   <li id="rere8">3</li>
                 </button>
               )}
-              {dayReporting == "Wed" && (
+              {App.dayReporting == "Wed" && (
                 <button id="rere6">
                   <li id="rere7">Wed</li>
                   <li id="rere11">3</li>
                 </button>
               )}
-              {dayReporting == "Thur" && (
+              {App.dayReporting == "Thur" && (
                 <button id="rere6">
                   <li id="rere7">Thur</li>
                   <li id="rere11">4</li>
                 </button>
               )}
-              {dayReporting != "Thur" && (
+              {App.dayReporting != "Thur" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Thur");
+                   App.setDayReporting("Thur");
                   }}
                 >
                   <li id="rere7">Thur</li>
                   <li id="rere8">4</li>
                 </button>
               )}
-              {dayReporting == "Fri" && (
+              {App.dayReporting == "Fri" && (
                 <button id="rere6">
                   <li id="rere7">Fri</li>
                   <li id="rere11">5</li>
                 </button>
               )}
-              {dayReporting != "Fri" && (
+              {App.dayReporting != "Fri" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Fri");
+                   App.setDayReporting("Fri");
                   }}
                 >
                   <li id="rere7">Fri</li>
                   <li id="rere8">5</li>
                 </button>
               )}
-              {dayReporting == "Sat" && (
+              {App.dayReporting == "Sat" && (
                 <button id="rere6">
                   <li id="rere7">Sat</li>
                   <li id="rere11">6</li>
                 </button>
               )}
-              {dayReporting != "Sat" && (
+              {App.dayReporting != "Sat" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Sat");
+                    App.setDayReporting("Sat");
                   }}
                 >
                   <li id="rere7">Sat</li>
                   <li id="rere8">6</li>
                 </button>
               )}
-              {dayReporting == "Sun" && (
+              {App.dayReporting == "Sun" && (
                 <button id="rere6">
                   <li id="rere7">Sun</li>
                   <li id="rere11">7</li>
                 </button>
               )}
-              {dayReporting != "Sun" && (
+              {App.dayReporting != "Sun" && (
                 <button
                   id="rere6"
                   onClick={() => {
-                    setDayReporting("Sun");
+                   App.setDayReporting("Sun");
                   }}
                 >
                   <li id="rere7">Sun</li>
