@@ -53,53 +53,51 @@ const Home = () => {
     },
   ]);
   const carouselScroll = () => {
-    if (App.status == "loggedIn") {
-      const carousel = document.getElementById("homepageCarouselContainer");
+    const carousel = document.getElementById("homepageCarouselContainer");
 
-      let scrollStop;
-      carousel.addEventListener("scroll", (e) => {
-        clearTimeout(scrollStop);
-        scrollStop = setTimeout(() => {
-          if (
-            carousel.scrollLeft > carousel.offsetWidth / 2 &&
-            carousel.scrollLeft < carousel.offsetWidth
+    let scrollStop;
+    carousel.addEventListener("scroll", (e) => {
+      clearTimeout(scrollStop);
+      scrollStop = setTimeout(() => {
+        if (
+          carousel.scrollLeft > carousel.offsetWidth / 2 &&
+          carousel.scrollLeft < carousel.offsetWidth
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth;
+          setCarouselNum(2);
+        } else if (
+          carousel.scrollLeft >
+            carousel.offsetWidth + carousel.offsetWidth / 2 &&
+          carousel.scrollLeft < carousel.offsetWidth * 2
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth * 2;
+          setCarouselNum(3);
+        } else if (
+          carousel.scrollLeft >
+          carousel.offsetWidth * 2 + carousel.offsetWidth / 2
+        ) {
+          carousel.scrollLeft = carousel.offsetWidth * 3;
+          setCarouselNum(4);
+        } else {
+          if (carousel.scrollLeft < carousel.offsetWidth / 2) {
+            carousel.scrollLeft = 0;
+            setCarouselNum(1);
+          } else if (
+            carousel.scrollLeft <
+            carousel.offsetWidth + carousel.offsetWidth / 2
           ) {
             carousel.scrollLeft = carousel.offsetWidth;
             setCarouselNum(2);
           } else if (
-            carousel.scrollLeft >
-              carousel.offsetWidth + carousel.offsetWidth / 2 &&
-            carousel.scrollLeft < carousel.offsetWidth * 2
+            carousel.scrollLeft <
+            carousel.offsetWidth * 2 + carousel.offsetWidth / 2
           ) {
             carousel.scrollLeft = carousel.offsetWidth * 2;
             setCarouselNum(3);
-          } else if (
-            carousel.scrollLeft >
-            carousel.offsetWidth * 2 + carousel.offsetWidth / 2
-          ) {
-            carousel.scrollLeft = carousel.offsetWidth * 3;
-            setCarouselNum(4);
-          } else {
-            if (carousel.scrollLeft < carousel.offsetWidth / 2) {
-              carousel.scrollLeft = 0;
-              setCarouselNum(1);
-            } else if (
-              carousel.scrollLeft <
-              carousel.offsetWidth + carousel.offsetWidth / 2
-            ) {
-              carousel.scrollLeft = carousel.offsetWidth;
-              setCarouselNum(2);
-            } else if (
-              carousel.scrollLeft <
-              carousel.offsetWidth * 2 + carousel.offsetWidth / 2
-            ) {
-              carousel.scrollLeft = carousel.offsetWidth * 2;
-              setCarouselNum(3);
-            }
           }
-        }, 150);
-      });
-    }
+        }
+      }, 150);
+    });
   };
 
   useEffect(() => {
@@ -155,7 +153,6 @@ const Home = () => {
     });
     setTrendingArticles(trendingArticle);
   }, [Api.articles]);
-
 
   return (
     <>
