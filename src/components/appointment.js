@@ -127,22 +127,36 @@ export const UpcomingAppointments = () => {
   const App = useContext(app);
   const Api = useContext(mockApi);
   const Navigate = useNavigate();
- 
+
+  const [showEmptyAppointmentmentIcon, setShowEmptyAppointmentIcon] =
+    useState(false);
+
   useEffect(() => {
     App.setCurrentAppointmentPage("Upcoming");
     Navigate(`/Appointments/Upcoming`);
   }, []);
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value, index) => {
+      return value.status == "Upcoming";
+    });
+    if (upcomingAppointment.length == 0) {
+      setTimeout(() => {
+        setShowEmptyAppointmentIcon(true);
+      }, 150);
+    }
+  }, [Api.appointment]);
   return (
     <>
       <div id="AppointmentPage">
-        {App.upcomingAppointments == 0 && (
-          <>
+        {showEmptyAppointmentmentIcon && (
+          <div id="hmre29">
+            {" "}
             <img
               src={require("../images/emptyAppointmentAnimation.jpg")}
-              id="apre19"
+              id="hmre27"
             />
-            <p id="apre20">oops you dont have any upcoming appointments </p>
-          </>
+            <p id="hmre28">oops you dont have any upcoming appointments </p>
+          </div>
         )}
         {Api.appointment.toReversed().map((value, index) => (
           <div key={index} id="apre14">
@@ -326,7 +340,6 @@ export const CancelledAppointments = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     App.setCurrentAppointmentPage("Cancelled");
-
   }, []);
   return (
     <>

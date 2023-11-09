@@ -51,18 +51,15 @@ const App = () => {
   const [currentAppointmentPage, setCurrentAppointmentPage] =
     useState("Upcoming");
   const [status, setStatus] = useState("pending");
-  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+
   const [trendingArticles, setTrendingArticles] = useState([]);
   const [relatedArticles, setRelatedArticles] = useState([]);
   const [bookmark, setBookmark] = useState({});
   const [currentPage, setCurrentPage] = useState("Home");
   const [SK, setSk] = useState("6789114502311");
-  const [latestAppointments, setLatestAppointments] = useState({});
+
   const [latestMedication, setLatestMedication] = useState([]);
-  const [
-    upcomingAppointmentsLatestFiltered,
-    setUpcomingAppointmentsLatestFiltered,
-  ] = useState([]);
+
   const [dayReporting, setDayReporting] = useState("Mon");
   const [filteredReports, setFilteredReports] = useState([]);
   const instantScrollToTop = () => {
@@ -80,12 +77,6 @@ const App = () => {
       setStatus("loggedIn");
     }
   });
-  useEffect(() => {
-    const upcomingAppointment = Api.appointment.filter((value) => {
-      return value.status == "Upcoming";
-    });
-    setUpcomingAppointments(upcomingAppointment);
-  }, [Api.appointment]);
 
   const [logInDetails, setlogInDetails] = useState([
     {
@@ -133,31 +124,8 @@ const App = () => {
       return index == Api.medications.length - 1;
     });
     setLatestMedication(LatestMedication);
-    const lastAppointment = Api.appointment[Api.appointment.length - 1];
-
-    if (lastAppointment.status == "Upcoming") {
-      setLatestAppointments(lastAppointment);
-    }
-
-    if (lastAppointment.status != "Upcoming") {
-      setLatestAppointments({});
-    }
   }, []);
 
-  useEffect(() => {
-    const upcomingAppointment = Api.appointment.filter((value, index) => {
-      return value.status == "Upcoming";
-    });
-    setUpcomingAppointments(upcomingAppointment);
-    const upcomingAppointmentLatestFiltered = Api.appointment.filter(
-      (value, index) => {
-        return (
-          value.status == "Upcoming" && index != Api.appointment.length - 1
-        );
-      }
-    );
-    setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
-  }, [Api.appointment]);
   useEffect(() => {
     setFilteredReports(() => {
       const filteredReport = Api.weeklyActivities.filter((val, ind) => {
@@ -168,6 +136,7 @@ const App = () => {
       return filteredReport;
     });
   }, [dayReporting]);
+
   return (
     <app.Provider
       value={{
@@ -190,8 +159,7 @@ const App = () => {
         setUser: setUser,
         setStatus: setStatus,
         status: status,
-        setUpcomingAppointments: setUpcomingAppointments,
-        upcomingAppointments: upcomingAppointments,
+
         setBookmark: setBookmark,
         bookmark: bookmark,
         relatedArticles: relatedArticles,
@@ -200,11 +168,6 @@ const App = () => {
         setTrendingArticles: setTrendingArticles,
         latestMedication: latestMedication,
         setLatestMedication: setLatestMedication,
-        latestAppointments: latestAppointments,
-        setLatestAppointments: setLatestAppointments,
-        upcomingAppointmentsLatestFiltered: upcomingAppointmentsLatestFiltered,
-        setUpcomingAppointmentsLatestFiltered:
-          setUpcomingAppointmentsLatestFiltered,
         dayReporting: dayReporting,
         setDayReporting: setDayReporting,
         filteredReports: filteredReports,

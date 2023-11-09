@@ -18,8 +18,15 @@ const Home = () => {
 
   const [latestAppointments, setLatestAppointments] = useState({});
   const [latestMedication, setLatestMedication] = useState([]);
+  const [LastAppointments, setLastAppointments] = useState([]);
   const [trendingArticles, setTrendingArticles] = useState([]);
-
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [showEmptyAppointmentmentIcon, setShowEmptyAppointmentIcon] =
+    useState(false);
+  const [
+    upcomingAppointmentsLatestFiltered,
+    setUpcomingAppointmentsLatestFiltered,
+  ] = useState([]);
   const [carouselScrollLeft, setCarouselScrollLeft] = useState(0);
   const [carouselNum, setCarouselNum] = useState(1);
   useEffect(() => {
@@ -154,6 +161,40 @@ const Home = () => {
     setTrendingArticles(trendingArticle);
   }, [Api.articles]);
 
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value, index) => {
+      return value.status == "Upcoming";
+    });
+    setUpcomingAppointments(upcomingAppointment);
+    const upcomingAppointmentLatestFiltered = Api.appointment.filter(
+      (value, index) => {
+        return (
+          value.status == "Upcoming" && index != Api.appointment.length - 1
+        );
+      }
+    );
+    setUpcomingAppointmentsLatestFiltered(upcomingAppointmentLatestFiltered);
+  }, [Api.appointment]);
+
+  useEffect(() => {
+    const upcomingAppointment = Api.appointment.filter((value, index) => {
+      return value.status == "Upcoming";
+    });
+    if (upcomingAppointment.length == 0) {
+      setTimeout(() => {
+        setShowEmptyAppointmentIcon(true);
+      }, 150);
+    }
+    const lastAppointment = Api.appointment[Api.appointment.length - 1];
+
+    if (lastAppointment.status == "Upcoming") {
+      setLastAppointments(lastAppointment);
+    }
+    if (lastAppointment.status != "Upcoming") {
+      setLastAppointments({});
+    }
+  }, [Api.appointment]);
+
   return (
     <>
       <div id="home" className="flexColumnCenter">
@@ -257,23 +298,32 @@ const Home = () => {
           </button>
         </div>
         <div className="flexStart" id="upComingAppointmentContainer">
-          {Object.keys(App.latestAppointments).length != 0 && (
+          {showEmptyAppointmentmentIcon && (
+            <div id="hmre29">
+              {" "}
+              <img
+                src={require("../images/emptyAppointmentAnimation.jpg")}
+                id="hmre27"
+              />
+              <p id="hmre28">oops you dont have any upcoming appointments </p>
+            </div>
+          )}
+          {Object.keys(LastAppointments).length != 0 && (
             <div>
               {" "}
               <ul id="latestUpComingAppointment">
-                <li id="hmre3">{App.latestAppointments.date}</li>
-                <li id="hmre4">{App.latestAppointments.month}</li>
-                <li id="hmre5">{App.latestAppointments.title}</li>
+                <li id="hmre3">{LastAppointments.date}</li>
+                <li id="hmre4">{LastAppointments.month}</li>
+                <li id="hmre5">{LastAppointments.title}</li>
                 <li id="hmre6">
-                  {App.latestAppointments.startTime}-{" "}
-                  {App.latestAppointments.endTime}
+                  {LastAppointments.startTime}- {LastAppointments.endTime}
                 </li>{" "}
-                <li id="hmre6">{App.latestAppointments.location}</li>
+                <li id="hmre6">{LastAppointments.location}</li>
               </ul>
             </div>
           )}
           <div className="flexStart">
-            {App.upcomingAppointmentsLatestFiltered.map((value, index) => (
+            {upcomingAppointmentsLatestFiltered.map((value, index) => (
               <div key={index}>
                 <ul id="UpComingAppointment">
                   <li id="hmre3">{value.date}</li>
@@ -287,16 +337,6 @@ const Home = () => {
               </div>
             ))}
           </div>
-          {App.upcomingAppointments.length == 0 && (
-            <div id="hmre29">
-              {" "}
-              <img
-                src={require("../images/emptyAppointmentAnimation.jpg")}
-                id="hmre27"
-              />
-              <p id="hmre28">oops you dont have any upcoming appointments </p>
-            </div>
-          )}
         </div>
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}

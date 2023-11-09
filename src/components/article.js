@@ -420,6 +420,16 @@ export const TabbedArticle = () => {
           >
             <IoIosArrowBack />
           </button>
+          {tabbedArticle.bookMarked && (
+            <button id="hmre21">
+              <BsBookmarkFill />
+            </button>
+          )}
+          {!tabbedArticle.bookMarked && (
+            <button id="hmre30">
+              <BsBookmarkFill />
+            </button>
+          )}
         </div>
         <div id="ge5">
           {" "}
