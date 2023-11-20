@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   const submitDetails = (e) => {
     e.preventDefault();
-    if (App.logInDetails[0].Email == "") {
+    if (App.logInDetails[0].Email === "") {
       setValidEmailAddress(false);
       setLoginDetailsValidityStatus("emptyEmailInput");
     } else if (!App.logInDetails[0].Email.endsWith("@gmail.com")) {
@@ -28,15 +28,15 @@ const LoginPage = () => {
       setLoginDetailsValidityStatus("emailNotFound");
     } else {
       setValidEmailAddress(true);
-      if (App.logInDetails[0].Password == "") {
+      if (App.logInDetails[0].Password === "") {
         setValidPassword(false);
         setLoginDetailsValidityStatus("emptyPasswordInput");
       } else if (App.logInDetails[0].Password != App.user[0].Password) {
         setValidPassword(false);
         setLoginDetailsValidityStatus("incorrectPassword");
       } else if (
-        App.logInDetails[0].Email == App.user[0].Email &&
-        App.logInDetails[0].Password == App.user[0].Password
+        App.logInDetails[0].Email === App.user[0].Email &&
+        App.logInDetails[0].Password === App.user[0].Password
       ) {
         setLoginStatusModal("loggingIn");
         App.setBlurredBackgroundOverlayStatus("visible");
@@ -60,7 +60,7 @@ const LoginPage = () => {
   return (
     <>
       <div id="logInPage">
-        {App.blurredBackgroundOverlayStatus == "visible" && (
+        {App.blurredBackgroundOverlayStatus === "visible" && (
           <div
             id="BluredBackgroundOverlay"
             onClick={() => {
@@ -105,22 +105,22 @@ const LoginPage = () => {
                         ...val,
                         Email: e.target.value.trimStart(),
                       };
-                    });
+                    }); 
                   });
                 }}
                 placeholder="Enter email address"
               />
-              {loginDetailsValidityStatus == "emptyEmailInput" && (
+              {loginDetailsValidityStatus === "emptyEmailInput" && (
                 <small id="invalidInputTextWarning">
                   Email address cannot be empty
                 </small>
               )}{" "}
-              {loginDetailsValidityStatus == "invalidEmail" && (
+              {loginDetailsValidityStatus === "invalidEmail" && (
                 <small id="invalidInputTextWarning">
                   Enter a valid email address ending with "@gmail.com"
                 </small>
               )}{" "}
-              {loginDetailsValidityStatus == "emailNotFound" && (
+              {loginDetailsValidityStatus === "emailNotFound" && (
                 <small id="invalidInputTextWarning">
                   No hayati account with the provided email address
                 </small>
@@ -165,12 +165,12 @@ const LoginPage = () => {
                 }}
                 placeholder="Enter password"
               />
-              {loginDetailsValidityStatus == "emptyPasswordInput" && (
+              {loginDetailsValidityStatus === "emptyPasswordInput" && (
                 <small id="invalidInputTextWarning">
                   Password cannot be empty
                 </small>
               )}{" "}
-              {loginDetailsValidityStatus == "incorrectPassword" && (
+              {loginDetailsValidityStatus === "incorrectPassword" && (
                 <small id="invalidInputTextWarning">Incorrect password</small>
               )}{" "}
             </div>
@@ -208,7 +208,7 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
-      {TouchIdModalStatus == "visible" && (
+      {TouchIdModalStatus === "visible" && (
         <div id="touchIdModal" className="flexColumnCenter">
           <h4>Touch ID</h4>
           <div className="flexCenter" id="lpre4">
@@ -232,7 +232,7 @@ const LoginPage = () => {
           </div>
         </div>
       )}
-      {loginInStatusModal == "loggingIn" && (
+      {loginInStatusModal === "loggingIn" && (
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}

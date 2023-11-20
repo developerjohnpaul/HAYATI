@@ -9,11 +9,12 @@ export const NotificationNav = () => {
   }, []);
   const Navigate = useNavigate();
   const App = useContext(app);
+
   return (
     <>
     <div id="nore4">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="nore1">
           <div className="flexStart">
             <button

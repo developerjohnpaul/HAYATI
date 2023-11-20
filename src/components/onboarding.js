@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { BsBellFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const Onboarding = () => {
+
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#047E8E");
@@ -10,7 +11,7 @@ const Onboarding = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
+    if (CUIN !== undefined) {
       Navigate("/");
     }
   }, []);
@@ -29,7 +30,7 @@ const Onboarding = () => {
           return prev + 1;
         });
       }
-      if (onboardingBgNumber == onboardingDetails.length - 1) {
+      if (onboardingBgNumber === onboardingDetails.length - 1) {
         setOnboardingBgNumber(0);
       }
     }, 8000);
@@ -68,7 +69,7 @@ const Onboarding = () => {
   }, []);
   return (
     <>
-      {NBGLI != 3 && (
+      {NBGLI !== 3 && (
         <>
           {" "}
           <div id="statusFloatingModal" className="flexColumnCenter">
@@ -83,22 +84,22 @@ const Onboarding = () => {
           </div>
         </>
       )}
-      {NBGLI == 3 && (
+      {NBGLI === 3 && (
         <div id="onboarding">
           <div id="onSm">
-            {onboardingBgNumber == 0 && (
+            {onboardingBgNumber === 0 && (
               <img
                 src={require("../images/onboarding1.png")}
                 id="onboardingBg"
               />
             )}
-            {onboardingBgNumber == 1 && (
+            {onboardingBgNumber === 1 && (
               <img
                 src={require("../images/onboarding2.png")}
                 id="onboardingBg"
               />
             )}{" "}
-            {onboardingBgNumber == 2 && (
+            {onboardingBgNumber === 2 && (
               <img
                 src={require("../images/onboarding3.png")}
                 id="onboardingBg"
@@ -106,19 +107,19 @@ const Onboarding = () => {
             )}
           </div>
           <div id="onlg">
-            {onboardingBgNumber == 0 && (
+            {onboardingBgNumber === 0 && (
               <img
                 src={require("../images/onboarding1Large.jpg")}
                 id="onboardingBg"
               />
             )}
-            {onboardingBgNumber == 1 && (
+            {onboardingBgNumber === 1 && (
               <img
                 src={require("../images/onboardingBg2Large.jpg")}
                 id="onboardingBg"
               />
             )}{" "}
-            {onboardingBgNumber == 2 && (
+            {onboardingBgNumber === 2 && (
               <img
                 src={require("../images/onboardingBg3Large.jpg")}
                 id="onboardingBg"
@@ -127,44 +128,44 @@ const Onboarding = () => {
           </div>
           <img src={require("../images/LOGO.png")} id="onboardingLogo" />
           <div className="flexSpaceBetween" id="onre1">
-            {shortOnboadingTextStatus == "live" && (
+            {shortOnboadingTextStatus === "live" && (
               <>
                 {" "}
-                {onboardingBgNumber == 0 && (
+                {onboardingBgNumber === 0 && (
                   <h1 id="shortOnboadingText">
                     Empowering your <span id="onre2">health</span>
                     {"  "} journey together
                   </h1>
                 )}
-                {onboardingBgNumber == 1 && (
+                {onboardingBgNumber === 1 && (
                   <h1 id="shortOnboadingText">
                     Guiding Your Path to Empowered{"  "}
                     <span id="onre2"> Living</span>
                   </h1>
                 )}
-                {onboardingBgNumber == 2 && (
+                {onboardingBgNumber === 2 && (
                   <h1 id="shortOnboadingText">
                     Empowering <span id="onre2">Hope</span> , One Step at a Time
                   </h1>
                 )}
               </>
             )}
-            {shortOnboadingTextStatus == "fading" && (
+            {shortOnboadingTextStatus === "fading" && (
               <>
                 {" "}
-                {onboardingBgNumber == 0 && (
+                {onboardingBgNumber === 0 && (
                   <h1 id="fadingShortOnboadingText">
                     Empowering your <span id="onre2">health</span>
                     {"  "} journey together
                   </h1>
                 )}
-                {onboardingBgNumber == 1 && (
+                {onboardingBgNumber === 1 && (
                   <h1 id="fadingShortOnboadingText">
                     Guiding Your Path to Empowered{"  "}
                     <span id="onre2"> Living</span>
                   </h1>
                 )}
-                {onboardingBgNumber == 2 && (
+                {onboardingBgNumber === 2 && (
                   <h1 id="fadingShortOnboadingText">
                     Empowering <span id="onre2"> Hope</span> , One Step at a
                     Time

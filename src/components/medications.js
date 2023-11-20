@@ -6,16 +6,16 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import CryptoJS from "crypto-js";
 import { app } from "../App";
 import { mockApi } from "./mockApi";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 export const MedicationNav = () => {
   const Navigate = useNavigate();
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
+
   }, []);
   return (
     <>
@@ -83,7 +83,7 @@ export const Medications = () => {
                     <span>
                       {" "}
                       {value.time.map((val, ind) => (
-                        <span key={ind}>{ind == 0 && <span>{val}</span>}</span>
+                        <span key={ind}>{ind === 0 && <span>{val}</span>}</span>
                       ))}
                     </span>
                   </li>
@@ -121,7 +121,7 @@ export const MedicationDetailsNav = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -164,7 +164,7 @@ export const MedicationDetails = () => {
       );
       setId(decryptedSID);
       const filteredDetails = Api.medications.filter((val, ind) => {
-        return ind == decryptedSID;
+        return ind === decryptedSID;
       });
       return filteredDetails;
     });
@@ -227,7 +227,7 @@ export const AddMedicationNav = () => {
   const App = useContext(app);
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -235,7 +235,7 @@ export const AddMedicationNav = () => {
     <>
       <div id="mere15">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="mere1">
           <div className="flexStart">
             <button
@@ -280,60 +280,60 @@ export const AddMedication = () => {
   const [invalidInput, setInvalidInput] = useState("none");
   const [invalidInputWarningText, setInvalidInputWarningText] = useState("");
   const confirmMonthInWords = (e) => {
-    if (e == 1) {
+    if (e === 1) {
       return "jan";
     }
-    if (e == 2) {
+    if (e === 2) {
       return "feb";
     }
-    if (e == 3) {
+    if (e === 3) {
       return "mar";
     }
-    if (e == 4) {
+    if (e === 4) {
       return "apr";
     }
-    if (e == 5) {
+    if (e === 5) {
       return "may";
     }
-    if (e == 6) {
+    if (e === 6) {
       return "jun";
     }
-    if (e == 7) {
+    if (e === 7) {
       return "jul";
     }
-    if (e == 8) {
+    if (e === 8) {
       return "aug";
     }
-    if (e == 9) {
+    if (e === 9) {
       return "sep";
     }
-    if (e == 10) {
+    if (e === 10) {
       return "oct";
     }
-    if (e == 11) {
+    if (e === 11) {
       return "nov";
     }
-    if (e == 12) {
+    if (e === 12) {
       return "dec";
     }
   };
   const submitDurationDate = (e) => {
     e.preventDefault();
-    if (startDate != "") {
+    if (startDate !== "") {
       const startdate = new Date(startDate);
       const startDay = startdate.getDate() + 1;
       const startMonth = confirmMonthInWords(startdate.getMonth() + 1);
       setStartMonthAndDay(startDay + " " + startMonth);
       setInputDislayed("none");
     }
-    if (endDate != "") {
+    if (endDate !== "") {
       const enddate = new Date(endDate);
       const endDay = enddate.getDate() + 1;
       const endMonth = confirmMonthInWords(enddate.getMonth() + 1);
       setEndMonthAndDay(endDay + " " + endMonth);
       setInputDislayed("none");
     }
-    if (startDate != "" && endDate != "") {
+    if (startDate !== "" && endDate !== "") {
       const startdate = new Date(startDate);
       const enddate = new Date(endDate);
 
@@ -347,7 +347,7 @@ export const AddMedication = () => {
       });
 
       const conv = (enddate - startdate) / (1000 * 60 * 60 * 24);
-      if (conv % 7 == 0) {
+      if (conv % 7 === 0) {
         const numWeeks = conv / 7;
         const inWords = ` ${numWeeks} weeks from start date`;
         setMedicationFormInputs((value, index) => {
@@ -357,7 +357,7 @@ export const AddMedication = () => {
           };
         });
       }
-      if (conv % 7 != 0) {
+      if (conv % 7 !== 0) {
         const inWords = ` ${conv} days from start date`;
         setMedicationFormInputs((value, index) => {
           return {
@@ -369,22 +369,22 @@ export const AddMedication = () => {
     }
   };
   const saveMedication = () => {
-    if (medicationFormInputs.name == "") {
+    if (medicationFormInputs.name === "") {
       setInvalidInput("name");
       setInvalidInputWarningText("emptyNameInput");
       App.instantScrollToTop();
-    } else if (medicationFormInputs.img == "") {
+    } else if (medicationFormInputs.img === "") {
       setInvalidInput("img");
       setInvalidInputWarningText("emptyImgInput");
       var element = document.querySelector("#ge3");
       element.scrollIntoView({ behavior: "auto" });
-    } else if (medicationFormInputs.dosage == "") {
+    } else if (medicationFormInputs.dosage === "") {
       setInvalidInput("dosage");
       setInvalidInputWarningText("emptyDosageInput");
-    } else if (medicationFormInputs.time.length == 0) {
+    } else if (medicationFormInputs.time.length === 0) {
       setInvalidInput("time");
       setInvalidInputWarningText("emptyTimeInput");
-    } else if (medicationFormInputs.duration == "") {
+    } else if (medicationFormInputs.duration === "") {
       setInvalidInput("duration");
       setInvalidInputWarningText("emptyDurationInput");
     } else {
@@ -410,13 +410,13 @@ export const AddMedication = () => {
   };
   return (
     <>
-      {App.blurredBackgroundOverlayStatus == "visible" && (
+      {App.blurredBackgroundOverlayStatus === "visible" && (
         <>
           {" "}
           <div id="BluredBackgroundOverlay"></div>
         </>
       )}{" "}
-      {App.popUpStatus == "save" && (
+      {App.popUpStatus === "save" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
@@ -433,7 +433,7 @@ export const AddMedication = () => {
           <h5 id="mere30" className="medicationName">
             Name
           </h5>
-          {invalidInput != "name" && (
+          {invalidInput !== "name" && (
             <input
               type="text"
               id="mere31"
@@ -449,7 +449,7 @@ export const AddMedication = () => {
               }}
             />
           )}
-          {invalidInput == "name" && (
+          {invalidInput === "name" && (
             <>
               {" "}
               <input
@@ -466,17 +466,17 @@ export const AddMedication = () => {
                   });
                 }}
               />
-              {invalidInputWarningText == "emptyNameInput" && (
+              {invalidInputWarningText === "emptyNameInput" && (
                 <li id="mere45">Please enter a medication name</li>
               )}
             </>
           )}
           <h5 id="mere30">Display Image</h5>
           <div id="mere17">
-            {medicationFormInputs.img != "" && (
+            {medicationFormInputs.img !== "" && (
               <img src={medicationFormInputs.img} id="mere18" />
             )}
-            {medicationFormInputs.img == "" && (
+            {medicationFormInputs.img === "" && (
               <img src={require("../images/emptyImgIcon.jpg")} id="mere18" />
             )}
           </div>
@@ -484,7 +484,7 @@ export const AddMedication = () => {
             {" "}
             <label htmlFor="mere32">Select image</label>
           </button>
-          {invalidInputWarningText == "emptyImgInput" && (
+          {invalidInputWarningText === "emptyImgInput" && (
             <li id="mere45">select an image </li>
           )}
           <br />
@@ -509,7 +509,7 @@ export const AddMedication = () => {
             }}
           />
           <h5 id="mere30">Tablet per Time</h5>
-          {invalidInput != "dosage" && (
+          {invalidInput !== "dosage" && (
             <>
               <input
                 type="text"
@@ -527,7 +527,7 @@ export const AddMedication = () => {
               />
             </>
           )}
-          {invalidInput == "dosage" && (
+          {invalidInput === "dosage" && (
             <>
               <input
                 type="number"
@@ -543,7 +543,7 @@ export const AddMedication = () => {
                   });
                 }}
               />
-              {invalidInputWarningText == "emptyDosageInput" && (
+              {invalidInputWarningText === "emptyDosageInput" && (
                 <li id="mere45">Specify tablets to be taken per time </li>
               )}
             </>
@@ -562,7 +562,7 @@ export const AddMedication = () => {
               </div>
             ))}
           </div>
-          {invalidInputWarningText == "emptyTimeInput" && (
+          {invalidInputWarningText === "emptyTimeInput" && (
             <li id="mere45">Specify time for taking the medications </li>
           )}
           <form
@@ -594,12 +594,12 @@ export const AddMedication = () => {
               />
             )}{" "}
             <br />
-            {dosageTime != "" && (
+            {dosageTime !== "" && (
               <button type="submit" id="mere33">
                 Save
               </button>
             )}
-            {dosageTime == "" && (
+            {dosageTime === "" && (
               <button
                 type="button"
                 id="mere33"
@@ -624,8 +624,8 @@ export const AddMedication = () => {
               }}
             >
               <label htmlFor="mere38">
-                {startMonthAndDay == "" && <>+</>}
-                {startMonthAndDay != "" && <>{startMonthAndDay}</>}
+                {startMonthAndDay === "" && <>+</>}
+                {startMonthAndDay !== "" && <>{startMonthAndDay}</>}
               </label>
             </button>
             <li id="mere40">To</li>
@@ -637,13 +637,13 @@ export const AddMedication = () => {
               }}
             >
               <label htmlFor="mere38">
-                {endMonthAndDay == "" && <>+</>}
-                {endMonthAndDay != "" && <>{endMonthAndDay}</>}
+                {endMonthAndDay === "" && <>+</>}
+                {endMonthAndDay !== "" && <>{endMonthAndDay}</>}
               </label>
             </button>
           </div>
           <form onSubmit={submitDurationDate}>
-            {inputDisplayed == "startDate" && (
+            {inputDisplayed === "startDate" && (
               <>
                 <input
                   type="date"
@@ -654,19 +654,19 @@ export const AddMedication = () => {
                   }}
                 />
                 <br />
-                {startDate != "" && (
+                {startDate !== "" && (
                   <button type="submit" id="mere33">
                     Save
                   </button>
                 )}
-                {startDate == "" && (
+                {startDate === "" && (
                   <button type="button" id="mere33">
                     Enter a valid date above
                   </button>
                 )}
               </>
             )}
-            {inputDisplayed == "endDate" && (
+            {inputDisplayed === "endDate" && (
               <>
                 <input
                   type="date"
@@ -677,19 +677,19 @@ export const AddMedication = () => {
                   }}
                 />
                 <br />
-                {endDate != "" && (
+                {endDate !== "" && (
                   <button type="submit" id="mere33">
                     Save
                   </button>
                 )}
-                {endDate == "" && (
+                {endDate === "" && (
                   <button type="button" id="mere33">
                     Enter a valid date above
                   </button>
                 )}
               </>
             )}
-            {invalidInputWarningText == "emptyDurationInput" && (
+            {invalidInputWarningText === "emptyDurationInput" && (
               <li id="mere45">
                 Specify a duration for taking the medications{" "}
               </li>
@@ -712,7 +712,7 @@ export const EditMedicationNav = () => {
   const App = useContext(app);
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -720,7 +720,7 @@ export const EditMedicationNav = () => {
     <>
       <div id="mere15">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="mere1">
           <div className="flexStart">
             <button
@@ -771,7 +771,7 @@ export const EditMedication = () => {
 
     setMedicationFormInputs(() => {
       const filteredMedication = Api.medications.filter((value, index) => {
-        return index == decryptedSID;
+        return index === decryptedSID;
       });
       return filteredMedication[0];
     });
@@ -787,60 +787,60 @@ export const EditMedication = () => {
   const [invalidInput, setInvalidInput] = useState("none");
   const [invalidInputWarningText, setInvalidInputWarningText] = useState("");
   const confirmMonthInWords = (e) => {
-    if (e == 1) {
+    if (e === 1) {
       return "jan";
     }
-    if (e == 2) {
+    if (e === 2) {
       return "feb";
     }
-    if (e == 3) {
+    if (e === 3) {
       return "mar";
     }
-    if (e == 4) {
+    if (e === 4) {
       return "apr";
     }
-    if (e == 5) {
+    if (e === 5) {
       return "may";
     }
-    if (e == 6) {
+    if (e === 6) {
       return "jun";
     }
-    if (e == 7) {
+    if (e === 7) {
       return "jul";
     }
-    if (e == 8) {
+    if (e === 8) {
       return "aug";
     }
-    if (e == 9) {
+    if (e === 9) {
       return "sep";
     }
-    if (e == 10) {
+    if (e === 10) {
       return "oct";
     }
-    if (e == 11) {
+    if (e === 11) {
       return "nov";
     }
-    if (e == 12) {
+    if (e === 12) {
       return "dec";
     }
   };
   const submitDurationDate = (e) => {
     e.preventDefault();
-    if (startDate != "") {
+    if (startDate !== "") {
       const startdate = new Date(startDate);
       const startDay = startdate.getDate() + 1;
       const startMonth = confirmMonthInWords(startdate.getMonth() + 1);
       setStartMonthAndDay(startDay + " " + startMonth);
       setInputDislayed("none");
     }
-    if (endDate != "") {
+    if (endDate !== "") {
       const enddate = new Date(endDate);
       const endDay = enddate.getDate() + 1;
       const endMonth = confirmMonthInWords(enddate.getMonth() + 1);
       setEndMonthAndDay(endDay + " " + endMonth);
       setInputDislayed("none");
     }
-    if (startDate != "" && endDate != "") {
+    if (startDate !== "" && endDate !== "") {
       const startdate = new Date(startDate);
       const enddate = new Date(endDate);
 
@@ -854,7 +854,7 @@ export const EditMedication = () => {
       });
 
       const conv = (enddate - startdate) / (1000 * 60 * 60 * 24);
-      if (conv % 7 == 0) {
+      if (conv % 7 === 0) {
         const numWeeks = conv / 7;
         const inWords = ` ${numWeeks} weeks from start date`;
         setMedicationFormInputs((value, index) => {
@@ -864,7 +864,7 @@ export const EditMedication = () => {
           };
         });
       }
-      if (conv % 7 != 0) {
+      if (conv % 7 !== 0) {
         const inWords = ` ${conv} days from start date`;
         setMedicationFormInputs((value, index) => {
           return {
@@ -876,22 +876,22 @@ export const EditMedication = () => {
     }
   };
   const saveMedication = () => {
-    if (medicationFormInputs.name == "") {
+    if (medicationFormInputs.name === "") {
       setInvalidInput("name");
       setInvalidInputWarningText("emptyNameInput");
       App.instantScrollToTop();
-    } else if (medicationFormInputs.img == "") {
+    } else if (medicationFormInputs.img === "") {
       setInvalidInput("img");
       setInvalidInputWarningText("emptyImgInput");
       var element = document.querySelector("#ge3");
       element.scrollIntoView({ behavior: "auto" });
-    } else if (medicationFormInputs.dosage == "") {
+    } else if (medicationFormInputs.dosage === "") {
       setInvalidInput("dosage");
       setInvalidInputWarningText("emptyDosageInput");
-    } else if (medicationFormInputs.time.length == 0) {
+    } else if (medicationFormInputs.time.length === 0) {
       setInvalidInput("time");
       setInvalidInputWarningText("emptyTimeInput");
-    } else if (medicationFormInputs.duration == "") {
+    } else if (medicationFormInputs.duration === "") {
       setInvalidInput("duration");
       setInvalidInputWarningText("emptyDurationInput");
     } else {
@@ -899,7 +899,7 @@ export const EditMedication = () => {
       setInvalidInputWarningText("none");
       Api.setMedications((value) => {
         return value.map((val, ind) => {
-          if (ind == Id) {
+          if (ind === Id) {
             return medicationFormInputs;
           } else {
             return val;
@@ -924,13 +924,13 @@ export const EditMedication = () => {
   };
   return (
     <>
-      {App.blurredBackgroundOverlayStatus == "visible" && (
+      {App.blurredBackgroundOverlayStatus === "visible" && (
         <>
           {" "}
           <div id="BluredBackgroundOverlay"></div>
         </>
       )}{" "}
-      {App.popUpStatus == "save" && (
+      {App.popUpStatus === "save" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
           <img
@@ -947,7 +947,7 @@ export const EditMedication = () => {
           <h5 id="mere30" className="medicationName">
             Name
           </h5>
-          {invalidInput != "name" && (
+          {invalidInput !== "name" && (
             <input
               type="text"
               id="mere31"
@@ -963,7 +963,7 @@ export const EditMedication = () => {
               }}
             />
           )}
-          {invalidInput == "name" && (
+          {invalidInput === "name" && (
             <>
               {" "}
               <input
@@ -980,17 +980,17 @@ export const EditMedication = () => {
                   });
                 }}
               />
-              {invalidInputWarningText == "emptyNameInput" && (
+              {invalidInputWarningText === "emptyNameInput" && (
                 <li id="mere45">Please enter a medication name</li>
               )}
             </>
           )}
           <h5 id="mere30">Display Image</h5>
           <div id="mere17">
-            {medicationFormInputs.img != "" && (
+            {medicationFormInputs.img !== "" && (
               <img src={medicationFormInputs.img} id="mere18" />
             )}
-            {medicationFormInputs.img == "" && (
+            {medicationFormInputs.img === "" && (
               <img src={require("../images/emptyImgIcon.jpg")} id="mere18" />
             )}
           </div>
@@ -998,7 +998,7 @@ export const EditMedication = () => {
             {" "}
             <label htmlFor="mere32">Select image</label>
           </button>
-          {invalidInputWarningText == "emptyImgInput" && (
+          {invalidInputWarningText === "emptyImgInput" && (
             <li id="mere45">select an image </li>
           )}
           <br />
@@ -1023,7 +1023,7 @@ export const EditMedication = () => {
             }}
           />
           <h5 id="mere30">Tablet per Time</h5>
-          {invalidInput != "dosage" && (
+          {invalidInput !== "dosage" && (
             <>
               <input
                 type="text"
@@ -1041,7 +1041,7 @@ export const EditMedication = () => {
               />
             </>
           )}
-          {invalidInput == "dosage" && (
+          {invalidInput === "dosage" && (
             <>
               <input
                 type="number"
@@ -1057,7 +1057,7 @@ export const EditMedication = () => {
                   });
                 }}
               />
-              {invalidInputWarningText == "emptyDosageInput" && (
+              {invalidInputWarningText === "emptyDosageInput" && (
                 <li id="mere45">Specify tablets to be taken per time </li>
               )}
             </>
@@ -1076,7 +1076,7 @@ export const EditMedication = () => {
               </div>
             ))}
           </div>
-          {invalidInputWarningText == "emptyTimeInput" && (
+          {invalidInputWarningText === "emptyTimeInput" && (
             <li id="mere45">Specify time for taking the medications </li>
           )}
           <form
@@ -1108,12 +1108,12 @@ export const EditMedication = () => {
               />
             )}{" "}
             <br />
-            {dosageTime != "" && (
+            {dosageTime !== "" && (
               <button type="submit" id="mere33">
                 Save
               </button>
             )}
-            {dosageTime == "" && (
+            {dosageTime === "" && (
               <button
                 type="button"
                 id="mere33"
@@ -1138,8 +1138,8 @@ export const EditMedication = () => {
               }}
             >
               <label htmlFor="mere38">
-                {startMonthAndDay == "" && <>+</>}
-                {startMonthAndDay != "" && <>{startMonthAndDay}</>}
+                {startMonthAndDay === "" && <>+</>}
+                {startMonthAndDay !== "" && <>{startMonthAndDay}</>}
               </label>
             </button>
             <li id="mere40">To</li>
@@ -1151,13 +1151,13 @@ export const EditMedication = () => {
               }}
             >
               <label htmlFor="mere38">
-                {endMonthAndDay == "" && <>+</>}
-                {endMonthAndDay != "" && <>{endMonthAndDay}</>}
+                {endMonthAndDay === "" && <>+</>}
+                {endMonthAndDay !== "" && <>{endMonthAndDay}</>}
               </label>
             </button>
           </div>
           <form onSubmit={submitDurationDate}>
-            {inputDisplayed == "startDate" && (
+            {inputDisplayed === "startDate" && (
               <>
                 <input
                   type="date"
@@ -1168,19 +1168,19 @@ export const EditMedication = () => {
                   }}
                 />
                 <br />
-                {startDate != "" && (
+                {startDate !== "" && (
                   <button type="submit" id="mere33">
                     Save
                   </button>
                 )}
-                {startDate == "" && (
+                {startDate === "" && (
                   <button type="button" id="mere33">
                     Enter a valid date above
                   </button>
                 )}
               </>
             )}
-            {inputDisplayed == "endDate" && (
+            {inputDisplayed === "endDate" && (
               <>
                 <input
                   type="date"
@@ -1191,19 +1191,19 @@ export const EditMedication = () => {
                   }}
                 />
                 <br />
-                {endDate != "" && (
+                {endDate !== "" && (
                   <button type="submit" id="mere33">
                     Save
                   </button>
                 )}
-                {endDate == "" && (
+                {endDate === "" && (
                   <button type="button" id="mere33">
                     Enter a valid date above
                   </button>
                 )}
               </>
             )}
-            {invalidInputWarningText == "emptyDurationInput" && (
+            {invalidInputWarningText === "emptyDurationInput" && (
               <li id="mere45">
                 Specify a duration for taking the medications{" "}
               </li>

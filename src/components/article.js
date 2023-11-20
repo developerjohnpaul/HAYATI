@@ -7,11 +7,8 @@ import { mockApi } from "./mockApi";
 import { MdNavigateNext } from "react-icons/md";
 import { BsBookmarkFill } from "react-icons/bs";
 import { MdOutlineMenuBook } from "react-icons/md";
-import { GrArticle } from "react-icons/gr";
 import CryptoJS from "crypto-js";
 export const ArticleNav = () => {
-  const [status, setStatus] = useState("pending");
-
   useEffect(() => {
     App.setCurrentPage("Article");
   }, []);
@@ -21,7 +18,7 @@ export const ArticleNav = () => {
     <>
       <div id="rere4">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="rere1">
           <div className="flexStart">
             <button
@@ -158,7 +155,7 @@ export const Article = () => {
               </span>
             </button>
           </div>
-          {App.bookmark == null && (
+          {App.bookmark === null && (
             <div>
               <div id="arre28">
                 {" "}
@@ -397,7 +394,7 @@ export const TabbedArticle = () => {
     );
 
     const article = Api.articles.filter((value, index) => {
-      return value.id == decryptedSID;
+      return value.id === decryptedSID;
     });
     setTabbedArticle(article[0]);
   });
@@ -473,7 +470,7 @@ export const BookmarkNav = () => {
     <>
       <div id="rere4">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="rere1">
           <div className="flexStart">
             <button
@@ -503,7 +500,7 @@ export const Bookmark = () => {
   const [bookmark, setBookmark] = useState([]);
   useEffect(() => {
     const bookmarkedArticles = Api.articles.filter((value) => {
-      return value.bookMarked == true;
+      return value.bookMarked === true;
     });
     setBookmark(bookmarkedArticles);
   }, [Api.articles]);
@@ -511,7 +508,7 @@ export const Bookmark = () => {
     <div className="flexColumnStart">
       <div id="ge3">
         {" "}
-        {bookmark.length == 0 && (
+        {bookmark.length === 0 && (
           <div id="arre30">
             <div id="arre28">
               {" "}

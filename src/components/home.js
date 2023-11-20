@@ -1,7 +1,7 @@
 import { FaRegBell } from "react-icons/fa";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdNavigateNext } from "react-icons/md";
-import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
+import {BsStarFill } from "react-icons/bs";
 import { mockApi } from "./mockApi";
 import { useContext, useEffect, useRef, useState } from "react";
 import { FaRegClock, FaBell } from "react-icons/fa6";
@@ -119,19 +119,19 @@ const Home = () => {
         if (carouselNum < 4) {
           setCarouselNum((prev) => prev + 1);
         }
-        if (carouselNum == 4) {
+        if (carouselNum === 4) {
           setCarouselNum(1);
         }
-        if (carouselNum == 1) {
+        if (carouselNum === 1) {
           carousel.scrollLeft = carousel.offsetWidth;
           setCarouselNum(2);
-        } else if (carouselNum == 2) {
+        } else if (carouselNum === 2) {
           carousel.scrollLeft = carousel.offsetWidth * 2;
           setCarouselNum(3);
-        } else if (carouselNum == 3) {
+        } else if (carouselNum === 3) {
           carousel.scrollLeft = carousel.offsetWidth * 3;
           setCarouselNum(4);
-        } else if (carouselNum == 4) {
+        } else if (carouselNum === 4) {
           carousel.scrollLeft = 0;
           setCarouselNum(1);
         }
@@ -141,35 +141,35 @@ const Home = () => {
 
   useEffect(() => {
     const LatestMedication = Api.medications.filter((value, index) => {
-      return index == Api.medications.length - 1;
+      return index === Api.medications.length - 1;
     });
     setLatestMedication(LatestMedication);
     const lastAppointment = Api.appointment[Api.appointment.length - 1];
 
-    if (lastAppointment.status == "Upcoming") {
+    if (lastAppointment.status === "Upcoming") {
       setLatestAppointments(lastAppointment);
     }
 
-    if (lastAppointment.status != "Upcoming") {
+    if (lastAppointment.status !== "Upcoming") {
       setLatestAppointments({});
     }
   }, []);
   useEffect(() => {
     const trendingArticle = Api.articles.filter((value) => {
-      return value.status == "trending";
+      return value.status === "trending";
     });
     setTrendingArticles(trendingArticle);
   }, [Api.articles]);
 
   useEffect(() => {
     const upcomingAppointment = Api.appointment.filter((value, index) => {
-      return value.status == "Upcoming";
+      return value.status === "Upcoming";
     });
     setUpcomingAppointments(upcomingAppointment);
     const upcomingAppointmentLatestFiltered = Api.appointment.filter(
       (value, index) => {
         return (
-          value.status == "Upcoming" && index != Api.appointment.length - 1
+          value.status === "Upcoming" && index !== Api.appointment.length - 1
         );
       }
     );
@@ -178,19 +178,19 @@ const Home = () => {
 
   useEffect(() => {
     const upcomingAppointment = Api.appointment.filter((value, index) => {
-      return value.status == "Upcoming";
+      return value.status === "Upcoming";
     });
-    if (upcomingAppointment.length == 0) {
+    if (upcomingAppointment.length === 0) {
       setTimeout(() => {
         setShowEmptyAppointmentIcon(true);
       }, 150);
     }
     const lastAppointment = Api.appointment[Api.appointment.length - 1];
 
-    if (lastAppointment.status == "Upcoming") {
+    if (lastAppointment.status === "Upcoming") {
       setLastAppointments(lastAppointment);
     }
-    if (lastAppointment.status != "Upcoming") {
+    if (lastAppointment.status !== "Upcoming") {
       setLastAppointments({});
     }
   }, [Api.appointment]);
@@ -271,14 +271,14 @@ const Home = () => {
           ))}
         </div>
         <div id="carouselIndicator">
-          {carouselNum == 1 && <li id="activeCarouselIndicator" />}
-          {carouselNum != 1 && <li id="inActiveCarouselIndicator" />}
-          {carouselNum == 2 && <li id="activeCarouselIndicator" />}
-          {carouselNum != 2 && <li id="inActiveCarouselIndicator" />}
-          {carouselNum == 3 && <li id="activeCarouselIndicator" />}
-          {carouselNum != 3 && <li id="inActiveCarouselIndicator" />}
-          {carouselNum == 4 && <li id="activeCarouselIndicator" />}
-          {carouselNum != 4 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum === 1 && <li id="activeCarouselIndicator" />}
+          {carouselNum !== 1 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum === 2 && <li id="activeCarouselIndicator" />}
+          {carouselNum !== 2 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum === 3 && <li id="activeCarouselIndicator" />}
+          {carouselNum !== 3 && <li id="inActiveCarouselIndicator" />}
+          {carouselNum === 4 && <li id="activeCarouselIndicator" />}
+          {carouselNum !== 4 && <li id="inActiveCarouselIndicator" />}
         </div>
         <div className="flexSpaceBetween" id="columnTitleContainer">
           {" "}
@@ -308,7 +308,7 @@ const Home = () => {
               <p id="hmre28">oops you dont have any upcoming appointments </p>
             </div>
           )}
-          {Object.keys(LastAppointments).length != 0 && (
+          {Object.keys(LastAppointments).length !== 0 && (
             <div>
               {" "}
               <ul id="latestUpComingAppointment">
@@ -358,7 +358,7 @@ const Home = () => {
         </div>
         {Api.medications.map((value, index) => (
           <div key={index} id="hmre26">
-            {index == Api.medications.length - 1 && (
+            {index === Api.medications.length - 1 && (
               <div
                 id="medicationReminderContainer"
                 className="flexSpaceBetween"
@@ -384,7 +384,7 @@ const Home = () => {
                         <FaRegClock />{" "}
                       </b>
                       {value.time.map((val, ind) => (
-                        <span key={ind}>{ind == 0 && <span>{val}</span>} </span>
+                        <span key={ind}>{ind === 0 && <span>{val}</span>} </span>
                       ))}
                       <b id="hmre13">
                         <FaBell />{" "}

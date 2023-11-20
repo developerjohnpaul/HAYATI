@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
 import { app } from "../App";
 import { IoIosArrowBack } from "react-icons/io";
@@ -12,6 +12,7 @@ const Specialist = () => {
   useEffect(() => {
     App.setCurrentPage("Specialist");
   }, []);
+
   const [specialist, setSpecialist] = useState({});
   const [experience, setExperience] = useState("");
   const [patients, setPatients] = useState("");
@@ -19,7 +20,7 @@ const Specialist = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -39,7 +40,7 @@ const Specialist = () => {
     );
 
     const filteredSpecialist = Api.specialist.filter((value) => {
-      return value.id == decryptedSID;
+      return value.id === decryptedSID;
     });
     setSpecialist(filteredSpecialist[0]);
     if (filteredSpecialist[0].Patients <= 100) {
@@ -62,29 +63,29 @@ const Specialist = () => {
     if (lastAppointment.date > 29) {
       setNewDate(1);
       newdate = 1;
-      if (lastAppointment.month == "january") {
+      if (lastAppointment.month === "january") {
         setNewMonth("february");
-      } else if (lastAppointment.month == "february") {
+      } else if (lastAppointment.month === "february") {
         setNewMonth("march");
-      } else if (lastAppointment.month == "march") {
+      } else if (lastAppointment.month === "march") {
         setNewMonth("april");
-      } else if (lastAppointment.month == "april") {
+      } else if (lastAppointment.month === "april") {
         setNewMonth("may");
-      } else if (lastAppointment.month == "may") {
+      } else if (lastAppointment.month === "may") {
         setNewMonth("june");
-      } else if (lastAppointment.month == "june") {
+      } else if (lastAppointment.month === "june") {
         setNewMonth("july");
-      } else if (lastAppointment.month == "july") {
+      } else if (lastAppointment.month === "july") {
         setNewMonth("august");
-      } else if (lastAppointment.month == "august") {
+      } else if (lastAppointment.month === "august") {
         setNewMonth("september");
-      } else if (lastAppointment.month == "september") {
+      } else if (lastAppointment.month === "september") {
         setNewMonth("october");
-      } else if (lastAppointment.month == "october") {
+      } else if (lastAppointment.month === "october") {
         setNewMonth("november");
-      } else if (lastAppointment.month == "november") {
+      } else if (lastAppointment.month === "november") {
         setNewMonth("december");
-      } else if (lastAppointment.month == "december") {
+      } else if (lastAppointment.month === "december") {
         setNewMonth("january");
         newYear = lastAppointment.year + 1;
       }

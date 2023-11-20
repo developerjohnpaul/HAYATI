@@ -1,6 +1,5 @@
-import { MdArrowBackIosNew } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
-import { PiHouseFill, PiHouseBold, PiUsersThreeBold } from "react-icons/pi";
+import { PiHouseFill } from "react-icons/pi";
 import { TbReport } from "react-icons/tb";
 import { HiCalendar } from "react-icons/hi";
 import { app } from "../App";
@@ -11,8 +10,9 @@ const MainNav = () => {
   const App = useContext(app);
   const Navigate = useNavigate();
   useEffect(() => {
+  
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");  
     }
   }, []);
@@ -25,7 +25,7 @@ const MainNav = () => {
     <>
       <div id="mainNav" className="fixed-bottom">
         <div className="flexCenter">
-          {App.currentPage == "Home" && (
+          {App.currentPage === "Home" && (
             <button
               id="activeMainNavBtn"
               onClick={() => {
@@ -39,7 +39,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Home</small>
             </button>
           )}
-          {App.currentPage != "Home" && (
+          {App.currentPage !== "Home" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
@@ -53,7 +53,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Home</small>
             </button>
           )}
-          {App.currentPage == "Reports" && (
+          {App.currentPage === "Reports" && (
             <button id="activeMainNavBtn">
               <span id="mainNavBtnIcon">
                 <TbReport />
@@ -61,7 +61,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Reports</small>
             </button>
           )}
-          {App.currentPage != "Reports" && (
+          {App.currentPage !== "Reports" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
@@ -75,7 +75,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Reports</small>
             </button>
           )}
-          {App.currentPage == "Appointments" && (
+          {App.currentPage === "Appointments" && (
             <button
               id="activeMainNavBtn"
               onClick={() => {
@@ -89,7 +89,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Appointments</small>
             </button>
           )}
-          {App.currentPage != "Appointments" && (
+          {App.currentPage !== "Appointments" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {
@@ -103,7 +103,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Appointments</small>
             </button>
           )}
-          {App.currentPage == "Article" && (
+          {App.currentPage === "Article" && (
             <button
               id="activeMainNavBtn"
               onClick={() => {
@@ -117,7 +117,7 @@ const MainNav = () => {
               <small id="mainNavBtnText">Article</small>
             </button>
           )}
-          {App.currentPage != "Article" && (
+          {App.currentPage !== "Article" && (
             <button
               id="inActiveMainNavBtn"
               onClick={() => {

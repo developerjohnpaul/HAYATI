@@ -1,9 +1,8 @@
-import { Outlet, json, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { app } from "../App";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import {
-  CircularProgressbar,
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
@@ -22,9 +21,10 @@ export const ReportNav = () => {
   const App = useContext(app);
   return (
     <>
+
       <div id="rere4">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="rere1">
           <div className="flexStart">
             <button
@@ -57,7 +57,7 @@ const App = useContext(app)
           <div id="ge4">
             <p id="rere5"> Take a look at your activities for this week!</p>
             <div className="flexStart" id="rere10">
-              {App.dayReporting != "Mon" && (
+              {App.dayReporting !== "Mon" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -68,13 +68,13 @@ const App = useContext(app)
                   <li id="rere8">1</li>
                 </button>
               )}
-              {App.dayReporting == "Mon" && (
+              {App.dayReporting === "Mon" && (
                 <button id="rere6">
                   <li id="rere7">Mon</li>
                   <li id="rere11">1</li>
                 </button>
               )}
-              {App.dayReporting != "Tue" && (
+              {App.dayReporting !== "Tue" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -85,13 +85,13 @@ const App = useContext(app)
                   <li id="rere8">2</li>
                 </button>
               )}
-              {App.dayReporting == "Tue" && (
+              {App.dayReporting === "Tue" && (
                 <button id="rere6">
                   <li id="rere7">Tue</li>
                   <li id="rere11">2</li>
                 </button>
               )}
-              {App.dayReporting != "Wed" && (
+              {App.dayReporting !== "Wed" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -102,19 +102,19 @@ const App = useContext(app)
                   <li id="rere8">3</li>
                 </button>
               )}
-              {App.dayReporting == "Wed" && (
+              {App.dayReporting === "Wed" && (
                 <button id="rere6">
                   <li id="rere7">Wed</li>
                   <li id="rere11">3</li>
                 </button>
               )}
-              {App.dayReporting == "Thur" && (
+              {App.dayReporting === "Thur" && (
                 <button id="rere6">
                   <li id="rere7">Thur</li>
                   <li id="rere11">4</li>
                 </button>
               )}
-              {App.dayReporting != "Thur" && (
+              {App.dayReporting !== "Thur" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -125,13 +125,13 @@ const App = useContext(app)
                   <li id="rere8">4</li>
                 </button>
               )}
-              {App.dayReporting == "Fri" && (
+              {App.dayReporting === "Fri" && (
                 <button id="rere6">
                   <li id="rere7">Fri</li>
                   <li id="rere11">5</li>
                 </button>
               )}
-              {App.dayReporting != "Fri" && (
+              {App.dayReporting !== "Fri" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -142,13 +142,13 @@ const App = useContext(app)
                   <li id="rere8">5</li>
                 </button>
               )}
-              {App.dayReporting == "Sat" && (
+              {App.dayReporting === "Sat" && (
                 <button id="rere6">
                   <li id="rere7">Sat</li>
                   <li id="rere11">6</li>
                 </button>
               )}
-              {App.dayReporting != "Sat" && (
+              {App.dayReporting !== "Sat" && (
                 <button
                   id="rere6"
                   onClick={() => {
@@ -159,13 +159,13 @@ const App = useContext(app)
                   <li id="rere8">6</li>
                 </button>
               )}
-              {App.dayReporting == "Sun" && (
+              {App.dayReporting === "Sun" && (
                 <button id="rere6">
                   <li id="rere7">Sun</li>
                   <li id="rere11">7</li>
                 </button>
               )}
-              {App.dayReporting != "Sun" && (
+              {App.dayReporting !== "Sun" && (
                 <button
                   id="rere6"
                   onClick={() => {

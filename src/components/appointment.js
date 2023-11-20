@@ -18,8 +18,8 @@ export const AppointmentNavbar = () => {
   const [fixedNav, setFixedNav] = useState(false);
   const test = () => {
     if (
-      document.documentElement.scrollTop == 155 ||
-      document.documentElement.scrollTop > 155
+      document.documentElement.scrollTop === 155 ||
+      document.documentElement.scrollTop > 155 
     ) {
       setFixedNav(true);
     } else {
@@ -52,7 +52,7 @@ export const AppointmentNavCodeBase = () => {
     <>
       <div id="apre1">
         <div id="AppointmentNav">
-          {App.currentAppointmentPage == "Upcoming" && (
+          {App.currentAppointmentPage === "Upcoming" && (
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
@@ -74,7 +74,7 @@ export const AppointmentNavCodeBase = () => {
               Upcoming
             </button>
           )}
-          {App.currentAppointmentPage == "Complete" && (
+          {App.currentAppointmentPage === "Complete" && (
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
@@ -96,7 +96,7 @@ export const AppointmentNavCodeBase = () => {
               Complete
             </button>
           )}
-          {App.currentAppointmentPage == "Cancelled" && (
+          {App.currentAppointmentPage === "Cancelled" && (
             <button
               id="activeAppointmentNavBtn"
               onClick={() => {
@@ -137,9 +137,9 @@ export const UpcomingAppointments = () => {
   }, []);
   useEffect(() => {
     const upcomingAppointment = Api.appointment.filter((value, index) => {
-      return value.status == "Upcoming";
+      return value.status === "Upcoming";
     });
-    if (upcomingAppointment.length == 0) {
+    if (upcomingAppointment.length === 0) {
       setTimeout(() => {
         setShowEmptyAppointmentIcon(true);
       }, 150);
@@ -161,7 +161,7 @@ export const UpcomingAppointments = () => {
         {Api.appointment.toReversed().map((value, index) => (
           <div key={index} id="apre14">
             {" "}
-            {value.status == "Upcoming" && (
+            {value.status === "Upcoming" && (
               <div id="appointments">
                 <div className="flexStart">
                   <div
@@ -269,7 +269,7 @@ export const CompletedAppointments = () => {
         {Api.appointment.map((value, index) => (
           <div key={index} id="apre14">
             {" "}
-            {value.status == "Completed" && (
+            {value.status === "Completed" && (
               <div id="appointments">
                 <div className="flexStart">
                   <div
@@ -347,7 +347,7 @@ export const CancelledAppointments = () => {
         {Api.appointment.map((value, index) => (
           <div key={index} id="apre14">
             {" "}
-            {value.status == "Cancelled" && (
+            {value.status === "Cancelled" && (
               <div id="appointments">
                 <div className="flexStart">
                   <div
@@ -422,7 +422,7 @@ export const BookedAppointmentNav = () => {
     <>
       <div id="rere4">
         {" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="rere1">
           <div className="flexStart">
             <button
@@ -457,7 +457,7 @@ export const BookedAppointment = () => {
       CryptoJS.enc.Utf8
     );
     const filteredAppointment = Api.appointment.filter((value) => {
-      return Number(value.appointmentId) == Number(decryptedSID);
+      return Number(value.appointmentId) === Number(decryptedSID);
     });
     setTabbedAppointment(filteredAppointment[0]);
   }, []);

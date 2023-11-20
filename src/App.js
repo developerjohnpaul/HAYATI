@@ -69,9 +69,10 @@ const App = () => {
       behavior: "instant",
     });
   };
+
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
+    if (CUIN !== undefined) {
       setStatus("loggedOut");
     } else {
       setStatus("loggedIn");
@@ -104,24 +105,24 @@ const App = () => {
   ]);
   useEffect(() => {
     const trendingArticle = Api.articles.filter((value) => {
-      return value.status == "trending";
+      return value.status === "trending";
     });
     setTrendingArticles(trendingArticle);
     const relatedArticle = Api.articles.filter((value) => {
-      return value.status == "related";
+      return value.status === "related";
     });
     setRelatedArticles(relatedArticle);
   }, [Api.articles]);
   useEffect(() => {
     const bookmarkedArticles = Api.articles.filter((value) => {
-      return value.bookMarked == true;
+      return value.bookMarked === true;
     });
     setBookmark(bookmarkedArticles[0]);
   }, [Api.articles]);
 
   useEffect(() => {
     const LatestMedication = Api.medications.filter((value, index) => {
-      return index == Api.medications.length - 1;
+      return index === Api.medications.length - 1;
     });
     setLatestMedication(LatestMedication);
   }, []);
@@ -129,7 +130,7 @@ const App = () => {
   useEffect(() => {
     setFilteredReports(() => {
       const filteredReport = Api.weeklyActivities.filter((val, ind) => {
-        return val.Day == dayReporting;
+        return val.Day === dayReporting;
       });
       console.log(filteredReport);
       console.log(dayReporting);

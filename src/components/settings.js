@@ -9,10 +9,10 @@ import {
   IoIosArrowDown,
   IoIosArrowUp,
 } from "react-icons/io";
-import { FaRegClock, FaBell } from "react-icons/fa6";
+import {  FaBell } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
-import { MdPrivacyTip } from "react-icons/md";
+
 import { PiToggleRightFill, PiToggleLeftFill } from "react-icons/pi";
 import { mockApi } from "./mockApi";
 
@@ -26,9 +26,9 @@ export const SettingsNav = () => {
   return (
     <>
       {" "}
-      
+ 
         <div id="sere4">
-          {App.blurredBackgroundOverlayStatus == "visible" && (
+          {App.blurredBackgroundOverlayStatus === "visible" && (
             <div
               id="ge2"
               onClick={() => {
@@ -37,7 +37,7 @@ export const SettingsNav = () => {
               }}
             ></div>
           )}{" "}
-          {App.popUpStatus == "save" && <div id="ge2"></div>}
+          {App.popUpStatus === "save" && <div id="ge2"></div>}
           <div id="sere1">
             <button
               type="button"
@@ -66,7 +66,7 @@ export const Settings = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -86,7 +86,7 @@ export const Settings = () => {
   return (
     <>
       {" "}
-      {App.blurredBackgroundOverlayStatus == "visible" && (
+      {App.blurredBackgroundOverlayStatus === "visible" && (
         <div
           id="BluredBackgroundOverlay"
           onClick={() => {
@@ -97,7 +97,7 @@ export const Settings = () => {
           }}
         ></div>
       )}{" "}
-      {App.popUpStatus == "logOutConfirmation" && (
+      {App.popUpStatus === "logOutConfirmation" && (
         <>
           <div id="mdre1">
             <div>
@@ -127,7 +127,7 @@ export const Settings = () => {
           </div>
         </>
       )}
-      {App.popUpStatus == "loggingOut" && (
+      {App.popUpStatus === "loggingOut" && (
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
@@ -325,7 +325,7 @@ export const EditProfileNav = () => {
     <>
       {" "}
     <div id="sere4">
-        {App.blurredBackgroundOverlayStatus == "visible" && (
+        {App.blurredBackgroundOverlayStatus === "visible" && (
           <div
             id="ge2"
             onClick={() => {
@@ -334,7 +334,7 @@ export const EditProfileNav = () => {
             }}
           ></div>
         )}{" "}
-        {App.popUpStatus == "save" && <div id="ge2"></div>}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
         <div id="sere1">
           <button
             type="button"
@@ -361,7 +361,7 @@ export const EditProfile = () => {
   const [filteredSearchCountry, setFilteredSearchCountry] = useState([]);
   return (
     <>
-      {App.blurredBackgroundOverlayStatus == "visible" && (
+      {App.blurredBackgroundOverlayStatus === "visible" && (
         <>
           {" "}
           <div id="BluredBackgroundOverlay"></div>
@@ -428,7 +428,7 @@ export const EditProfile = () => {
               type="button"
               id="sere27"
               onClick={() => {
-                if (dropDown == "Gender") {
+                if (dropDown === "Gender") {
                   setDropDown("hidden");
                 } else {
                   setDropDown("Gender");
@@ -436,22 +436,22 @@ export const EditProfile = () => {
               }}
             >
               {" "}
-              {App.user[0].Gender == "" && <li id="sere21">Select gender</li>}
-              {App.user[0].Gender != "" && (
+              {App.user[0].Gender === "" && <li id="sere21">Select gender</li>}
+              {App.user[0].Gender !== "" && (
                 <li id="sere21">{App.user[0].Gender}</li>
               )}
-              {dropDown == "Gender" && (
+              {dropDown === "Gender" && (
                 <li id="sere22">
                   <IoIosArrowUp />
                 </li>
               )}
-              {dropDown != "Gender" && (
+              {dropDown !== "Gender" && (
                 <li id="sere22">
                   <IoIosArrowDown />
                 </li>
               )}
             </button>
-            {dropDown == "Gender" && (
+            {dropDown === "Gender" && (
               <div id="sere26">
                 <button
                   id="sere25"
@@ -492,8 +492,8 @@ export const EditProfile = () => {
           <li id="sere20">
             <label htmlFor="sere29" type="button" id="sere27">
               {" "}
-              {App.user[0].DOB == "" && <li id="sere21">Select a date</li>}
-              {App.user[0].DOB != "" && <li id="sere21">{App.user[0].DOB}</li>}
+              {App.user[0].DOB === "" && <li id="sere21">Select a date</li>}
+              {App.user[0].DOB !== "" && <li id="sere21">{App.user[0].DOB}</li>}
               <li id="sere22">
                 <IoIosArrowDown />
               </li>
@@ -505,7 +505,7 @@ export const EditProfile = () => {
               type="button"
               id="sere27"
               onClick={() => {
-                if (dropDown == "Country") {
+                if (dropDown === "Country") {
                   setDropDown("hidden");
                 } else {
                   setDropDown("Country");
@@ -513,22 +513,22 @@ export const EditProfile = () => {
               }}
             >
               {" "}
-              {App.user[0].Country == "" && <li id="sere21">Select Country</li>}
-              {App.user[0].Country != "" && (
+              {App.user[0].Country === "" && <li id="sere21">Select Country</li>}
+              {App.user[0].Country !== "" && (
                 <li id="sere21">{App.user[0].Country}</li>
               )}
-              {dropDown == "Country" && (
+              {dropDown === "Country" && (
                 <li id="sere22">
                   <IoIosArrowUp />
                 </li>
               )}
-              {dropDown != "Country" && (
+              {dropDown !== "Country" && (
                 <li id="sere22">
                   <IoIosArrowDown />
                 </li>
               )}
             </button>
-            {dropDown == "Country" && (
+            {dropDown === "Country" && (
               <>
                 <input
                   type="text"
