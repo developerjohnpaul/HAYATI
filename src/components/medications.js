@@ -71,7 +71,7 @@ export const Medications = () => {
             >
               <div className="flexStart">
                 <div className="flexCenter" id="mere6">
-                  <img src={value.img} id="mere7" />
+                   <img alt="" src={value.img} id="mere7" />
                 </div>
                 <div>
                   <li id="mere9">{value.name}</li>
@@ -177,7 +177,7 @@ export const MedicationDetails = () => {
         {medicationDetail.map((value, index) => (
           <div id="ge3" key={index}>
             <div id="mere17">
-              <img src={value.img} id="mere18" />
+               <img alt="" src={value.img} id="mere18" />
             </div>
             <p id="mere20">{value.name}</p>
             <p id="mere21">Time</p>
@@ -419,7 +419,7 @@ export const AddMedication = () => {
       {App.popUpStatus === "save" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
-          <img
+           <img alt=""
             src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
@@ -474,10 +474,10 @@ export const AddMedication = () => {
           <h5 id="mere30">Display Image</h5>
           <div id="mere17">
             {medicationFormInputs.img !== "" && (
-              <img src={medicationFormInputs.img} id="mere18" />
+               <img alt="" src={medicationFormInputs.img} id="mere18" />
             )}
             {medicationFormInputs.img === "" && (
-              <img src={require("../images/emptyImgIcon.jpg")} id="mere18" />
+               <img alt="" src={require("../images/emptyImgIcon.jpg")} id="mere18" />
             )}
           </div>
           <button type="button" id="mere33" htmlFor="mere32">
@@ -933,7 +933,7 @@ export const EditMedication = () => {
       {App.popUpStatus === "save" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
-          <img
+           <img alt=""
             src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
@@ -988,10 +988,10 @@ export const EditMedication = () => {
           <h5 id="mere30">Display Image</h5>
           <div id="mere17">
             {medicationFormInputs.img !== "" && (
-              <img src={medicationFormInputs.img} id="mere18" />
+               <img alt="" src={medicationFormInputs.img} id="mere18" />
             )}
             {medicationFormInputs.img === "" && (
-              <img src={require("../images/emptyImgIcon.jpg")} id="mere18" />
+               <img alt="" src={require("../images/emptyImgIcon.jpg")} id="mere18" />
             )}
           </div>
           <button type="button" id="mere33" htmlFor="mere32">

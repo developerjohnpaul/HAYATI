@@ -151,7 +151,7 @@ const Specialist = () => {
                 </div>
               </div>
               <div id="spre6">
-                <img src={specialist.SpeacialistProfileImg} id="spre7" />
+                <img alt="" src={specialist.SpeacialistProfileImg} id="spre7" />
               </div>
             </div>
           </div>

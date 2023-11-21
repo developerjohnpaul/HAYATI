@@ -61,9 +61,9 @@ export const AppointmentNavCodeBase = () => {
               }}
             >
               Upcoming
-            </button>
+            </button>  
           )}
-          {App.currentAppointmentPage != "Upcoming" && (
+          {App.currentAppointmentPage !== "Upcoming" && (
             <button
               id="appointmentNavBtn"
               onClick={() => {
@@ -85,7 +85,7 @@ export const AppointmentNavCodeBase = () => {
               Complete
             </button>
           )}
-          {App.currentAppointmentPage != "Complete" && (
+          {App.currentAppointmentPage !== "Complete" && (
             <button
               id="appointmentNavBtn"
               onClick={() => {
@@ -107,7 +107,7 @@ export const AppointmentNavCodeBase = () => {
               Cancelled
             </button>
           )}
-          {App.currentAppointmentPage != "Cancelled" && (
+          {App.currentAppointmentPage !== "Cancelled" && (
             <button
               id="appointmentNavBtn"
               onClick={() => {
@@ -151,7 +151,7 @@ export const UpcomingAppointments = () => {
         {showEmptyAppointmentmentIcon && (
           <div id="hmre29">
             {" "}
-            <img
+            <img alt=""
               src={require("../images/emptyAppointmentAnimation.jpg")}
               id="hmre27"
             />
@@ -176,7 +176,7 @@ export const UpcomingAppointments = () => {
                       App.instantScrollToTop();
                     }}
                   >
-                    <img src={value.appointeesImg} id="apre4" />
+                    <img alt="" src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">
                     <h1 id="apre6">{value.appointee}</h1>
@@ -284,7 +284,7 @@ export const CompletedAppointments = () => {
                       App.instantScrollToTop();
                     }}
                   >
-                    <img src={value.appointeesImg} id="apre4" />
+                    <img alt="" src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">
                     <h1 id="apre6">{value.appointee}</h1>
@@ -362,7 +362,7 @@ export const CancelledAppointments = () => {
                       App.instantScrollToTop();
                     }}
                   >
-                    <img src={value.appointeesImg} id="apre4" />
+                    <img alt="" src={value.appointeesImg} id="apre4" />
                   </div>
                   <div id="apre5">
                     <h1 id="apre6">{value.appointee}</h1>
@@ -483,7 +483,7 @@ export const BookedAppointment = () => {
         {" "}
         <div id="ge3">
           <div id="bare2">
-            <img
+            <img alt=""
               src={require("../images/bookedAppointmentAnimation.png")}
               id="bare1"
             />

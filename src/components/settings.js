@@ -131,7 +131,7 @@ export const Settings = () => {
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-            <img
+           <img alt=""
               src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}
@@ -371,7 +371,7 @@ export const EditProfile = () => {
         <div id="sere24">
           <div className="flexCenter">
             <div id="sere16">
-              <img src={require("../images/profileImg.png")} id="sere15" />
+             <img alt="" src={require("../images/profileImg.png")} id="sere15" />
             </div>
           </div>
           <h5 id="sere17">Name</h5>

@@ -74,7 +74,7 @@ const Onboarding = () => {
           {" "}
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-            <img
+            <img alt=""
               src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}
@@ -88,19 +88,19 @@ const Onboarding = () => {
         <div id="onboarding">
           <div id="onSm">
             {onboardingBgNumber === 0 && (
-              <img
+              <img alt=""
                 src={require("../images/onboarding1.png")}
                 id="onboardingBg"
               />
             )}
             {onboardingBgNumber === 1 && (
-              <img
+              <img alt=""
                 src={require("../images/onboarding2.png")}
                 id="onboardingBg"
               />
             )}{" "}
             {onboardingBgNumber === 2 && (
-              <img
+              <img alt=""
                 src={require("../images/onboarding3.png")}
                 id="onboardingBg"
               />
@@ -108,25 +108,25 @@ const Onboarding = () => {
           </div>
           <div id="onlg">
             {onboardingBgNumber === 0 && (
-              <img
+              <img alt=""
                 src={require("../images/onboarding1Large.jpg")}
                 id="onboardingBg"
               />
             )}
             {onboardingBgNumber === 1 && (
-              <img
+              <img alt=""
                 src={require("../images/onboardingBg2Large.jpg")}
                 id="onboardingBg"
               />
             )}{" "}
             {onboardingBgNumber === 2 && (
-              <img
+              <img alt=""
                 src={require("../images/onboardingBg3Large.jpg")}
                 id="onboardingBg"
               />
             )}
           </div>
-          <img src={require("../images/LOGO.png")} id="onboardingLogo" />
+          <img alt="" src={require("../images/LOGO.png")} id="onboardingLogo" />
           <div className="flexSpaceBetween" id="onre1">
             {shortOnboadingTextStatus === "live" && (
               <>

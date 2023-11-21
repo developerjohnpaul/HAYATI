@@ -212,7 +212,7 @@ const LoginPage = () => {
         <div id="touchIdModal" className="flexColumnCenter">
           <h4>Touch ID</h4>
           <div className="flexCenter" id="lpre4">
-            <img
+           <img alt=""
               src={require("../images/fingerPrintIcon.png")}
               id="touchIdFingerPrintIcon"
             />
@@ -236,7 +236,7 @@ const LoginPage = () => {
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-            <img
+           <img alt=""
               src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}

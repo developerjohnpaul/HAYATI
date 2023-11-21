@@ -35,7 +35,11 @@ const SignUpNav = () => {
             </button>
             <h3 id="signupNavWelcomeMessage">Create account</h3>
           </div>
-          <img src={require("../images/LOGO.png")} id="createAccountNavLogo" />
+          <img
+            alt=""
+            src={require("../images/LOGO.png")}
+            id="createAccountNavLogo"
+          />
         </div>
       </div>
       <Outlet />

@@ -39,10 +39,11 @@ export const Notification = () => {
     const App = useContext(app)
   return (
     <>
-    <div className="flexColumnStart">
+      <div className="flexColumnStart">
         <div id="ge3">
           <div id="nore5">
             <img
+              alt=""
               src={require("../images/emptyNotificationAnimation.jpg")}
               id="apre19"
             />

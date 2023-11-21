@@ -258,7 +258,7 @@ const SignUpPage = () => {
       {signUpStatusModal === "creatingAccount" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
-          <img
+           <img alt=""
             src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}
@@ -270,7 +270,7 @@ const SignUpPage = () => {
       {signUpStatusModal === "loggingIn" && (
         <div id="statusFloatingModal" className="flexColumnCenter">
           {" "}
-          <img
+           <img alt=""
             src={require("../images/maskedLogo192.png")}
             id="statusFloatingLogo"
           />{" "}

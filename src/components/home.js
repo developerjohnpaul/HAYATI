@@ -11,6 +11,7 @@ import { app } from "../App";
 import CryptoJS from "crypto-js";
 
 const Home = () => {
+  
   const Api = useContext(mockApi);
   const App = useContext(app);
   const Navigate = useNavigate();
@@ -205,7 +206,7 @@ const Home = () => {
               Welcome back,{App.user.Name}{" "}
             </small>
             <div className="flexCenter">
-              <img
+               <img alt=""
                 src={require("../images/profileImg.png")}
                 id="homeNavProfileImg"
                 onClick={() => {
@@ -301,7 +302,7 @@ const Home = () => {
           {showEmptyAppointmentmentIcon && (
             <div id="hmre29">
               {" "}
-              <img
+               <img alt=""
                 src={require("../images/emptyAppointmentAnimation.jpg")}
                 id="hmre27"
               />
@@ -374,7 +375,7 @@ const Home = () => {
               >
                 <div className="flexStart">
                   <div className="flexCenter" id="hmre7">
-                    <img src={value.img} id="hmre8" />
+                     <img alt="" src={value.img} id="hmre8" />
                   </div>
                   <div>
                     <li id="hmre9">{value.dosage} </li>
@@ -427,7 +428,7 @@ const Home = () => {
               }}
             >
               <div id="SpeacialistNearMeImgContainer">
-                <img
+                 <img alt=""
                   src={value.SpeacialistProfileImg}
                   id="SpeacialistNearMeImg"
                 />
@@ -461,7 +462,7 @@ const Home = () => {
             <div key={index}>
               <div id="eachHomepageTrendingArticle">
                 <div id="homepageTrendingArticleImgContainer">
-                  <img
+                   <img alt=""
                     src={value.articleImg}
                     id="homepageTrendingArticleImg"
                     onClick={() => {

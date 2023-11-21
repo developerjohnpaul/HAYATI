@@ -9,6 +9,7 @@ import { BsBookmarkFill } from "react-icons/bs";
 import { MdOutlineMenuBook } from "react-icons/md";
 import CryptoJS from "crypto-js";
 export const ArticleNav = () => {
+  
   useEffect(() => {
     App.setCurrentPage("Article");
   }, []);
@@ -58,7 +59,7 @@ export const Article = () => {
               <div key={index}>
                 <div id="arre2">
                   <div id="arre3">
-                    <img
+               <img alt=""
                       src={value.articleImg}
                       id="arre4"
                       onClick={() => {
@@ -159,7 +160,7 @@ export const Article = () => {
             <div>
               <div id="arre28">
                 {" "}
-                <img
+           <img alt=""
                   src={require("../images/emptyBookmarkAnimation.jpg")}
                   id="arre26"
                 />
@@ -167,12 +168,12 @@ export const Article = () => {
               </div>
             </div>
           )}
-          {App.bookmark != null && (
+          {App.bookmark !== null && (
             <div id="arre29">
               {" "}
               <div id="arre23">
                 <div id="arre17">
-                  <img
+             <img alt=""
                     src={App.bookmark.articleImg}
                     id="arre19"
                     onClick={() => {
@@ -277,7 +278,7 @@ export const Article = () => {
             {App.relatedArticles.map((value, index) => (
               <div id="arre16" key={index}>
                 <div id="arre17">
-                  <img
+             <img alt=""
                     src={value.articleImg}
                     id="arre19"
                     onClick={() => {
@@ -404,7 +405,7 @@ export const TabbedArticle = () => {
       <div className="flexColumnStart">
         <div>
           <div id="tare1">
-            <img src={tabbedArticle.articleImg} id="tare2" />
+       <img alt="" src={tabbedArticle.articleImg} id="tare2" />
           </div>
         </div>
         <div className="flexSpaceBetween" id="tare3">
@@ -434,7 +435,7 @@ export const TabbedArticle = () => {
           <div className="flexSpaceBetween">
             <div className="flexStart">
               <div id="tare11">
-                <img src={tabbedArticle.authorImg} id="tare7" />
+           <img alt="" src={tabbedArticle.authorImg} id="tare7" />
               </div>
               <li id="tare8">{tabbedArticle.author}</li>
               <li id="tare8">
@@ -512,7 +513,7 @@ export const Bookmark = () => {
           <div id="arre30">
             <div id="arre28">
               {" "}
-              <img
+         <img alt=""
                 src={require("../images/emptyBookmarkAnimation.jpg")}
                 id="arre26"
               />
@@ -526,7 +527,7 @@ export const Bookmark = () => {
               {" "}
               <div id="arre23">
                 <div id="arre17">
-                  <img
+             <img alt=""
                     src={value.articleImg}
                     id="arre19"
                     onClick={() => {

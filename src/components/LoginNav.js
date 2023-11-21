@@ -36,7 +36,7 @@ const LoginNav = () => {
             </button>
             <h3 id="loginNavWelcomeMessage">Welcome</h3>
           </div>
-          <img src={require("../images/LOGO.png")} id="loginNavLogo" />
+          <img alt="" src={require("../images/LOGO.png")} id="loginNavLogo" />
         </div>
       </div>
       <Outlet />
