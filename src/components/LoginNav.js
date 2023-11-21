@@ -11,7 +11,7 @@ const LoginNav = () => {
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
 
-    if (CUIN !== undefined) {
+    if (CUIN != undefined) {
       Navigate("/");
     }
   }, []);
@@ -36,7 +36,7 @@ const LoginNav = () => {
             </button>
             <h3 id="loginNavWelcomeMessage">Welcome</h3>
           </div>
-          <img alt="" src={require("../images/LOGO.png")} id="loginNavLogo" />
+           <img alt="" src={require("../images/LOGO.png")} id="loginNavLogo" />
         </div>
       </div>
       <Outlet />

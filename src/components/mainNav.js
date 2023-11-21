@@ -12,7 +12,7 @@ const MainNav = () => {
   useEffect(() => {
   
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN == undefined) {
       Navigate("/Welcome");  
     }
   }, []);

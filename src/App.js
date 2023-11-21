@@ -72,8 +72,8 @@ const App = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN !== undefined) {
-      setStatus("loggedOut");
+    if (CUIN != undefined) {
+      setStatus("loggedOut ");
     } else {
       setStatus("loggedIn");
     }
