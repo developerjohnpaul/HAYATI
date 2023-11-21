@@ -121,7 +121,7 @@ export const MedicationDetailsNav = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN == undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -164,7 +164,7 @@ export const MedicationDetails = () => {
       );
       setId(decryptedSID);
       const filteredDetails = Api.medications.filter((val, ind) => {
-        return ind === decryptedSID;
+        return ind == decryptedSID;
       });
       return filteredDetails;
     });
@@ -712,7 +712,7 @@ export const EditMedicationNav = () => {
   const App = useContext(app);
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN == undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -771,7 +771,7 @@ export const EditMedication = () => {
 
     setMedicationFormInputs(() => {
       const filteredMedication = Api.medications.filter((value, index) => {
-        return index === decryptedSID;
+        return index === Number(decryptedSID);
       });
       return filteredMedication[0];
     });

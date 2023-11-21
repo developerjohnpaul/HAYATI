@@ -20,7 +20,7 @@ const Specialist = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN == undefined) {
       Navigate("/Welcome");
     }
   }, []);
@@ -40,7 +40,7 @@ const Specialist = () => {
     );
 
     const filteredSpecialist = Api.specialist.filter((value) => {
-      return value.id === decryptedSID;
+      return value.id === Number(decryptedSID);
     });
     setSpecialist(filteredSpecialist[0]);
     if (filteredSpecialist[0].Patients <= 100) {

@@ -395,7 +395,7 @@ export const TabbedArticle = () => {
     );
 
     const article = Api.articles.filter((value, index) => {
-      return value.id === decryptedSID;
+      return value.id === Number(decryptedSID);
     });
     setTabbedArticle(article[0]);
   });
