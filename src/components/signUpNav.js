@@ -6,7 +6,7 @@ const SignUpNav = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN !== undefined) {
+    if (CUIN != undefined) {
       Navigate("/");
     }
   }, []);
