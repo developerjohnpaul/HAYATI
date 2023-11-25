@@ -212,6 +212,7 @@ body::-webkit-scrollbar {
   background-color: transparent;
   border: 0px;
   padding: 0px;
+  color:#000000
 }
 
 #hmre2 {
@@ -1399,6 +1400,7 @@ body::-webkit-scrollbar {
   text-align: left;
   list-style: none;
   margin-bottom: 3px;
+    color: #000000
 }
 
 #rere8 {
@@ -1894,6 +1896,7 @@ body::-webkit-scrollbar {
   text-align: left;
   list-style: none;
   margin-bottom: 3px;
+    color: #000000
 }
 
 #rere58 {
@@ -2548,7 +2551,7 @@ body::-webkit-scrollbar {
   letter-spacing: 0em;
   text-align: center;
   list-style: none;
-
+  color: #000000
 }
 
 #sere11 {
@@ -2670,6 +2673,8 @@ body::-webkit-scrollbar {
   min-width: 100px;
   list-style: none;
   text-align: left;
+    color: #000000
+
 }
 
 #sere22 {
@@ -2711,6 +2716,7 @@ body::-webkit-scrollbar {
   font-size: 18px;
   background-color: transparent;
   padding: 0px 0px 0px 10px;
+    color: #000000
 
 }
 
