@@ -11,7 +11,7 @@ const Specialist = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     App.setCurrentPage("Specialist");
-  }, []);
+  }, [App.appDep]);
 
   const [specialist, setSpecialist] = useState({});
   const [experience, setExperience] = useState("");
@@ -20,10 +20,10 @@ const Specialist = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if ( CUIN === null) {
       Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   const [newMonth, setNewMonth] = useState(
     Api.appointment[Api.appointment.length - 1].month
   );
@@ -31,7 +31,7 @@ const Specialist = () => {
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#0893A5");
-  }, []);
+  }, [App.appDep]);
 
   useEffect(() => {
     const encryptedSID = location.hash.substring(1);
@@ -53,7 +53,7 @@ const Specialist = () => {
     } else {
       setExperience("50+");
     }
-  }, []);
+  }, [App.appDep]);
   const bookAppointment = () => {
     setPendingAppointment(true);
     const Appointment = Api.appointment;

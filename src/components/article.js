@@ -9,12 +9,12 @@ import { BsBookmarkFill } from "react-icons/bs";
 import { MdOutlineMenuBook } from "react-icons/md";
 import CryptoJS from "crypto-js";
 export const ArticleNav = () => {
-  
+    const App = useContext(app);
   useEffect(() => {
     App.setCurrentPage("Article");
-  }, []);
+  }, [App.appDep]);
   const Navigate = useNavigate();
-  const App = useContext(app);
+
   return (
     <>
       <div id="rere4">
@@ -59,7 +59,8 @@ export const Article = () => {
               <div key={index}>
                 <div id="arre2">
                   <div id="arre3">
-               <img alt=""
+                    <img
+                      alt=""
                       src={value.articleImg}
                       id="arre4"
                       onClick={() => {
@@ -160,7 +161,8 @@ export const Article = () => {
             <div>
               <div id="arre28">
                 {" "}
-           <img alt=""
+                <img
+                  alt=""
                   src={require("../images/emptyBookmarkAnimation.jpg")}
                   id="arre26"
                 />
@@ -168,12 +170,13 @@ export const Article = () => {
               </div>
             </div>
           )}
-          {App.bookmark !== null && (
+          { App.bookmark !== null && (
             <div id="arre29">
               {" "}
               <div id="arre23">
                 <div id="arre17">
-             <img alt=""
+                  <img
+                    alt=""
                     src={App.bookmark.articleImg}
                     id="arre19"
                     onClick={() => {
@@ -278,7 +281,8 @@ export const Article = () => {
             {App.relatedArticles.map((value, index) => (
               <div id="arre16" key={index}>
                 <div id="arre17">
-             <img alt=""
+                  <img
+                    alt=""
                     src={value.articleImg}
                     id="arre19"
                     onClick={() => {
@@ -385,7 +389,7 @@ export const TabbedArticle = () => {
   const [status, setStatus] = useState("pending");
   useEffect(() => {
     App.setCurrentPage("Article");
-  }, []);
+  }, [App.appDep]);
   const Api = useContext(mockApi);
   const [tabbedArticle, setTabbedArticle] = useState({});
   useEffect(() => {
@@ -462,7 +466,7 @@ export const TabbedArticle = () => {
 export const BookmarkNav = () => {
   useEffect(() => {
     App.setCurrentPage("Article");
-  }, []);
+  }, [App.appDep]);
   const Navigate = useNavigate();
   const App = useContext(app);
   const [status, setStatus] = useState("pending");

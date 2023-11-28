@@ -4,11 +4,11 @@ import { app } from "../App";
 import { IoIosArrowBack } from "react-icons/io";
 import { useEffect } from "react";
 export const NotificationNav = () => {
+    const App = useContext(app);
   useEffect(() => {
     App.setCurrentPage("Article");
-  }, []);
+  }, [App.appDep]);
   const Navigate = useNavigate();
-  const App = useContext(app);
 
   return (
     <>

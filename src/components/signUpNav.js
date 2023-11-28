@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
+import { app } from "../App";
 
 const SignUpNav = () => {
+  const App = useContext(app)
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
+    if ( CUIN !== null) {
       Navigate("/");
     }
-  }, []);
+  }, [App.appDep]);
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#047E8E");
-  }, []);
+  }, [App.appDep]);
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };

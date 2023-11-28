@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsBellFill } from "react-icons/bs";
 import {  useNavigate } from "react-router-dom";
+import { app } from "../App";
 
 const Onboarding = () => {
-
+const App = useContext(app)
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#047E8E");
-  }, []);
+  }, [App.appDep]);
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
+    
+    if ( CUIN !== null) {
       Navigate("/");
     }
-  }, []);
+  }, [App.appDep]);
   const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
   };
@@ -40,7 +42,7 @@ const Onboarding = () => {
       }, 6000);
       setShortOnboadingTextStatus("live");
     }, 8000);
-  }, [onboardingBgNumber]);
+  }, [App.appDep]);
 
   const [onboardingDetails, setOnboardingDetails] = useState([
     {
@@ -66,7 +68,7 @@ const Onboarding = () => {
     img3.onload = () => {
       setNBGLI((prev) => prev + 1);
     };
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       {NBGLI !== 3 && (

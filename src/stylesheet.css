@@ -3058,7 +3058,7 @@ body::-webkit-scrollbar {
   margin-top: 200px;
 }
 
-#loginInput {
+#loginEmail {
   width: 85vw;
   max-width: 360px;
   padding: 10px;
@@ -3068,14 +3068,14 @@ body::-webkit-scrollbar {
   outline-color: #00A3B7;
 }
 
-#loginInput::placeholder {
+#loginEmail::placeholder {
   color: black;
   opacity: .7;
   font-size: 12px;
 
 }
 
-#invalidLoginInput {
+#invalidLoginEmail {
   width: 85vw;
   max-width: 360px;
   padding: 10px;
@@ -3084,13 +3084,45 @@ body::-webkit-scrollbar {
   outline-color: #EC0303;
 }
 
-#invalidLoginInput::placeholder {
+#invalidLoginEmail::placeholder {
   color: black;
   opacity: .7;
   font-size: 12px;
 
 }
 
+#loginPassword {
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #6F6F6F;
+  margin-bottom: 30px;
+  outline-color: #00A3B7;
+}
+
+#loginPassword::placeholder {
+  color: black;
+  opacity: .7;
+  font-size: 12px;
+
+}
+
+#invalidLoginPassword {
+  width: 85vw;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #EC0303;
+  outline-color: #EC0303;
+}
+
+#invalidLoginPassword::placeholder {
+  color: black;
+  opacity: .7;
+  font-size: 12px;
+
+}
 #invalidInputTextWarning {
   display: flex;
   flex-direction: row;

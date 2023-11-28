@@ -77,7 +77,7 @@ const LoginPage = () => {
           {validEmailAddress && (
             <input
               type="email"
-              id="loginInput"
+              id="loginEmail"
               value={App.logInDetails[0].Email}
               onChange={(e) => {
                 App.setlogInDetails((value) => {
@@ -96,7 +96,7 @@ const LoginPage = () => {
             <div id="invalidSignupInputAndWarningText">
               <input
                 type="email"
-                id="invalidLoginInput"
+                id="invalidLoginEmail"
                 value={App.logInDetails[0].Email}
                 onChange={(e) => {
                   App.setlogInDetails((value) => {
@@ -105,7 +105,7 @@ const LoginPage = () => {
                         ...val,
                         Email: e.target.value.trimStart(),
                       };
-                    }); 
+                    });
                   });
                 }}
                 placeholder="Enter email address"
@@ -131,7 +131,7 @@ const LoginPage = () => {
           {validPassword && (
             <input
               type="password"
-              id="loginInput"
+              id="loginPassword"
               value={App.logInDetails[0].Password}
               onChange={(e) => {
                 App.setlogInDetails((value) => {
@@ -151,7 +151,7 @@ const LoginPage = () => {
               {" "}
               <input
                 type="password"
-                id="invalidLoginInput"
+                id="invalidLoginPassword"
                 value={App.logInDetails[0].Password}
                 onChange={(e) => {
                   App.setlogInDetails((value) => {
@@ -212,7 +212,8 @@ const LoginPage = () => {
         <div id="touchIdModal" className="flexColumnCenter">
           <h4>Touch ID</h4>
           <div className="flexCenter" id="lpre4">
-           <img alt=""
+            <img
+              alt=""
               src={require("../images/fingerPrintIcon.png")}
               id="touchIdFingerPrintIcon"
             />
@@ -236,7 +237,8 @@ const LoginPage = () => {
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-           <img alt=""
+            <img
+              alt=""
               src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}

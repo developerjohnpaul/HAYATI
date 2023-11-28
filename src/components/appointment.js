@@ -14,7 +14,7 @@ export const AppointmentNavbar = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     App.setCurrentPage("Appointments");
-  }, []);
+  }, [App.appDep]);
   const [fixedNav, setFixedNav] = useState(false);
   const test = () => {
     if (
@@ -61,9 +61,9 @@ export const AppointmentNavCodeBase = () => {
               }}
             >
               Upcoming
-            </button>  
+            </button>
           )}
-          {App.currentAppointmentPage !== "Upcoming" && (
+          { App.currentAppointmentPage !== "Upcoming" && (
             <button
               id="appointmentNavBtn"
               onClick={() => {
@@ -85,7 +85,7 @@ export const AppointmentNavCodeBase = () => {
               Complete
             </button>
           )}
-          {App.currentAppointmentPage !== "Complete" && (
+          { App.currentAppointmentPage !== "Complete" && (
             <button
               id="appointmentNavBtn"
               onClick={() => {
@@ -134,7 +134,7 @@ export const UpcomingAppointments = () => {
   useEffect(() => {
     App.setCurrentAppointmentPage("Upcoming");
     Navigate(`/Appointments/Upcoming`);
-  }, []);
+  }, [App.appDep]);
   useEffect(() => {
     const upcomingAppointment = Api.appointment.filter((value, index) => {
       return value.status === "Upcoming";
@@ -262,7 +262,7 @@ export const CompletedAppointments = () => {
   useEffect(() => {
     App.setCurrentAppointmentPage("Complete");
     Navigate(`/Appointments/Complete`);
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="AppointmentPage">
@@ -340,7 +340,7 @@ export const CancelledAppointments = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     App.setCurrentAppointmentPage("Cancelled");
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="AppointmentPage">
@@ -415,7 +415,7 @@ export const CancelledAppointments = () => {
 export const BookedAppointmentNav = () => {
   useEffect(() => {
     App.setCurrentPage("BookedAppointment");
-  }, []);
+  }, [App.appDep]);
   const Navigate = useNavigate();
   const App = useContext(app);
   return (
@@ -460,7 +460,7 @@ export const BookedAppointment = () => {
       return Number(value.appointmentId) === Number(decryptedSID);
     });
     setTabbedAppointment(filteredAppointment[0]);
-  }, []);
+  }, [App.appDep]);
   const cancelAppointment = () => {
     setAbortingAppointment(true);
     const encryptedSID = location.hash.substring(1);

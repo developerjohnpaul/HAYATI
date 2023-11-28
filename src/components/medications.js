@@ -9,14 +9,14 @@ import { mockApi } from "./mockApi";
 import "react-circular-progressbar/dist/styles.css";
 export const MedicationNav = () => {
   const Navigate = useNavigate();
+      const App = useContext(app);
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN === null) {
       Navigate("/Welcome");
     }
-
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="mere15">
@@ -47,7 +47,7 @@ export const Medications = () => {
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "white");
-  }, []);
+  }, [App.appDep]);
 
   return (
     <>
@@ -119,12 +119,14 @@ export const Medications = () => {
 
 export const MedicationDetailsNav = () => {
   const Navigate = useNavigate();
+    const App = useContext(app);
+
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if (CUIN === null) {
       Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="mere15">
@@ -168,7 +170,7 @@ export const MedicationDetails = () => {
       });
       return filteredDetails;
     });
-  }, []);
+  }, [App.appDep]);
 
   return (
     <>
@@ -227,10 +229,10 @@ export const AddMedicationNav = () => {
   const App = useContext(app);
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if ( CUIN === null) {
       Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="mere15">
@@ -266,7 +268,7 @@ export const AddMedication = () => {
     name: "",
     dosage: "",
     duration: "",
-    time: [],
+    time: [App.appDep],
     startDay: "",
   });
 
@@ -712,10 +714,10 @@ export const EditMedicationNav = () => {
   const App = useContext(app);
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
+    if ( CUIN === null) {
       Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   return (
     <>
       <div id="mere15">
@@ -753,7 +755,7 @@ export const EditMedication = () => {
     name: "",
     dosage: "",
     duration: "",
-    time: [],
+    time: [App.appDep],
     startDay: "",
   });
   useEffect(() => {
@@ -762,7 +764,7 @@ export const EditMedication = () => {
       CryptoJS.enc.Utf8
     );
     setId(decryptedSID);
-  }, []);
+  }, [App.appDep]);
   useEffect(() => {
     const encryptedSID = location.hash.substring(1);
     const decryptedSID = CryptoJS.AES.decrypt(encryptedSID, App.SK).toString(
@@ -775,7 +777,7 @@ export const EditMedication = () => {
       });
       return filteredMedication[0];
     });
-  }, []);
+  }, [App.appDep]);
 
   const [dosageTime, setDosageTime] = useState("");
   const [showDosageTimeInput, setShowDosageTimeInput] = useState(false);

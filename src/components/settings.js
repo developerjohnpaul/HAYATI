@@ -9,7 +9,7 @@ import {
   IoIosArrowDown,
   IoIosArrowUp,
 } from "react-icons/io";
-import {  FaBell } from "react-icons/fa6";
+import { FaBell } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoMdLock } from "react-icons/io";
 
@@ -26,32 +26,30 @@ export const SettingsNav = () => {
   return (
     <>
       {" "}
- 
-        <div id="sere4">
-          {App.blurredBackgroundOverlayStatus === "visible" && (
-            <div
-              id="ge2"
-              onClick={() => {
-                App.setPopUpStatus("hidden");
-                App.setBlurredBackgroundOverlayStatus("hidden");
-              }}
-            ></div>
-          )}{" "}
-          {App.popUpStatus === "save" && <div id="ge2"></div>}
-          <div id="sere1">
-            <button
-              type="button"
-              id="sere2"
-              onClick={() => {
-                Navigate("/");
-              }}
-            >
-              <IoIosArrowBack />
-            </button>
-            <li id="sere3">Settings</li>
-          </div>
+      <div id="sere4">
+        {App.blurredBackgroundOverlayStatus === "visible" && (
+          <div
+            id="ge2"
+            onClick={() => {
+              App.setPopUpStatus("hidden");
+              App.setBlurredBackgroundOverlayStatus("hidden");
+            }}
+          ></div>
+        )}{" "}
+        {App.popUpStatus === "save" && <div id="ge2"></div>}
+        <div id="sere1">
+          <button
+            type="button"
+            id="sere2"
+            onClick={() => {
+              Navigate("/");
+            }}
+          >
+            <IoIosArrowBack />
+          </button>
+          <li id="sere3">Settings</li>
         </div>
-      
+      </div>
       <Outlet />
     </>
   );
@@ -66,10 +64,10 @@ export const Settings = () => {
   const Navigate = useNavigate();
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN === undefined) {
+    if (CUIN === null) {
       Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   const [audioAndVideoCallToggle, setAudioAndVideoCallToggle] = useState(true);
   const logOut = () => {
     App.setPopUpStatus("loggingOut");
@@ -131,7 +129,8 @@ export const Settings = () => {
         <>
           <div id="statusFloatingModal" className="flexColumnCenter">
             {" "}
-           <img alt=""
+            <img
+              alt=""
               src={require("../images/maskedLogo192.png")}
               id="statusFloatingLogo"
             />{" "}
@@ -141,175 +140,173 @@ export const Settings = () => {
           </div>
         </>
       )}
-      
-        <div className="flexColumnStart">
-          <div id="ge3">
-            <h4 id="sere5">My account</h4>
-            <button
-              id="sere6"
-              onClick={() => {
-                Navigate("/EditProfile");
-                App.instantScrollToTop();
-              }}
-            >
-              <div id="sere7">
-                <div id="sere9">
-                  <BsFillPersonFill />
-                </div>{" "}
-                <li id="sere10">Edit Profile</li>
-              </div>
-              <button id="sere8">
-                <IoIosArrowForward />
-              </button>
-            </button>{" "}
-            <button
-              id="sere6"
-              onClick={() => {
-                Navigate("/EditProfile");
-                App.instantScrollToTop();
-              }}
-            >
-              <div id="sere7">
-                <div id="sere9">
-                  <IoMdLock />
-                </div>{" "}
-                <li id="sere10">Change Password</li>
-              </div>
-              <button id="sere8">
-                <IoIosArrowForward />
-              </button>
-            </button>
-            <button
-              id="sere6"
-              onClick={() => {
-                Navigate("/Notification");
-                App.instantScrollToTop();
-              }}
-            >
-              <div id="sere7">
-                <div id="sere9">
-                  <FaBell />
-                </div>{" "}
-                <li id="sere10">Notifications</li>
-              </div>
-              <button id="sere8">
-                <IoIosArrowForward />
-              </button>
-            </button>{" "}
-            <button
-              id="sere6"
-              onClick={() => {
-                App.setPopUpStatus("logOutConfirmation");
-                App.setBlurredBackgroundOverlayStatus("visible");
-                const metaTag = document.querySelector(
-                  'meta[name="theme-color"]'
-                );
-                metaTag.setAttribute("content", "rgb(26, 26, 26)");
-              }}
-            >
-              <div id="sere7">
-                <div id="sere9">
-                  <IoLogOutOutline />
-                </div>{" "}
-                <li id="sere10">Log Out</li>
-              </div>
-              <button id="sere8">
-                <IoIosArrowForward />
-              </button>
-            </button>
-            <h4 id="sere5" className="mt-4">
-              More Options
-            </h4>
-            <div id="sere11">
-              <div id="sere7">
-                <li id="sere10">Newsletter</li>
-              </div>
-              {newsletterToggle && (
-                <button
-                  id="sere13"
-                  onClick={() => {
-                    setNewsletterToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleRightFill />
-                </button>
-              )}
-              {!newsletterToggle && (
-                <button
-                  id="sere12"
-                  onClick={() => {
-                    setNewsletterToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleLeftFill />
-                </button>
-              )}
+      <div className="flexColumnStart">
+        <div id="ge3">
+          <h4 id="sere5">My account</h4>
+          <button
+            id="sere6"
+            onClick={() => {
+              Navigate("/EditProfile");
+              App.instantScrollToTop();
+            }}
+          >
+            <div id="sere7">
+              <div id="sere9">
+                <BsFillPersonFill />
+              </div>{" "}
+              <li id="sere10">Edit Profile</li>
             </div>
-            <div id="sere11">
-              <div id="sere7">
-                <li id="sere10">Text Messages</li>
-              </div>
-              {textMessageToggle && (
-                <button
-                  id="sere13"
-                  onClick={() => {
-                    setTextMessageToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleRightFill />
-                </button>
-              )}
-              {!textMessageToggle && (
-                <button
-                  id="sere12"
-                  onClick={() => {
-                    setTextMessageToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleLeftFill />
-                </button>
-              )}
-            </div>{" "}
-            <div id="sere11">
-              <div id="sere7">
-                <li id="sere10">Audio and video calls</li>
-              </div>
-              {audioAndVideoCallToggle && (
-                <button
-                  id="sere13"
-                  onClick={() => {
-                    setAudioAndVideoCallToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleRightFill />
-                </button>
-              )}
-              {!audioAndVideoCallToggle && (
-                <button
-                  id="sere12"
-                  onClick={() => {
-                    setAudioAndVideoCallToggle((prev) => !prev);
-                  }}
-                >
-                  <PiToggleLeftFill />
-                </button>
-              )}
-            </div>{" "}
-            <div id="sere11">
-              <div id="sere7">
-                <li id="sere10">Languages</li>
-              </div>
-              <li id="sere14">English</li>
+            <span id="sere8">
+              <IoIosArrowForward />
+            </span>
+          </button>{" "}
+          <button
+            id="sere6"
+            onClick={() => {
+              Navigate("/EditProfile");
+              App.instantScrollToTop();
+            }}
+          >
+            <div id="sere7">
+              <div id="sere9">
+                <IoMdLock />
+              </div>{" "}
+              <li id="sere10">Change Password</li>
             </div>
-            <div id="sere11">
-              <div id="sere7">
-                <li id="sere10">Linked account</li>
-              </div>
-              <li id="sere14">None</li>
+            <span id="sere8">
+              <IoIosArrowForward />
+            </span>
+          </button>
+          <button
+            id="sere6"
+            onClick={() => {
+              Navigate("/Notification");
+              App.instantScrollToTop();
+            }}
+          >
+            <div id="sere7">
+              <div id="sere9">
+                <FaBell />
+              </div>{" "}
+              <li id="sere10">Notifications</li>
             </div>
+            <span id="sere8">
+              <IoIosArrowForward />
+            </span>
+          </button>{" "}
+          <button
+            id="sere6"
+            onClick={() => {
+              App.setPopUpStatus("logOutConfirmation");
+              App.setBlurredBackgroundOverlayStatus("visible");
+              const metaTag = document.querySelector(
+                'meta[name="theme-color"]'
+              );
+              metaTag.setAttribute("content", "rgb(26, 26, 26)");
+            }}
+          >
+            <div id="sere7">
+              <div id="sere9">
+                <IoLogOutOutline />
+              </div>{" "}
+              <li id="sere10">Log Out</li>
+            </div>
+            <span id="sere8">
+              <IoIosArrowForward />
+            </span>
+          </button>
+          <h4 id="sere5" className="mt-4">
+            More Options
+          </h4>
+          <div id="sere11">
+            <div id="sere7">
+              <li id="sere10">Newsletter</li>
+            </div>
+            {newsletterToggle && (
+              <button
+                id="sere13"
+                onClick={() => {
+                  setNewsletterToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleRightFill />
+              </button>
+            )}
+            {!newsletterToggle && (
+              <button
+                id="sere12"
+                onClick={() => {
+                  setNewsletterToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleLeftFill />
+              </button>
+            )}
+          </div>
+          <div id="sere11">
+            <div id="sere7">
+              <li id="sere10">Text Messages</li>
+            </div>
+            {textMessageToggle && (
+              <button
+                id="sere13"
+                onClick={() => {
+                  setTextMessageToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleRightFill />
+              </button>
+            )}
+            {!textMessageToggle && (
+              <button
+                id="sere12"
+                onClick={() => {
+                  setTextMessageToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleLeftFill />
+              </button>
+            )}
+          </div>{" "}
+          <div id="sere11">
+            <div id="sere7">
+              <li id="sere10">Audio and video calls</li>
+            </div>
+            {audioAndVideoCallToggle && (
+              <button
+                id="sere13"
+                onClick={() => {
+                  setAudioAndVideoCallToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleRightFill />
+              </button>
+            )}
+            {!audioAndVideoCallToggle && (
+              <button
+                id="sere12"
+                onClick={() => {
+                  setAudioAndVideoCallToggle((prev) => !prev);
+                }}
+              >
+                <PiToggleLeftFill />
+              </button>
+            )}
+          </div>{" "}
+          <div id="sere11">
+            <div id="sere7">
+              <li id="sere10">Languages</li>
+            </div>
+            <li id="sere14">English</li>
+          </div>
+          <div id="sere11">
+            <div id="sere7">
+              <li id="sere10">Linked account</li>
+            </div>
+            <li id="sere14">None</li>
           </div>
         </div>
-      
+      </div>
     </>
   );
 };
@@ -324,7 +321,7 @@ export const EditProfileNav = () => {
   return (
     <>
       {" "}
-    <div id="sere4">
+      <div id="sere4">
         {App.blurredBackgroundOverlayStatus === "visible" && (
           <div
             id="ge2"
@@ -358,7 +355,9 @@ export const EditProfile = () => {
   const Api = useContext(mockApi);
   const [dropDown, setDropDown] = useState("hidden");
   const [countrySearchInput, setCountrySearchInput] = useState("");
-  const [filteredSearchCountry, setFilteredSearchCountry] = useState([]);
+  const [filteredSearchCountry, setFilteredSearchCountry] = useState(
+    []
+  );
   return (
     <>
       {App.blurredBackgroundOverlayStatus === "visible" && (
@@ -367,11 +366,15 @@ export const EditProfile = () => {
           <div id="BluredBackgroundOverlay"></div>
         </>
       )}{" "}
-    <div className="flexColumnStart">
+      <div className="flexColumnStart">
         <div id="sere24">
           <div className="flexCenter">
             <div id="sere16">
-             <img alt="" src={require("../images/profileImg.png")} id="sere15" />
+              <img
+                alt=""
+                src={require("../images/profileImg.png")}
+                id="sere15"
+              />
             </div>
           </div>
           <h5 id="sere17">Name</h5>
@@ -513,7 +516,9 @@ export const EditProfile = () => {
               }}
             >
               {" "}
-              {App.user[0].Country === "" && <li id="sere21">Select Country</li>}
+              {App.user[0].Country === "" && (
+                <li id="sere21">Select Country</li>
+              )}
               {App.user[0].Country !== "" && (
                 <li id="sere21">{App.user[0].Country}</li>
               )}

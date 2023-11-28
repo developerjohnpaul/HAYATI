@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Onboarding from "./components/onboarding";
 import LoginNav from "./components/LoginNav";
 import LoginPage from "./components/loginPage";
@@ -46,6 +46,7 @@ export const app = createContext();
 
 const App = () => {
   const Api = useContext(mockApi);
+  const [appDep,setAppDep] = useState("")
   const [blurredBackgroundOverlayStatus, setBlurredBackgroundOverlayStatus] =
     useState("hidden");
   const [currentAppointmentPage, setCurrentAppointmentPage] =
@@ -72,12 +73,13 @@ const App = () => {
 
   useEffect(() => {
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN != undefined) {
+
+    if (CUIN !== null) {
       setStatus("loggedOut ");
     } else {
       setStatus("loggedIn");
     }
-  });
+  }, [appDep]);
 
   const [logInDetails, setlogInDetails] = useState([
     {
@@ -112,20 +114,20 @@ const App = () => {
       return value.status === "related";
     });
     setRelatedArticles(relatedArticle);
-  }, [Api.articles]);
+  },[appDep]);
   useEffect(() => {
     const bookmarkedArticles = Api.articles.filter((value) => {
       return value.bookMarked === true;
     });
     setBookmark(bookmarkedArticles[0]);
-  }, [Api.articles]);
+  },[appDep]);
 
   useEffect(() => {
     const LatestMedication = Api.medications.filter((value, index) => {
       return index === Api.medications.length - 1;
     });
     setLatestMedication(LatestMedication);
-  }, []);
+  }, [appDep]);
 
   useEffect(() => {
     setFilteredReports(() => {
@@ -136,7 +138,7 @@ const App = () => {
       console.log(dayReporting);
       return filteredReport;
     });
-  }, [dayReporting]);
+  }, [appDep]);
 
   return (
     <app.Provider
@@ -173,6 +175,8 @@ const App = () => {
         setDayReporting: setDayReporting,
         filteredReports: filteredReports,
         setFilteredReports: setFilteredReports,
+        setAppDep: setAppDep,
+        appDep: appDep,
       }}
     >
       <div id="App">

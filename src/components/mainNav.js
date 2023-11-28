@@ -10,16 +10,15 @@ const MainNav = () => {
   const App = useContext(app);
   const Navigate = useNavigate();
   useEffect(() => {
-  
     const CUIN = localStorage.getItem("CUIN");
-    if (CUIN == undefined) {
-      Navigate("/Welcome");  
+    if (CUIN === null) {
+      Navigate("/Welcome");
     }
-  }, []);
+  }, [App.appDep]);
   useEffect(() => {
     const metaTag = document.querySelector('meta[name="theme-color"]');
     metaTag.setAttribute("content", "#FFFFFF");
-  }, []);
+  }, [App.appDep]);
 
   return (
     <>

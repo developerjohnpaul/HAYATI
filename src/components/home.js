@@ -154,7 +154,7 @@ const Home = () => {
     if (lastAppointment.status !== "Upcoming") {
       setLatestAppointments({});
     }
-  }, []);
+  }, [App.appDep]);
   useEffect(() => {
     const trendingArticle = Api.articles.filter((value) => {
       return value.status === "trending";
@@ -191,7 +191,7 @@ const Home = () => {
     if (lastAppointment.status === "Upcoming") {
       setLastAppointments(lastAppointment);
     }
-    if (lastAppointment.status !== "Upcoming") {
+    if ( lastAppointment.status !== "Upcoming") {
       setLastAppointments({});
     }
   }, [Api.appointment]);
