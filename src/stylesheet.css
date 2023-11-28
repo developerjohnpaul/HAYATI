@@ -2635,6 +2635,43 @@ body::-webkit-scrollbar {
   border-bottom: 2px solid black;
 }
 
+#sere18b {
+  width: 100%;
+  border: 0px;
+  border-bottom: .5px solid #C2C2C2;
+  outline: none;
+  margin-bottom: 20px;
+  height: 20px;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: transparent;
+}
+
+#sere18b:focus {
+  border-bottom: 2px solid black;
+}#sere18c {
+  width: 100%;
+  border: 0px;
+  border-bottom: .5px solid #C2C2C2;
+  outline: none;
+  margin-bottom: 20px;
+  height: 20px;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  background-color: transparent;
+}
+
+#sere18c:focus {
+  border-bottom: 2px solid black;
+}
 #sere19 {
   width: 100%;
   border: 0px;

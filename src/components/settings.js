@@ -396,7 +396,7 @@ export const EditProfile = () => {
           <h5 id="sere17">Email</h5>
           <input
             type="email"
-            id="sere18"
+            id="sere18b"
             value={App.user[0].Email}
             onChange={(e) => {
               App.setUser((value) => {
@@ -412,7 +412,7 @@ export const EditProfile = () => {
           <h5 id="sere17">Password</h5>
           <input
             type="password"
-            id="sere18"
+            id="sere18c"
             value={App.user[0].Password}
             onChange={(e) => {
               App.setUser((value) => {
@@ -441,17 +441,17 @@ export const EditProfile = () => {
               {" "}
               {App.user[0].Gender === "" && <li id="sere21">Select gender</li>}
               {App.user[0].Gender !== "" && (
-                <li id="sere21">{App.user[0].Gender}</li>
+                <span id="sere21">{App.user[0].Gender}</span>
               )}
               {dropDown === "Gender" && (
-                <li id="sere22">
+                <span id="sere22">
                   <IoIosArrowUp />
-                </li>
+                </span>
               )}
               {dropDown !== "Gender" && (
-                <li id="sere22">
+                <span id="sere22">
                   <IoIosArrowDown />
-                </li>
+                </span>
               )}
             </button>
             {dropDown === "Gender" && (
@@ -497,9 +497,9 @@ export const EditProfile = () => {
               {" "}
               {App.user[0].DOB === "" && <li id="sere21">Select a date</li>}
               {App.user[0].DOB !== "" && <li id="sere21">{App.user[0].DOB}</li>}
-              <li id="sere22">
+              <span id="sere22">
                 <IoIosArrowDown />
-              </li>
+              </span>
             </label>
           </li>
           <h5 id="sere17">Country</h5>{" "}
@@ -517,20 +517,20 @@ export const EditProfile = () => {
             >
               {" "}
               {App.user[0].Country === "" && (
-                <li id="sere21">Select Country</li>
+                <span id="sere21">Select Country</span>
               )}
               {App.user[0].Country !== "" && (
-                <li id="sere21">{App.user[0].Country}</li>
+                <span id="sere21">{App.user[0].Country}</span>
               )}
               {dropDown === "Country" && (
-                <li id="sere22">
+                <span id="sere22">
                   <IoIosArrowUp />
-                </li>
+                </span>
               )}
               {dropDown !== "Country" && (
-                <li id="sere22">
+                <span id="sere22">
                   <IoIosArrowDown />
-                </li>
+                </span>
               )}
             </button>
             {dropDown === "Country" && (
